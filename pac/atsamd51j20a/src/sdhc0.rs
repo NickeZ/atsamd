@@ -1,7 +1,8 @@
 #[doc = r" Register block"]
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved_0_ssar: [u8; 4usize],
+    #[doc = "0x00 - SDMA System Address / Argument 2"]
+    pub ssar: SSAR,
     #[doc = "0x04 - Block Size"]
     pub bsr: BSR,
     #[doc = "0x06 - Block Count"]
@@ -18,10 +19,12 @@ pub struct RegisterBlock {
     pub bdpr: BDPR,
     #[doc = "0x24 - Present State"]
     pub psr: PSR,
-    _reserved_9_hc1: [u8; 1usize],
+    #[doc = "0x28 - Host Control 1"]
+    pub hc1r: HC1R,
     #[doc = "0x29 - Power Control"]
     pub pcr: PCR,
-    _reserved_11_bgcr: [u8; 1usize],
+    #[doc = "0x2a - Block Gap Control"]
+    pub bgcr: BGCR,
     #[doc = "0x2b - Wakeup Control"]
     pub wcr: WCR,
     #[doc = "0x2c - Clock Control"]
@@ -30,256 +33,61 @@ pub struct RegisterBlock {
     pub tcr: TCR,
     #[doc = "0x2f - Software Reset"]
     pub srr: SRR,
-    _reserved_16_nistr: [u8; 2usize],
-    _reserved_17_eistr: [u8; 2usize],
-    _reserved_18_nister: [u8; 2usize],
-    _reserved_19_eister: [u8; 2usize],
-    _reserved_20_nisier: [u8; 2usize],
-    _reserved_21_eisier: [u8; 2usize],
+    #[doc = "0x30 - Normal Interrupt Status"]
+    pub nistr: NISTR,
+    #[doc = "0x32 - Error Interrupt Status"]
+    pub eistr: EISTR,
+    #[doc = "0x34 - Normal Interrupt Status Enable"]
+    pub nister: NISTER,
+    #[doc = "0x36 - Error Interrupt Status Enable"]
+    pub eister: EISTER,
+    #[doc = "0x38 - Normal Interrupt Signal Enable"]
+    pub nisier: NISIER,
+    #[doc = "0x3a - Error Interrupt Signal Enable"]
+    pub eisier: EISIER,
     #[doc = "0x3c - Auto CMD Error Status"]
     pub acesr: ACESR,
-    _reserved_23_hc2: [u8; 2usize],
+    #[doc = "0x3e - Host Control 2"]
+    pub hc2r: HC2R,
     #[doc = "0x40 - Capabilities 0"]
     pub ca0r: CA0R,
     #[doc = "0x44 - Capabilities 1"]
     pub ca1r: CA1R,
     #[doc = "0x48 - Maximum Current Capabilities"]
     pub mccar: MCCAR,
-    _reserved27: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x50 - Force Event for Auto CMD Error Status"]
     pub feraces: FERACES,
     #[doc = "0x52 - Force Event for Error Interrupt Status"]
     pub fereis: FEREIS,
     #[doc = "0x54 - ADMA Error Status"]
     pub aesr: AESR,
-    _reserved30: [u8; 3usize],
+    _reserved1: [u8; 3usize],
     #[doc = "0x58 - ADMA System Address n"]
     pub asar: [ASAR; 1],
-    _reserved31: [u8; 4usize],
+    _reserved2: [u8; 4usize],
     #[doc = "0x60 - Preset Value n"]
     pub pvr: [PVR; 8],
-    _reserved32: [u8; 140usize],
+    _reserved3: [u8; 140usize],
     #[doc = "0xfc - Slot Interrupt Status"]
     pub sisr: SISR,
     #[doc = "0xfe - Host Controller Version"]
     pub hcvr: HCVR,
-    _reserved34: [u8; 260usize],
+    _reserved4: [u8; 260usize],
     #[doc = "0x204 - MMC Control 1"]
     pub mc1r: MC1R,
     #[doc = "0x205 - MMC Control 2"]
     pub mc2r: MC2R,
-    _reserved36: [u8; 2usize],
+    _reserved5: [u8; 2usize],
     #[doc = "0x208 - AHB Control"]
     pub acr: ACR,
     #[doc = "0x20c - Clock Control 2"]
     pub cc2r: CC2R,
-    _reserved38: [u8; 32usize],
+    _reserved6: [u8; 32usize],
     #[doc = "0x230 - Capabilities Control"]
     pub cacr: CACR,
     #[doc = "0x234 - Debug"]
     pub dbgr: DBGR,
-}
-impl RegisterBlock {
-    #[doc = "0x00 - SDMA System Address / Argument 2"]
-    #[inline(always)]
-    pub fn ssar_cmd23(&self) -> &SSAR_CMD23 {
-        unsafe { &*(((self as *const Self) as *const u8).add(0usize) as *const SSAR_CMD23) }
-    }
-    #[doc = "0x00 - SDMA System Address / Argument 2"]
-    #[inline(always)]
-    pub fn ssar_cmd23_mut(&self) -> &mut SSAR_CMD23 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(0usize) as *mut SSAR_CMD23) }
-    }
-    #[doc = "0x00 - SDMA System Address / Argument 2"]
-    #[inline(always)]
-    pub fn ssar(&self) -> &SSAR {
-        unsafe { &*(((self as *const Self) as *const u8).add(0usize) as *const SSAR) }
-    }
-    #[doc = "0x00 - SDMA System Address / Argument 2"]
-    #[inline(always)]
-    pub fn ssar_mut(&self) -> &mut SSAR {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(0usize) as *mut SSAR) }
-    }
-    #[doc = "0x28 - Host Control 1"]
-    #[inline(always)]
-    pub fn hc1r_emmc(&self) -> &HC1R_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(40usize) as *const HC1R_EMMC) }
-    }
-    #[doc = "0x28 - Host Control 1"]
-    #[inline(always)]
-    pub fn hc1r_emmc_mut(&self) -> &mut HC1R_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(40usize) as *mut HC1R_EMMC) }
-    }
-    #[doc = "0x28 - Host Control 1"]
-    #[inline(always)]
-    pub fn hc1r(&self) -> &HC1R {
-        unsafe { &*(((self as *const Self) as *const u8).add(40usize) as *const HC1R) }
-    }
-    #[doc = "0x28 - Host Control 1"]
-    #[inline(always)]
-    pub fn hc1r_mut(&self) -> &mut HC1R {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(40usize) as *mut HC1R) }
-    }
-    #[doc = "0x2a - Block Gap Control"]
-    #[inline(always)]
-    pub fn bgcr_emmc(&self) -> &BGCR_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(42usize) as *const BGCR_EMMC) }
-    }
-    #[doc = "0x2a - Block Gap Control"]
-    #[inline(always)]
-    pub fn bgcr_emmc_mut(&self) -> &mut BGCR_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(42usize) as *mut BGCR_EMMC) }
-    }
-    #[doc = "0x2a - Block Gap Control"]
-    #[inline(always)]
-    pub fn bgcr(&self) -> &BGCR {
-        unsafe { &*(((self as *const Self) as *const u8).add(42usize) as *const BGCR) }
-    }
-    #[doc = "0x2a - Block Gap Control"]
-    #[inline(always)]
-    pub fn bgcr_mut(&self) -> &mut BGCR {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(42usize) as *mut BGCR) }
-    }
-    #[doc = "0x30 - Normal Interrupt Status"]
-    #[inline(always)]
-    pub fn nistr_emmc(&self) -> &NISTR_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(48usize) as *const NISTR_EMMC) }
-    }
-    #[doc = "0x30 - Normal Interrupt Status"]
-    #[inline(always)]
-    pub fn nistr_emmc_mut(&self) -> &mut NISTR_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(48usize) as *mut NISTR_EMMC) }
-    }
-    #[doc = "0x30 - Normal Interrupt Status"]
-    #[inline(always)]
-    pub fn nistr(&self) -> &NISTR {
-        unsafe { &*(((self as *const Self) as *const u8).add(48usize) as *const NISTR) }
-    }
-    #[doc = "0x30 - Normal Interrupt Status"]
-    #[inline(always)]
-    pub fn nistr_mut(&self) -> &mut NISTR {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(48usize) as *mut NISTR) }
-    }
-    #[doc = "0x32 - Error Interrupt Status"]
-    #[inline(always)]
-    pub fn eistr_emmc(&self) -> &EISTR_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(50usize) as *const EISTR_EMMC) }
-    }
-    #[doc = "0x32 - Error Interrupt Status"]
-    #[inline(always)]
-    pub fn eistr_emmc_mut(&self) -> &mut EISTR_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(50usize) as *mut EISTR_EMMC) }
-    }
-    #[doc = "0x32 - Error Interrupt Status"]
-    #[inline(always)]
-    pub fn eistr(&self) -> &EISTR {
-        unsafe { &*(((self as *const Self) as *const u8).add(50usize) as *const EISTR) }
-    }
-    #[doc = "0x32 - Error Interrupt Status"]
-    #[inline(always)]
-    pub fn eistr_mut(&self) -> &mut EISTR {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(50usize) as *mut EISTR) }
-    }
-    #[doc = "0x34 - Normal Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn nister_emmc(&self) -> &NISTER_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(52usize) as *const NISTER_EMMC) }
-    }
-    #[doc = "0x34 - Normal Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn nister_emmc_mut(&self) -> &mut NISTER_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(52usize) as *mut NISTER_EMMC) }
-    }
-    #[doc = "0x34 - Normal Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn nister(&self) -> &NISTER {
-        unsafe { &*(((self as *const Self) as *const u8).add(52usize) as *const NISTER) }
-    }
-    #[doc = "0x34 - Normal Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn nister_mut(&self) -> &mut NISTER {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(52usize) as *mut NISTER) }
-    }
-    #[doc = "0x36 - Error Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn eister_emmc(&self) -> &EISTER_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(54usize) as *const EISTER_EMMC) }
-    }
-    #[doc = "0x36 - Error Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn eister_emmc_mut(&self) -> &mut EISTER_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(54usize) as *mut EISTER_EMMC) }
-    }
-    #[doc = "0x36 - Error Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn eister(&self) -> &EISTER {
-        unsafe { &*(((self as *const Self) as *const u8).add(54usize) as *const EISTER) }
-    }
-    #[doc = "0x36 - Error Interrupt Status Enable"]
-    #[inline(always)]
-    pub fn eister_mut(&self) -> &mut EISTER {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(54usize) as *mut EISTER) }
-    }
-    #[doc = "0x38 - Normal Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn nisier_emmc(&self) -> &NISIER_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(56usize) as *const NISIER_EMMC) }
-    }
-    #[doc = "0x38 - Normal Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn nisier_emmc_mut(&self) -> &mut NISIER_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(56usize) as *mut NISIER_EMMC) }
-    }
-    #[doc = "0x38 - Normal Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn nisier(&self) -> &NISIER {
-        unsafe { &*(((self as *const Self) as *const u8).add(56usize) as *const NISIER) }
-    }
-    #[doc = "0x38 - Normal Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn nisier_mut(&self) -> &mut NISIER {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(56usize) as *mut NISIER) }
-    }
-    #[doc = "0x3a - Error Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn eisier_emmc(&self) -> &EISIER_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(58usize) as *const EISIER_EMMC) }
-    }
-    #[doc = "0x3a - Error Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn eisier_emmc_mut(&self) -> &mut EISIER_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(58usize) as *mut EISIER_EMMC) }
-    }
-    #[doc = "0x3a - Error Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn eisier(&self) -> &EISIER {
-        unsafe { &*(((self as *const Self) as *const u8).add(58usize) as *const EISIER) }
-    }
-    #[doc = "0x3a - Error Interrupt Signal Enable"]
-    #[inline(always)]
-    pub fn eisier_mut(&self) -> &mut EISIER {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(58usize) as *mut EISIER) }
-    }
-    #[doc = "0x3e - Host Control 2"]
-    #[inline(always)]
-    pub fn hc2r_emmc(&self) -> &HC2R_EMMC {
-        unsafe { &*(((self as *const Self) as *const u8).add(62usize) as *const HC2R_EMMC) }
-    }
-    #[doc = "0x3e - Host Control 2"]
-    #[inline(always)]
-    pub fn hc2r_emmc_mut(&self) -> &mut HC2R_EMMC {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(62usize) as *mut HC2R_EMMC) }
-    }
-    #[doc = "0x3e - Host Control 2"]
-    #[inline(always)]
-    pub fn hc2r(&self) -> &HC2R {
-        unsafe { &*(((self as *const Self) as *const u8).add(62usize) as *const HC2R) }
-    }
-    #[doc = "0x3e - Host Control 2"]
-    #[inline(always)]
-    pub fn hc2r_mut(&self) -> &mut HC2R {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(62usize) as *mut HC2R) }
-    }
 }
 #[doc = "SDMA System Address / Argument 2"]
 pub struct SSAR {
@@ -288,11 +96,11 @@ pub struct SSAR {
 #[doc = "SDMA System Address / Argument 2"]
 pub mod ssar;
 #[doc = "SDMA System Address / Argument 2"]
-pub struct SSAR_CMD23 {
+pub struct SSAR_CMD23_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "SDMA System Address / Argument 2"]
-pub mod ssar_cmd23;
+pub mod ssar_cmd23_mode;
 #[doc = "Block Size"]
 pub struct BSR {
     register: ::vcell::VolatileCell<u16>,
@@ -348,11 +156,11 @@ pub struct HC1R {
 #[doc = "Host Control 1"]
 pub mod hc1r;
 #[doc = "Host Control 1"]
-pub struct HC1R_EMMC {
+pub struct HC1R_EMMC_MODE {
     register: ::vcell::VolatileCell<u8>,
 }
 #[doc = "Host Control 1"]
-pub mod hc1r_emmc;
+pub mod hc1r_emmc_mode;
 #[doc = "Power Control"]
 pub struct PCR {
     register: ::vcell::VolatileCell<u8>,
@@ -366,11 +174,11 @@ pub struct BGCR {
 #[doc = "Block Gap Control"]
 pub mod bgcr;
 #[doc = "Block Gap Control"]
-pub struct BGCR_EMMC {
+pub struct BGCR_EMMC_MODE {
     register: ::vcell::VolatileCell<u8>,
 }
 #[doc = "Block Gap Control"]
-pub mod bgcr_emmc;
+pub mod bgcr_emmc_mode;
 #[doc = "Wakeup Control"]
 pub struct WCR {
     register: ::vcell::VolatileCell<u8>,
@@ -402,11 +210,11 @@ pub struct NISTR {
 #[doc = "Normal Interrupt Status"]
 pub mod nistr;
 #[doc = "Normal Interrupt Status"]
-pub struct NISTR_EMMC {
+pub struct NISTR_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Normal Interrupt Status"]
-pub mod nistr_emmc;
+pub mod nistr_emmc_mode;
 #[doc = "Error Interrupt Status"]
 pub struct EISTR {
     register: ::vcell::VolatileCell<u16>,
@@ -414,11 +222,11 @@ pub struct EISTR {
 #[doc = "Error Interrupt Status"]
 pub mod eistr;
 #[doc = "Error Interrupt Status"]
-pub struct EISTR_EMMC {
+pub struct EISTR_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Error Interrupt Status"]
-pub mod eistr_emmc;
+pub mod eistr_emmc_mode;
 #[doc = "Normal Interrupt Status Enable"]
 pub struct NISTER {
     register: ::vcell::VolatileCell<u16>,
@@ -426,11 +234,11 @@ pub struct NISTER {
 #[doc = "Normal Interrupt Status Enable"]
 pub mod nister;
 #[doc = "Normal Interrupt Status Enable"]
-pub struct NISTER_EMMC {
+pub struct NISTER_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Normal Interrupt Status Enable"]
-pub mod nister_emmc;
+pub mod nister_emmc_mode;
 #[doc = "Error Interrupt Status Enable"]
 pub struct EISTER {
     register: ::vcell::VolatileCell<u16>,
@@ -438,11 +246,11 @@ pub struct EISTER {
 #[doc = "Error Interrupt Status Enable"]
 pub mod eister;
 #[doc = "Error Interrupt Status Enable"]
-pub struct EISTER_EMMC {
+pub struct EISTER_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Error Interrupt Status Enable"]
-pub mod eister_emmc;
+pub mod eister_emmc_mode;
 #[doc = "Normal Interrupt Signal Enable"]
 pub struct NISIER {
     register: ::vcell::VolatileCell<u16>,
@@ -450,11 +258,11 @@ pub struct NISIER {
 #[doc = "Normal Interrupt Signal Enable"]
 pub mod nisier;
 #[doc = "Normal Interrupt Signal Enable"]
-pub struct NISIER_EMMC {
+pub struct NISIER_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Normal Interrupt Signal Enable"]
-pub mod nisier_emmc;
+pub mod nisier_emmc_mode;
 #[doc = "Error Interrupt Signal Enable"]
 pub struct EISIER {
     register: ::vcell::VolatileCell<u16>,
@@ -462,11 +270,11 @@ pub struct EISIER {
 #[doc = "Error Interrupt Signal Enable"]
 pub mod eisier;
 #[doc = "Error Interrupt Signal Enable"]
-pub struct EISIER_EMMC {
+pub struct EISIER_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Error Interrupt Signal Enable"]
-pub mod eisier_emmc;
+pub mod eisier_emmc_mode;
 #[doc = "Auto CMD Error Status"]
 pub struct ACESR {
     register: ::vcell::VolatileCell<u16>,
@@ -480,11 +288,11 @@ pub struct HC2R {
 #[doc = "Host Control 2"]
 pub mod hc2r;
 #[doc = "Host Control 2"]
-pub struct HC2R_EMMC {
+pub struct HC2R_EMMC_MODE {
     register: ::vcell::VolatileCell<u16>,
 }
 #[doc = "Host Control 2"]
-pub mod hc2r_emmc;
+pub mod hc2r_emmc_mode;
 #[doc = "Capabilities 0"]
 pub struct CA0R {
     register: ::vcell::VolatileCell<u32>,

@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -43,10 +43,52 @@ impl super::CTRLA {
     }
 }
 #[doc = r" Value of the field"]
+pub struct SWRSTR {
+    bits: bool,
+}
+impl SWRSTR {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
 pub struct ENABLER {
     bits: bool,
 }
 impl ENABLER {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct LASTXFERR {
+    bits: bool,
+}
+impl LASTXFERR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bit(&self) -> bool {
@@ -138,6 +180,16 @@ impl R {
     pub fn bits(&self) -> u32 {
         self.bits
     }
+    #[doc = "Bit 0 - Software Reset"]
+    #[inline]
+    pub fn swrst(&self) -> SWRSTR {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 0;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        SWRSTR { bits }
+    }
     #[doc = "Bit 1 - Enable"]
     #[inline]
     pub fn enable(&self) -> ENABLER {
@@ -147,6 +199,16 @@ impl R {
             ((self.bits >> OFFSET) & MASK as u32) != 0
         };
         ENABLER { bits }
+    }
+    #[doc = "Bit 24 - Last Transfer"]
+    #[inline]
+    pub fn lastxfer(&self) -> LASTXFERR {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 24;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        LASTXFERR { bits }
     }
 }
 impl W {

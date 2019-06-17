@@ -5,21 +5,21 @@ pub struct RegisterBlock {
     pub ctrla: CTRLA,
     #[doc = "0x01 - Sleep Configuration"]
     pub sleepcfg: SLEEPCFG,
-    _reserved2: [u8; 2usize],
+    _reserved0: [u8; 2usize],
     #[doc = "0x04 - Interrupt Enable Clear"]
     pub intenclr: INTENCLR,
     #[doc = "0x05 - Interrupt Enable Set"]
     pub intenset: INTENSET,
     #[doc = "0x06 - Interrupt Flag Status and Clear"]
     pub intflag: INTFLAG,
-    _reserved5: [u8; 1usize],
+    _reserved1: [u8; 1usize],
     #[doc = "0x08 - Standby Configuration"]
     pub stdbycfg: STDBYCFG,
     #[doc = "0x09 - Hibernate Configuration"]
     pub hibcfg: HIBCFG,
     #[doc = "0x0a - Backup Configuration"]
     pub bkupcfg: BKUPCFG,
-    _reserved8: [u8; 7usize],
+    _reserved2: [u8; 7usize],
     #[doc = "0x12 - Power Switch Acknowledge Delay"]
     pub pwsakdly: PWSAKDLY,
 }

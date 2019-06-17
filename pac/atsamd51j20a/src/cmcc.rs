@@ -11,7 +11,7 @@ pub struct RegisterBlock {
     pub sr: SR,
     #[doc = "0x10 - Cache Lock per Way Register"]
     pub lckway: LCKWAY,
-    _reserved5: [u8; 12usize],
+    _reserved0: [u8; 12usize],
     #[doc = "0x20 - Cache Maintenance Register 0"]
     pub maint0: MAINT0,
     #[doc = "0x24 - Cache Maintenance Register 1"]

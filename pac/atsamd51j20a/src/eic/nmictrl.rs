@@ -14,8 +14,8 @@ impl super::NMICTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -140,16 +140,15 @@ impl NMIFILTENR {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct NMIASYNCHR {
-    bits: bool,
+#[doc = "Possible values of the field `NMIASYNCH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum NMIASYNCHR {
+    #[doc = "Edge detection is clock synchronously operated"]
+    SYNC,
+    #[doc = "Edge detection is clock asynchronously operated"]
+    ASYNC,
 }
 impl NMIASYNCHR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
     #[doc = r" Returns `true` if the bit is clear (0)"]
     #[inline]
     pub fn bit_is_clear(&self) -> bool {
@@ -160,8 +159,36 @@ impl NMIASYNCHR {
     pub fn bit_is_set(&self) -> bool {
         self.bit()
     }
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        match *self {
+            NMIASYNCHR::SYNC => false,
+            NMIASYNCHR::ASYNC => true,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: bool) -> NMIASYNCHR {
+        match value {
+            false => NMIASYNCHR::SYNC,
+            true => NMIASYNCHR::ASYNC,
+        }
+    }
+    #[doc = "Checks if the value of the field is `SYNC`"]
+    #[inline]
+    pub fn is_sync(&self) -> bool {
+        *self == NMIASYNCHR::SYNC
+    }
+    #[doc = "Checks if the value of the field is `ASYNC`"]
+    #[inline]
+    pub fn is_async(&self) -> bool {
+        *self == NMIASYNCHR::ASYNC
+    }
 }
 #[doc = "Values that can be written to the field `NMISENSE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum NMISENSEW {
     #[doc = "No detection"]
     NONE,
@@ -264,11 +291,47 @@ impl<'a> _NMIFILTENW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `NMIASYNCH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum NMIASYNCHW {
+    #[doc = "Edge detection is clock synchronously operated"]
+    SYNC,
+    #[doc = "Edge detection is clock asynchronously operated"]
+    ASYNC,
+}
+impl NMIASYNCHW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            NMIASYNCHW::SYNC => false,
+            NMIASYNCHW::ASYNC => true,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _NMIASYNCHW<'a> {
     w: &'a mut W,
 }
 impl<'a> _NMIASYNCHW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: NMIASYNCHW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "Edge detection is clock synchronously operated"]
+    #[inline]
+    pub fn sync(self) -> &'a mut W {
+        self.variant(NMIASYNCHW::SYNC)
+    }
+    #[doc = "Edge detection is clock asynchronously operated"]
+    #[inline]
+    pub fn async(self) -> &'a mut W {
+        self.variant(NMIASYNCHW::ASYNC)
+    }
     #[doc = r" Sets the field bit"]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
@@ -315,12 +378,11 @@ impl R {
     #[doc = "Bit 4 - Asynchronous Edge Detection Mode"]
     #[inline]
     pub fn nmiasynch(&self) -> NMIASYNCHR {
-        let bits = {
+        NMIASYNCHR::_from({
             const MASK: bool = true;
             const OFFSET: u8 = 4;
             ((self.bits >> OFFSET) & MASK as u8) != 0
-        };
-        NMIASYNCHR { bits }
+        })
     }
 }
 impl W {

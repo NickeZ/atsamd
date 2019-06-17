@@ -13,7 +13,7 @@ pub struct RegisterBlock {
     pub isr: ISR,
     #[doc = "0x14 - Reception Holding Register"]
     pub rhr: RHR,
-    _reserved6: [u8; 200usize],
+    _reserved0: [u8; 200usize],
     #[doc = "0xe0 - Write Protection Mode Register"]
     pub wpmr: WPMR,
     #[doc = "0xe4 - Write Protection Status Register"]

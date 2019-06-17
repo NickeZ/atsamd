@@ -75,69 +75,6 @@ impl B33SRDYR {
     }
 }
 #[doc = r" Value of the field"]
-pub struct BOD12RDYR {
-    bits: bool,
-}
-impl BOD12RDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BOD12DETR {
-    bits: bool,
-}
-impl BOD12DETR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct B12SRDYR {
-    bits: bool,
-}
-impl B12SRDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
 pub struct VREGRDYR {
     bits: bool,
 }
@@ -214,36 +151,6 @@ impl R {
             ((self.bits >> OFFSET) & MASK as u32) != 0
         };
         B33SRDYR { bits }
-    }
-    #[doc = "Bit 3 - BOD12 Ready"]
-    #[inline]
-    pub fn bod12rdy(&self) -> BOD12RDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        BOD12RDYR { bits }
-    }
-    #[doc = "Bit 4 - BOD12 Detection"]
-    #[inline]
-    pub fn bod12det(&self) -> BOD12DETR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        BOD12DETR { bits }
-    }
-    #[doc = "Bit 5 - BOD12 Synchronization Ready"]
-    #[inline]
-    pub fn b12srdy(&self) -> B12SRDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        B12SRDYR { bits }
     }
     #[doc = "Bit 8 - Voltage Regulator Ready"]
     #[inline]

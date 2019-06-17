@@ -88,51 +88,27 @@ pub struct PADCAL {
 }
 #[doc = "USB PAD Calibration"]
 pub mod padcal;
-#[doc = "HOST End Point Configuration"]
-pub struct PCFG {
-    register: ::vcell::VolatileCell<u8>,
+#[doc = r" Register block"]
+#[repr(C)]
+pub struct HOST_PIPE {
+    #[doc = "0x00 - HOST_PIPE End Point Configuration"]
+    pub pcfg: self::host_pipe::PCFG,
+    _reserved0: [u8; 2usize],
+    #[doc = "0x03 - HOST_PIPE Bus Access Period of Pipe"]
+    pub binterval: self::host_pipe::BINTERVAL,
+    #[doc = "0x04 - HOST_PIPE End Point Pipe Status Clear"]
+    pub pstatusclr: self::host_pipe::PSTATUSCLR,
+    #[doc = "0x05 - HOST_PIPE End Point Pipe Status Set"]
+    pub pstatusset: self::host_pipe::PSTATUSSET,
+    #[doc = "0x06 - HOST_PIPE End Point Pipe Status"]
+    pub pstatus: self::host_pipe::PSTATUS,
+    #[doc = "0x07 - HOST_PIPE Pipe Interrupt Flag"]
+    pub pintflag: self::host_pipe::PINTFLAG,
+    #[doc = "0x08 - HOST_PIPE Pipe Interrupt Flag Clear"]
+    pub pintenclr: self::host_pipe::PINTENCLR,
+    #[doc = "0x09 - HOST_PIPE Pipe Interrupt Flag Set"]
+    pub pintenset: self::host_pipe::PINTENSET,
 }
-#[doc = "HOST End Point Configuration"]
-pub mod pcfg;
-#[doc = "HOST Bus Access Period of Pipe"]
-pub struct BINTERVAL {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST Bus Access Period of Pipe"]
-pub mod binterval;
-#[doc = "HOST End Point Pipe Status Clear"]
-pub struct PSTATUSCLR {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST End Point Pipe Status Clear"]
-pub mod pstatusclr;
-#[doc = "HOST End Point Pipe Status Set"]
-pub struct PSTATUSSET {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST End Point Pipe Status Set"]
-pub mod pstatusset;
-#[doc = "HOST End Point Pipe Status"]
-pub struct PSTATUS {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST End Point Pipe Status"]
-pub mod pstatus;
-#[doc = "HOST Pipe Interrupt Flag"]
-pub struct PINTFLAG {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST Pipe Interrupt Flag"]
-pub mod pintflag;
-#[doc = "HOST Pipe Interrupt Flag Clear"]
-pub struct PINTENCLR {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST Pipe Interrupt Flag Clear"]
-pub mod pintenclr;
-#[doc = "HOST Pipe Interrupt Flag Set"]
-pub struct PINTENSET {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "HOST Pipe Interrupt Flag Set"]
-pub mod pintenset;
+#[doc = r" Register block"]
+#[doc = "test"]
+pub mod host_pipe;

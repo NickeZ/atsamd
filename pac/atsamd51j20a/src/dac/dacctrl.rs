@@ -14,8 +14,8 @@ impl super::DACCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -87,11 +87,11 @@ impl ENABLER {
 #[doc = "Possible values of the field `CCTRL`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CCTRLR {
-    #[doc = "GCLK_DAC <= 1.2MHz (100kSPS)"]
+    #[doc = "100kSPS"]
     CC100K,
-    #[doc = "1.2MHz < GCLK_DAC  <= 6MHz (500kSPS)"]
+    #[doc = "500kSPS"]
     CC1M,
-    #[doc = "6MHz < GCLK_DAC <= 12MHz (1MSPS)"]
+    #[doc = "1MSPS"]
     CC12M,
     #[doc = r" Reserved"]
     _Reserved(u8),
@@ -197,26 +197,245 @@ impl DITHERR {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct REFRESHR {
-    bits: u8,
+#[doc = "Possible values of the field `REFRESH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum REFRESHR {
+    #[doc = "Do not Refresh"]
+    REFRESH_0,
+    #[doc = "Refresh every 30 us"]
+    REFRESH_1,
+    #[doc = "Refresh every 60 us"]
+    REFRESH_2,
+    #[doc = "Refresh every 90 us"]
+    REFRESH_3,
+    #[doc = "Refresh every 120 us"]
+    REFRESH_4,
+    #[doc = "Refresh every 150 us"]
+    REFRESH_5,
+    #[doc = "Refresh every 180 us"]
+    REFRESH_6,
+    #[doc = "Refresh every 210 us"]
+    REFRESH_7,
+    #[doc = "Refresh every 240 us"]
+    REFRESH_8,
+    #[doc = "Refresh every 270 us"]
+    REFRESH_9,
+    #[doc = "Refresh every 300 us"]
+    REFRESH_10,
+    #[doc = "Refresh every 330 us"]
+    REFRESH_11,
+    #[doc = "Refresh every 360 us"]
+    REFRESH_12,
+    #[doc = "Refresh every 390 us"]
+    REFRESH_13,
+    #[doc = "Refresh every 420 us"]
+    REFRESH_14,
+    #[doc = "Refresh every 450 us"]
+    REFRESH_15,
 }
 impl REFRESHR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            REFRESHR::REFRESH_0 => 0,
+            REFRESHR::REFRESH_1 => 1,
+            REFRESHR::REFRESH_2 => 2,
+            REFRESHR::REFRESH_3 => 3,
+            REFRESHR::REFRESH_4 => 4,
+            REFRESHR::REFRESH_5 => 5,
+            REFRESHR::REFRESH_6 => 6,
+            REFRESHR::REFRESH_7 => 7,
+            REFRESHR::REFRESH_8 => 8,
+            REFRESHR::REFRESH_9 => 9,
+            REFRESHR::REFRESH_10 => 10,
+            REFRESHR::REFRESH_11 => 11,
+            REFRESHR::REFRESH_12 => 12,
+            REFRESHR::REFRESH_13 => 13,
+            REFRESHR::REFRESH_14 => 14,
+            REFRESHR::REFRESH_15 => 15,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> REFRESHR {
+        match value {
+            0 => REFRESHR::REFRESH_0,
+            1 => REFRESHR::REFRESH_1,
+            2 => REFRESHR::REFRESH_2,
+            3 => REFRESHR::REFRESH_3,
+            4 => REFRESHR::REFRESH_4,
+            5 => REFRESHR::REFRESH_5,
+            6 => REFRESHR::REFRESH_6,
+            7 => REFRESHR::REFRESH_7,
+            8 => REFRESHR::REFRESH_8,
+            9 => REFRESHR::REFRESH_9,
+            10 => REFRESHR::REFRESH_10,
+            11 => REFRESHR::REFRESH_11,
+            12 => REFRESHR::REFRESH_12,
+            13 => REFRESHR::REFRESH_13,
+            14 => REFRESHR::REFRESH_14,
+            15 => REFRESHR::REFRESH_15,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_0`"]
+    #[inline]
+    pub fn is_refresh_0(&self) -> bool {
+        *self == REFRESHR::REFRESH_0
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_1`"]
+    #[inline]
+    pub fn is_refresh_1(&self) -> bool {
+        *self == REFRESHR::REFRESH_1
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_2`"]
+    #[inline]
+    pub fn is_refresh_2(&self) -> bool {
+        *self == REFRESHR::REFRESH_2
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_3`"]
+    #[inline]
+    pub fn is_refresh_3(&self) -> bool {
+        *self == REFRESHR::REFRESH_3
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_4`"]
+    #[inline]
+    pub fn is_refresh_4(&self) -> bool {
+        *self == REFRESHR::REFRESH_4
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_5`"]
+    #[inline]
+    pub fn is_refresh_5(&self) -> bool {
+        *self == REFRESHR::REFRESH_5
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_6`"]
+    #[inline]
+    pub fn is_refresh_6(&self) -> bool {
+        *self == REFRESHR::REFRESH_6
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_7`"]
+    #[inline]
+    pub fn is_refresh_7(&self) -> bool {
+        *self == REFRESHR::REFRESH_7
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_8`"]
+    #[inline]
+    pub fn is_refresh_8(&self) -> bool {
+        *self == REFRESHR::REFRESH_8
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_9`"]
+    #[inline]
+    pub fn is_refresh_9(&self) -> bool {
+        *self == REFRESHR::REFRESH_9
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_10`"]
+    #[inline]
+    pub fn is_refresh_10(&self) -> bool {
+        *self == REFRESHR::REFRESH_10
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_11`"]
+    #[inline]
+    pub fn is_refresh_11(&self) -> bool {
+        *self == REFRESHR::REFRESH_11
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_12`"]
+    #[inline]
+    pub fn is_refresh_12(&self) -> bool {
+        *self == REFRESHR::REFRESH_12
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_13`"]
+    #[inline]
+    pub fn is_refresh_13(&self) -> bool {
+        *self == REFRESHR::REFRESH_13
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_14`"]
+    #[inline]
+    pub fn is_refresh_14(&self) -> bool {
+        *self == REFRESHR::REFRESH_14
+    }
+    #[doc = "Checks if the value of the field is `REFRESH_15`"]
+    #[inline]
+    pub fn is_refresh_15(&self) -> bool {
+        *self == REFRESHR::REFRESH_15
     }
 }
-#[doc = r" Value of the field"]
-pub struct OSRR {
-    bits: u8,
+#[doc = "Possible values of the field `OSR`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum OSRR {
+    #[doc = "No Over Sampling"]
+    OSR_1,
+    #[doc = "2x Over Sampling Ratio"]
+    OSR_2,
+    #[doc = "4x Over Sampling Ratio"]
+    OSR_4,
+    #[doc = "8x Over Sampling Ratio"]
+    OSR_8,
+    #[doc = "16x Over Sampling Ratio"]
+    OSR_16,
+    #[doc = "32x Over Sampling Ratio"]
+    OSR_32,
+    #[doc = r" Reserved"]
+    _Reserved(u8),
 }
 impl OSRR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            OSRR::OSR_1 => 0,
+            OSRR::OSR_2 => 1,
+            OSRR::OSR_4 => 2,
+            OSRR::OSR_8 => 3,
+            OSRR::OSR_16 => 4,
+            OSRR::OSR_32 => 5,
+            OSRR::_Reserved(bits) => bits,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> OSRR {
+        match value {
+            0 => OSRR::OSR_1,
+            1 => OSRR::OSR_2,
+            2 => OSRR::OSR_4,
+            3 => OSRR::OSR_8,
+            4 => OSRR::OSR_16,
+            5 => OSRR::OSR_32,
+            i => OSRR::_Reserved(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `OSR_1`"]
+    #[inline]
+    pub fn is_osr_1(&self) -> bool {
+        *self == OSRR::OSR_1
+    }
+    #[doc = "Checks if the value of the field is `OSR_2`"]
+    #[inline]
+    pub fn is_osr_2(&self) -> bool {
+        *self == OSRR::OSR_2
+    }
+    #[doc = "Checks if the value of the field is `OSR_4`"]
+    #[inline]
+    pub fn is_osr_4(&self) -> bool {
+        *self == OSRR::OSR_4
+    }
+    #[doc = "Checks if the value of the field is `OSR_8`"]
+    #[inline]
+    pub fn is_osr_8(&self) -> bool {
+        *self == OSRR::OSR_8
+    }
+    #[doc = "Checks if the value of the field is `OSR_16`"]
+    #[inline]
+    pub fn is_osr_16(&self) -> bool {
+        *self == OSRR::OSR_16
+    }
+    #[doc = "Checks if the value of the field is `OSR_32`"]
+    #[inline]
+    pub fn is_osr_32(&self) -> bool {
+        *self == OSRR::OSR_32
     }
 }
 #[doc = r" Proxy"]
@@ -266,12 +485,13 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CCTRL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CCTRLW {
-    #[doc = "GCLK_DAC <= 1.2MHz (100kSPS)"]
+    #[doc = "100kSPS"]
     CC100K,
-    #[doc = "1.2MHz < GCLK_DAC  <= 6MHz (500kSPS)"]
+    #[doc = "500kSPS"]
     CC1M,
-    #[doc = "6MHz < GCLK_DAC <= 12MHz (1MSPS)"]
+    #[doc = "1MSPS"]
     CC12M,
 }
 impl CCTRLW {
@@ -296,17 +516,17 @@ impl<'a> _CCTRLW<'a> {
     pub fn variant(self, variant: CCTRLW) -> &'a mut W {
         unsafe { self.bits(variant._bits()) }
     }
-    #[doc = "GCLK_DAC <= 1.2MHz (100kSPS)"]
+    #[doc = "100kSPS"]
     #[inline]
     pub fn cc100k(self) -> &'a mut W {
         self.variant(CCTRLW::CC100K)
     }
-    #[doc = "1.2MHz < GCLK_DAC <= 6MHz (500kSPS)"]
+    #[doc = "500kSPS"]
     #[inline]
     pub fn cc1m(self) -> &'a mut W {
         self.variant(CCTRLW::CC1M)
     }
-    #[doc = "6MHz < GCLK_DAC <= 12MHz (1MSPS)"]
+    #[doc = "1MSPS"]
     #[inline]
     pub fn cc12m(self) -> &'a mut W {
         self.variant(CCTRLW::CC12M)
@@ -390,14 +610,162 @@ impl<'a> _DITHERW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `REFRESH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum REFRESHW {
+    #[doc = "Do not Refresh"]
+    REFRESH_0,
+    #[doc = "Refresh every 30 us"]
+    REFRESH_1,
+    #[doc = "Refresh every 60 us"]
+    REFRESH_2,
+    #[doc = "Refresh every 90 us"]
+    REFRESH_3,
+    #[doc = "Refresh every 120 us"]
+    REFRESH_4,
+    #[doc = "Refresh every 150 us"]
+    REFRESH_5,
+    #[doc = "Refresh every 180 us"]
+    REFRESH_6,
+    #[doc = "Refresh every 210 us"]
+    REFRESH_7,
+    #[doc = "Refresh every 240 us"]
+    REFRESH_8,
+    #[doc = "Refresh every 270 us"]
+    REFRESH_9,
+    #[doc = "Refresh every 300 us"]
+    REFRESH_10,
+    #[doc = "Refresh every 330 us"]
+    REFRESH_11,
+    #[doc = "Refresh every 360 us"]
+    REFRESH_12,
+    #[doc = "Refresh every 390 us"]
+    REFRESH_13,
+    #[doc = "Refresh every 420 us"]
+    REFRESH_14,
+    #[doc = "Refresh every 450 us"]
+    REFRESH_15,
+}
+impl REFRESHW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            REFRESHW::REFRESH_0 => 0,
+            REFRESHW::REFRESH_1 => 1,
+            REFRESHW::REFRESH_2 => 2,
+            REFRESHW::REFRESH_3 => 3,
+            REFRESHW::REFRESH_4 => 4,
+            REFRESHW::REFRESH_5 => 5,
+            REFRESHW::REFRESH_6 => 6,
+            REFRESHW::REFRESH_7 => 7,
+            REFRESHW::REFRESH_8 => 8,
+            REFRESHW::REFRESH_9 => 9,
+            REFRESHW::REFRESH_10 => 10,
+            REFRESHW::REFRESH_11 => 11,
+            REFRESHW::REFRESH_12 => 12,
+            REFRESHW::REFRESH_13 => 13,
+            REFRESHW::REFRESH_14 => 14,
+            REFRESHW::REFRESH_15 => 15,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _REFRESHW<'a> {
     w: &'a mut W,
 }
 impl<'a> _REFRESHW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: REFRESHW) -> &'a mut W {
+        {
+            self.bits(variant._bits())
+        }
+    }
+    #[doc = "Do not Refresh"]
+    #[inline]
+    pub fn refresh_0(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_0)
+    }
+    #[doc = "Refresh every 30 us"]
+    #[inline]
+    pub fn refresh_1(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_1)
+    }
+    #[doc = "Refresh every 60 us"]
+    #[inline]
+    pub fn refresh_2(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_2)
+    }
+    #[doc = "Refresh every 90 us"]
+    #[inline]
+    pub fn refresh_3(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_3)
+    }
+    #[doc = "Refresh every 120 us"]
+    #[inline]
+    pub fn refresh_4(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_4)
+    }
+    #[doc = "Refresh every 150 us"]
+    #[inline]
+    pub fn refresh_5(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_5)
+    }
+    #[doc = "Refresh every 180 us"]
+    #[inline]
+    pub fn refresh_6(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_6)
+    }
+    #[doc = "Refresh every 210 us"]
+    #[inline]
+    pub fn refresh_7(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_7)
+    }
+    #[doc = "Refresh every 240 us"]
+    #[inline]
+    pub fn refresh_8(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_8)
+    }
+    #[doc = "Refresh every 270 us"]
+    #[inline]
+    pub fn refresh_9(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_9)
+    }
+    #[doc = "Refresh every 300 us"]
+    #[inline]
+    pub fn refresh_10(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_10)
+    }
+    #[doc = "Refresh every 330 us"]
+    #[inline]
+    pub fn refresh_11(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_11)
+    }
+    #[doc = "Refresh every 360 us"]
+    #[inline]
+    pub fn refresh_12(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_12)
+    }
+    #[doc = "Refresh every 390 us"]
+    #[inline]
+    pub fn refresh_13(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_13)
+    }
+    #[doc = "Refresh every 420 us"]
+    #[inline]
+    pub fn refresh_14(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_14)
+    }
+    #[doc = "Refresh every 450 us"]
+    #[inline]
+    pub fn refresh_15(self) -> &'a mut W {
+        self.variant(REFRESHW::REFRESH_15)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 15;
         const OFFSET: u8 = 8;
         self.w.bits &= !((MASK as u16) << OFFSET);
@@ -405,11 +773,77 @@ impl<'a> _REFRESHW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `OSR`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum OSRW {
+    #[doc = "No Over Sampling"]
+    OSR_1,
+    #[doc = "2x Over Sampling Ratio"]
+    OSR_2,
+    #[doc = "4x Over Sampling Ratio"]
+    OSR_4,
+    #[doc = "8x Over Sampling Ratio"]
+    OSR_8,
+    #[doc = "16x Over Sampling Ratio"]
+    OSR_16,
+    #[doc = "32x Over Sampling Ratio"]
+    OSR_32,
+}
+impl OSRW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            OSRW::OSR_1 => 0,
+            OSRW::OSR_2 => 1,
+            OSRW::OSR_4 => 2,
+            OSRW::OSR_8 => 3,
+            OSRW::OSR_16 => 4,
+            OSRW::OSR_32 => 5,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _OSRW<'a> {
     w: &'a mut W,
 }
 impl<'a> _OSRW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: OSRW) -> &'a mut W {
+        unsafe { self.bits(variant._bits()) }
+    }
+    #[doc = "No Over Sampling"]
+    #[inline]
+    pub fn osr_1(self) -> &'a mut W {
+        self.variant(OSRW::OSR_1)
+    }
+    #[doc = "2x Over Sampling Ratio"]
+    #[inline]
+    pub fn osr_2(self) -> &'a mut W {
+        self.variant(OSRW::OSR_2)
+    }
+    #[doc = "4x Over Sampling Ratio"]
+    #[inline]
+    pub fn osr_4(self) -> &'a mut W {
+        self.variant(OSRW::OSR_4)
+    }
+    #[doc = "8x Over Sampling Ratio"]
+    #[inline]
+    pub fn osr_8(self) -> &'a mut W {
+        self.variant(OSRW::OSR_8)
+    }
+    #[doc = "16x Over Sampling Ratio"]
+    #[inline]
+    pub fn osr_16(self) -> &'a mut W {
+        self.variant(OSRW::OSR_16)
+    }
+    #[doc = "32x Over Sampling Ratio"]
+    #[inline]
+    pub fn osr_32(self) -> &'a mut W {
+        self.variant(OSRW::OSR_32)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
@@ -488,22 +922,20 @@ impl R {
     #[doc = "Bits 8:11 - Refresh period"]
     #[inline]
     pub fn refresh(&self) -> REFRESHR {
-        let bits = {
+        REFRESHR::_from({
             const MASK: u8 = 15;
             const OFFSET: u8 = 8;
             ((self.bits >> OFFSET) & MASK as u16) as u8
-        };
-        REFRESHR { bits }
+        })
     }
     #[doc = "Bits 13:15 - Sampling Rate"]
     #[inline]
     pub fn osr(&self) -> OSRR {
-        let bits = {
+        OSRR::_from({
             const MASK: u8 = 7;
             const OFFSET: u8 = 13;
             ((self.bits >> OFFSET) & MASK as u16) as u8
-        };
-        OSRR { bits }
+        })
     }
 }
 impl W {

@@ -82,45 +82,25 @@ pub struct PADCAL {
 }
 #[doc = "USB PAD Calibration"]
 pub mod padcal;
-#[doc = "DEVICE End Point Configuration"]
-pub struct EPCFG {
-    register: ::vcell::VolatileCell<u8>,
+#[doc = r" Register block"]
+#[repr(C)]
+pub struct DEVICE_ENDPOINT {
+    #[doc = "0x00 - DEVICE_ENDPOINT End Point Configuration"]
+    pub epcfg: self::device_endpoint::EPCFG,
+    _reserved0: [u8; 3usize],
+    #[doc = "0x04 - DEVICE_ENDPOINT End Point Pipe Status Clear"]
+    pub epstatusclr: self::device_endpoint::EPSTATUSCLR,
+    #[doc = "0x05 - DEVICE_ENDPOINT End Point Pipe Status Set"]
+    pub epstatusset: self::device_endpoint::EPSTATUSSET,
+    #[doc = "0x06 - DEVICE_ENDPOINT End Point Pipe Status"]
+    pub epstatus: self::device_endpoint::EPSTATUS,
+    #[doc = "0x07 - DEVICE_ENDPOINT End Point Interrupt Flag"]
+    pub epintflag: self::device_endpoint::EPINTFLAG,
+    #[doc = "0x08 - DEVICE_ENDPOINT End Point Interrupt Clear Flag"]
+    pub epintenclr: self::device_endpoint::EPINTENCLR,
+    #[doc = "0x09 - DEVICE_ENDPOINT End Point Interrupt Set Flag"]
+    pub epintenset: self::device_endpoint::EPINTENSET,
 }
-#[doc = "DEVICE End Point Configuration"]
-pub mod epcfg;
-#[doc = "DEVICE End Point Pipe Status Clear"]
-pub struct EPSTATUSCLR {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "DEVICE End Point Pipe Status Clear"]
-pub mod epstatusclr;
-#[doc = "DEVICE End Point Pipe Status Set"]
-pub struct EPSTATUSSET {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "DEVICE End Point Pipe Status Set"]
-pub mod epstatusset;
-#[doc = "DEVICE End Point Pipe Status"]
-pub struct EPSTATUS {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "DEVICE End Point Pipe Status"]
-pub mod epstatus;
-#[doc = "DEVICE End Point Interrupt Flag"]
-pub struct EPINTFLAG {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "DEVICE End Point Interrupt Flag"]
-pub mod epintflag;
-#[doc = "DEVICE End Point Interrupt Clear Flag"]
-pub struct EPINTENCLR {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "DEVICE End Point Interrupt Clear Flag"]
-pub mod epintenclr;
-#[doc = "DEVICE End Point Interrupt Set Flag"]
-pub struct EPINTENSET {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "DEVICE End Point Interrupt Set Flag"]
-pub mod epintenset;
+#[doc = r" Register block"]
+#[doc = "test"]
+pub mod device_endpoint;

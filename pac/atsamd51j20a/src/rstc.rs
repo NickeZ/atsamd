@@ -3,7 +3,7 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Reset Cause"]
     pub rcause: RCAUSE,
-    _reserved1: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x02 - Backup Exit Source"]
     pub bkupexit: BKUPEXIT,
 }

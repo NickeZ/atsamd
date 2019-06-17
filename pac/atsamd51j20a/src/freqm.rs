@@ -7,7 +7,7 @@ pub struct RegisterBlock {
     pub ctrlb: CTRLB,
     #[doc = "0x02 - Config A register"]
     pub cfga: CFGA,
-    _reserved3: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x08 - Interrupt Enable Clear Register"]
     pub intenclr: INTENCLR,
     #[doc = "0x09 - Interrupt Enable Set Register"]

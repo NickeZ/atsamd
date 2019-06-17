@@ -14,8 +14,8 @@ impl super::WCR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -184,6 +184,7 @@ impl WKENCREMR {
     }
 }
 #[doc = "Values that can be written to the field `WKENCINT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WKENCINTW {
     #[doc = "Disable"]
     DISABLE,
@@ -242,6 +243,7 @@ impl<'a> _WKENCINTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WKENCINS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WKENCINSW {
     #[doc = "Disable"]
     DISABLE,
@@ -300,6 +302,7 @@ impl<'a> _WKENCINSW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WKENCREM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WKENCREMW {
     #[doc = "Disable"]
     DISABLE,

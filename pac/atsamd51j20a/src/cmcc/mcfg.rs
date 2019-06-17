@@ -14,8 +14,8 @@ impl super::MCFG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -45,11 +45,11 @@ impl super::MCFG {
 #[doc = "Possible values of the field `MODE`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODER {
-    #[doc = "cycle counter"]
+    #[doc = "Cycle counter"]
     CYCLE_COUNT,
-    #[doc = "instruction hit counter"]
+    #[doc = "Instruction hit counter"]
     IHIT_COUNT,
-    #[doc = "data hit counter"]
+    #[doc = "Data hit counter"]
     DHIT_COUNT,
     #[doc = r" Reserved"]
     _Reserved(u8),
@@ -93,12 +93,13 @@ impl MODER {
     }
 }
 #[doc = "Values that can be written to the field `MODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODEW {
-    #[doc = "cycle counter"]
+    #[doc = "Cycle counter"]
     CYCLE_COUNT,
-    #[doc = "instruction hit counter"]
+    #[doc = "Instruction hit counter"]
     IHIT_COUNT,
-    #[doc = "data hit counter"]
+    #[doc = "Data hit counter"]
     DHIT_COUNT,
 }
 impl MODEW {
@@ -123,17 +124,17 @@ impl<'a> _MODEW<'a> {
     pub fn variant(self, variant: MODEW) -> &'a mut W {
         unsafe { self.bits(variant._bits()) }
     }
-    #[doc = "cycle counter"]
+    #[doc = "Cycle counter"]
     #[inline]
     pub fn cycle_count(self) -> &'a mut W {
         self.variant(MODEW::CYCLE_COUNT)
     }
-    #[doc = "instruction hit counter"]
+    #[doc = "Instruction hit counter"]
     #[inline]
     pub fn ihit_count(self) -> &'a mut W {
         self.variant(MODEW::IHIT_COUNT)
     }
-    #[doc = "data hit counter"]
+    #[doc = "Data hit counter"]
     #[inline]
     pub fn dhit_count(self) -> &'a mut W {
         self.variant(MODEW::DHIT_COUNT)

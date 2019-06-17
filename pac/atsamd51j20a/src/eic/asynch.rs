@@ -14,8 +14,8 @@ impl super::ASYNCH {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -42,15 +42,64 @@ impl super::ASYNCH {
         self.write(|w| w)
     }
 }
-#[doc = r" Value of the field"]
-pub struct ASYNCHR {
-    bits: u16,
+#[doc = "Possible values of the field `ASYNCH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ASYNCHR {
+    #[doc = "Edge detection is clock synchronously operated"]
+    SYNC,
+    #[doc = "Edge detection is clock asynchronously operated"]
+    ASYNC,
+    #[doc = r" Reserved"]
+    _Reserved(u16),
 }
 impl ASYNCHR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u16 {
-        self.bits
+        match *self {
+            ASYNCHR::SYNC => 0,
+            ASYNCHR::ASYNC => 1,
+            ASYNCHR::_Reserved(bits) => bits,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u16) -> ASYNCHR {
+        match value {
+            0 => ASYNCHR::SYNC,
+            1 => ASYNCHR::ASYNC,
+            i => ASYNCHR::_Reserved(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `SYNC`"]
+    #[inline]
+    pub fn is_sync(&self) -> bool {
+        *self == ASYNCHR::SYNC
+    }
+    #[doc = "Checks if the value of the field is `ASYNC`"]
+    #[inline]
+    pub fn is_async(&self) -> bool {
+        *self == ASYNCHR::ASYNC
+    }
+}
+#[doc = "Values that can be written to the field `ASYNCH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ASYNCHW {
+    #[doc = "Edge detection is clock synchronously operated"]
+    SYNC,
+    #[doc = "Edge detection is clock asynchronously operated"]
+    ASYNC,
+}
+impl ASYNCHW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u16 {
+        match *self {
+            ASYNCHW::SYNC => 0,
+            ASYNCHW::ASYNC => 1,
+        }
     }
 }
 #[doc = r" Proxy"]
@@ -58,6 +107,21 @@ pub struct _ASYNCHW<'a> {
     w: &'a mut W,
 }
 impl<'a> _ASYNCHW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: ASYNCHW) -> &'a mut W {
+        unsafe { self.bits(variant._bits()) }
+    }
+    #[doc = "Edge detection is clock synchronously operated"]
+    #[inline]
+    pub fn sync(self) -> &'a mut W {
+        self.variant(ASYNCHW::SYNC)
+    }
+    #[doc = "Edge detection is clock asynchronously operated"]
+    #[inline]
+    pub fn async(self) -> &'a mut W {
+        self.variant(ASYNCHW::ASYNC)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
     pub unsafe fn bits(self, value: u16) -> &'a mut W {
@@ -77,12 +141,11 @@ impl R {
     #[doc = "Bits 0:15 - Asynchronous Edge Detection Mode"]
     #[inline]
     pub fn asynch(&self) -> ASYNCHR {
-        let bits = {
+        ASYNCHR::_from({
             const MASK: u16 = 65535;
             const OFFSET: u8 = 0;
             ((self.bits >> OFFSET) & MASK as u32) as u16
-        };
-        ASYNCHR { bits }
+        })
     }
 }
 impl W {

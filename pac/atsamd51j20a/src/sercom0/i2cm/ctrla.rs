@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -87,17 +87,17 @@ impl ENABLER {
 #[doc = "Possible values of the field `MODE`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODER {
-    #[doc = "USART mode with external clock"]
+    #[doc = "USART with external clock"]
     USART_EXT_CLK,
-    #[doc = "USART mode with internal clock"]
+    #[doc = "USART with internal clock"]
     USART_INT_CLK,
-    #[doc = "SPI mode with external clock"]
+    #[doc = "SPI in slave operation"]
     SPI_SLAVE,
-    #[doc = "SPI mode with internal clock"]
+    #[doc = "SPI in master operation"]
     SPI_MASTER,
-    #[doc = "I2C mode with external clock"]
+    #[doc = "I2C slave operation"]
     I2C_SLAVE,
-    #[doc = "I2C mode with internal clock"]
+    #[doc = "I2C master operation"]
     I2C_MASTER,
     #[doc = r" Reserved"]
     _Reserved(u8),
@@ -203,15 +203,60 @@ impl PINOUTR {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct SDAHOLDR {
-    bits: u8,
+#[doc = "Possible values of the field `SDAHOLD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SDAHOLDR {
+    #[doc = "Disabled"]
+    DISABLE,
+    #[doc = "50-100ns hold time"]
+    _75NS,
+    #[doc = "300-600ns hold time"]
+    _450NS,
+    #[doc = "400-800ns hold time"]
+    _600NS,
 }
 impl SDAHOLDR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            SDAHOLDR::DISABLE => 0,
+            SDAHOLDR::_75NS => 1,
+            SDAHOLDR::_450NS => 2,
+            SDAHOLDR::_600NS => 3,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> SDAHOLDR {
+        match value {
+            0 => SDAHOLDR::DISABLE,
+            1 => SDAHOLDR::_75NS,
+            2 => SDAHOLDR::_450NS,
+            3 => SDAHOLDR::_600NS,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[inline]
+    pub fn is_disable(&self) -> bool {
+        *self == SDAHOLDR::DISABLE
+    }
+    #[doc = "Checks if the value of the field is `_75NS`"]
+    #[inline]
+    pub fn is_75ns(&self) -> bool {
+        *self == SDAHOLDR::_75NS
+    }
+    #[doc = "Checks if the value of the field is `_450NS`"]
+    #[inline]
+    pub fn is_450ns(&self) -> bool {
+        *self == SDAHOLDR::_450NS
+    }
+    #[doc = "Checks if the value of the field is `_600NS`"]
+    #[inline]
+    pub fn is_600ns(&self) -> bool {
+        *self == SDAHOLDR::_600NS
     }
 }
 #[doc = r" Value of the field"]
@@ -256,15 +301,54 @@ impl SEXTTOENR {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct SPEEDR {
-    bits: u8,
+#[doc = "Possible values of the field `SPEED`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SPEEDR {
+    #[doc = "Standard Mode(Sm) Upto 100kHz and Fast Mode(Fm) Upto 400kHz "]
+    STANDARD_AND_FAST_MODE,
+    #[doc = "Fast-mode Plus Upto 1MHz"]
+    FASTPLUS_MODE,
+    #[doc = "High-speed mode Upto 3.4MHz"]
+    HIGH_SPEED_MODE,
+    #[doc = r" Reserved"]
+    _Reserved(u8),
 }
 impl SPEEDR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            SPEEDR::STANDARD_AND_FAST_MODE => 0,
+            SPEEDR::FASTPLUS_MODE => 1,
+            SPEEDR::HIGH_SPEED_MODE => 2,
+            SPEEDR::_Reserved(bits) => bits,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> SPEEDR {
+        match value {
+            0 => SPEEDR::STANDARD_AND_FAST_MODE,
+            1 => SPEEDR::FASTPLUS_MODE,
+            2 => SPEEDR::HIGH_SPEED_MODE,
+            i => SPEEDR::_Reserved(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `STANDARD_AND_FAST_MODE`"]
+    #[inline]
+    pub fn is_standard_and_fast_mode(&self) -> bool {
+        *self == SPEEDR::STANDARD_AND_FAST_MODE
+    }
+    #[doc = "Checks if the value of the field is `FASTPLUS_MODE`"]
+    #[inline]
+    pub fn is_fastplus_mode(&self) -> bool {
+        *self == SPEEDR::FASTPLUS_MODE
+    }
+    #[doc = "Checks if the value of the field is `HIGH_SPEED_MODE`"]
+    #[inline]
+    pub fn is_high_speed_mode(&self) -> bool {
+        *self == SPEEDR::HIGH_SPEED_MODE
     }
 }
 #[doc = r" Value of the field"]
@@ -288,15 +372,60 @@ impl SCLSMR {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct INACTOUTR {
-    bits: u8,
+#[doc = "Possible values of the field `INACTOUT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum INACTOUTR {
+    #[doc = "Disabled"]
+    DISABLE,
+    #[doc = "5-6 SCL Time-Out(50-60us)"]
+    _55US,
+    #[doc = "10-11 SCL Time-Out(100-110us)"]
+    _105US,
+    #[doc = "20-21 SCL Time-Out(200-210us)"]
+    _205US,
 }
 impl INACTOUTR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            INACTOUTR::DISABLE => 0,
+            INACTOUTR::_55US => 1,
+            INACTOUTR::_105US => 2,
+            INACTOUTR::_205US => 3,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> INACTOUTR {
+        match value {
+            0 => INACTOUTR::DISABLE,
+            1 => INACTOUTR::_55US,
+            2 => INACTOUTR::_105US,
+            3 => INACTOUTR::_205US,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLE`"]
+    #[inline]
+    pub fn is_disable(&self) -> bool {
+        *self == INACTOUTR::DISABLE
+    }
+    #[doc = "Checks if the value of the field is `_55US`"]
+    #[inline]
+    pub fn is_55us(&self) -> bool {
+        *self == INACTOUTR::_55US
+    }
+    #[doc = "Checks if the value of the field is `_105US`"]
+    #[inline]
+    pub fn is_105us(&self) -> bool {
+        *self == INACTOUTR::_105US
+    }
+    #[doc = "Checks if the value of the field is `_205US`"]
+    #[inline]
+    pub fn is_205us(&self) -> bool {
+        *self == INACTOUTR::_205US
     }
 }
 #[doc = r" Value of the field"]
@@ -367,18 +496,19 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODEW {
-    #[doc = "USART mode with external clock"]
+    #[doc = "USART with external clock"]
     USART_EXT_CLK,
-    #[doc = "USART mode with internal clock"]
+    #[doc = "USART with internal clock"]
     USART_INT_CLK,
-    #[doc = "SPI mode with external clock"]
+    #[doc = "SPI in slave operation"]
     SPI_SLAVE,
-    #[doc = "SPI mode with internal clock"]
+    #[doc = "SPI in master operation"]
     SPI_MASTER,
-    #[doc = "I2C mode with external clock"]
+    #[doc = "I2C slave operation"]
     I2C_SLAVE,
-    #[doc = "I2C mode with internal clock"]
+    #[doc = "I2C master operation"]
     I2C_MASTER,
 }
 impl MODEW {
@@ -406,32 +536,32 @@ impl<'a> _MODEW<'a> {
     pub fn variant(self, variant: MODEW) -> &'a mut W {
         unsafe { self.bits(variant._bits()) }
     }
-    #[doc = "USART mode with external clock"]
+    #[doc = "USART with external clock"]
     #[inline]
     pub fn usart_ext_clk(self) -> &'a mut W {
         self.variant(MODEW::USART_EXT_CLK)
     }
-    #[doc = "USART mode with internal clock"]
+    #[doc = "USART with internal clock"]
     #[inline]
     pub fn usart_int_clk(self) -> &'a mut W {
         self.variant(MODEW::USART_INT_CLK)
     }
-    #[doc = "SPI mode with external clock"]
+    #[doc = "SPI in slave operation"]
     #[inline]
     pub fn spi_slave(self) -> &'a mut W {
         self.variant(MODEW::SPI_SLAVE)
     }
-    #[doc = "SPI mode with internal clock"]
+    #[doc = "SPI in master operation"]
     #[inline]
     pub fn spi_master(self) -> &'a mut W {
         self.variant(MODEW::SPI_MASTER)
     }
-    #[doc = "I2C mode with external clock"]
+    #[doc = "I2C slave operation"]
     #[inline]
     pub fn i2c_slave(self) -> &'a mut W {
         self.variant(MODEW::I2C_SLAVE)
     }
-    #[doc = "I2C mode with internal clock"]
+    #[doc = "I2C master operation"]
     #[inline]
     pub fn i2c_master(self) -> &'a mut W {
         self.variant(MODEW::I2C_MASTER)
@@ -492,14 +622,66 @@ impl<'a> _PINOUTW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `SDAHOLD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SDAHOLDW {
+    #[doc = "Disabled"]
+    DISABLE,
+    #[doc = "50-100ns hold time"]
+    _75NS,
+    #[doc = "300-600ns hold time"]
+    _450NS,
+    #[doc = "400-800ns hold time"]
+    _600NS,
+}
+impl SDAHOLDW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            SDAHOLDW::DISABLE => 0,
+            SDAHOLDW::_75NS => 1,
+            SDAHOLDW::_450NS => 2,
+            SDAHOLDW::_600NS => 3,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _SDAHOLDW<'a> {
     w: &'a mut W,
 }
 impl<'a> _SDAHOLDW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: SDAHOLDW) -> &'a mut W {
+        {
+            self.bits(variant._bits())
+        }
+    }
+    #[doc = "Disabled"]
+    #[inline]
+    pub fn disable(self) -> &'a mut W {
+        self.variant(SDAHOLDW::DISABLE)
+    }
+    #[doc = "50-100ns hold time"]
+    #[inline]
+    pub fn _75ns(self) -> &'a mut W {
+        self.variant(SDAHOLDW::_75NS)
+    }
+    #[doc = "300-600ns hold time"]
+    #[inline]
+    pub fn _450ns(self) -> &'a mut W {
+        self.variant(SDAHOLDW::_450NS)
+    }
+    #[doc = "400-800ns hold time"]
+    #[inline]
+    pub fn _600ns(self) -> &'a mut W {
+        self.variant(SDAHOLDW::_600NS)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 3;
         const OFFSET: u8 = 20;
         self.w.bits &= !((MASK as u32) << OFFSET);
@@ -553,11 +735,53 @@ impl<'a> _SEXTTOENW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `SPEED`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SPEEDW {
+    #[doc = "Standard Mode(Sm) Upto 100kHz and Fast Mode(Fm) Upto 400kHz "]
+    STANDARD_AND_FAST_MODE,
+    #[doc = "Fast-mode Plus Upto 1MHz"]
+    FASTPLUS_MODE,
+    #[doc = "High-speed mode Upto 3.4MHz"]
+    HIGH_SPEED_MODE,
+}
+impl SPEEDW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            SPEEDW::STANDARD_AND_FAST_MODE => 0,
+            SPEEDW::FASTPLUS_MODE => 1,
+            SPEEDW::HIGH_SPEED_MODE => 2,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _SPEEDW<'a> {
     w: &'a mut W,
 }
 impl<'a> _SPEEDW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: SPEEDW) -> &'a mut W {
+        unsafe { self.bits(variant._bits()) }
+    }
+    #[doc = "Standard Mode(Sm) Upto 100kHz and Fast Mode(Fm) Upto 400kHz"]
+    #[inline]
+    pub fn standard_and_fast_mode(self) -> &'a mut W {
+        self.variant(SPEEDW::STANDARD_AND_FAST_MODE)
+    }
+    #[doc = "Fast-mode Plus Upto 1MHz"]
+    #[inline]
+    pub fn fastplus_mode(self) -> &'a mut W {
+        self.variant(SPEEDW::FASTPLUS_MODE)
+    }
+    #[doc = "High-speed mode Upto 3.4MHz"]
+    #[inline]
+    pub fn high_speed_mode(self) -> &'a mut W {
+        self.variant(SPEEDW::HIGH_SPEED_MODE)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
@@ -591,14 +815,66 @@ impl<'a> _SCLSMW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `INACTOUT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum INACTOUTW {
+    #[doc = "Disabled"]
+    DISABLE,
+    #[doc = "5-6 SCL Time-Out(50-60us)"]
+    _55US,
+    #[doc = "10-11 SCL Time-Out(100-110us)"]
+    _105US,
+    #[doc = "20-21 SCL Time-Out(200-210us)"]
+    _205US,
+}
+impl INACTOUTW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            INACTOUTW::DISABLE => 0,
+            INACTOUTW::_55US => 1,
+            INACTOUTW::_105US => 2,
+            INACTOUTW::_205US => 3,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _INACTOUTW<'a> {
     w: &'a mut W,
 }
 impl<'a> _INACTOUTW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: INACTOUTW) -> &'a mut W {
+        {
+            self.bits(variant._bits())
+        }
+    }
+    #[doc = "Disabled"]
+    #[inline]
+    pub fn disable(self) -> &'a mut W {
+        self.variant(INACTOUTW::DISABLE)
+    }
+    #[doc = "5-6 SCL Time-Out(50-60us)"]
+    #[inline]
+    pub fn _55us(self) -> &'a mut W {
+        self.variant(INACTOUTW::_55US)
+    }
+    #[doc = "10-11 SCL Time-Out(100-110us)"]
+    #[inline]
+    pub fn _105us(self) -> &'a mut W {
+        self.variant(INACTOUTW::_105US)
+    }
+    #[doc = "20-21 SCL Time-Out(200-210us)"]
+    #[inline]
+    pub fn _205us(self) -> &'a mut W {
+        self.variant(INACTOUTW::_205US)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 3;
         const OFFSET: u8 = 28;
         self.w.bits &= !((MASK as u32) << OFFSET);
@@ -687,12 +963,11 @@ impl R {
     #[doc = "Bits 20:21 - SDA Hold Time"]
     #[inline]
     pub fn sdahold(&self) -> SDAHOLDR {
-        let bits = {
+        SDAHOLDR::_from({
             const MASK: u8 = 3;
             const OFFSET: u8 = 20;
             ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        SDAHOLDR { bits }
+        })
     }
     #[doc = "Bit 22 - Master SCL Low Extend Timeout"]
     #[inline]
@@ -717,12 +992,11 @@ impl R {
     #[doc = "Bits 24:25 - Transfer Speed"]
     #[inline]
     pub fn speed(&self) -> SPEEDR {
-        let bits = {
+        SPEEDR::_from({
             const MASK: u8 = 3;
             const OFFSET: u8 = 24;
             ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        SPEEDR { bits }
+        })
     }
     #[doc = "Bit 27 - SCL Clock Stretch Mode"]
     #[inline]
@@ -737,12 +1011,11 @@ impl R {
     #[doc = "Bits 28:29 - Inactive Time-Out"]
     #[inline]
     pub fn inactout(&self) -> INACTOUTR {
-        let bits = {
+        INACTOUTR::_from({
             const MASK: u8 = 3;
             const OFFSET: u8 = 28;
             ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        INACTOUTR { bits }
+        })
     }
     #[doc = "Bit 30 - SCL Low Timeout Enable"]
     #[inline]

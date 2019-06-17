@@ -7,14 +7,14 @@ pub struct RegisterBlock {
     pub config: CONFIG,
     #[doc = "0x02 - Early Warning Interrupt Control"]
     pub ewctrl: EWCTRL,
-    _reserved3: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x04 - Interrupt Enable Clear"]
     pub intenclr: INTENCLR,
     #[doc = "0x05 - Interrupt Enable Set"]
     pub intenset: INTENSET,
     #[doc = "0x06 - Interrupt Flag Status and Clear"]
     pub intflag: INTFLAG,
-    _reserved6: [u8; 1usize],
+    _reserved1: [u8; 1usize],
     #[doc = "0x08 - Synchronization Busy"]
     pub syncbusy: SYNCBUSY,
     #[doc = "0x0c - Clear"]

@@ -15,6 +15,7 @@ impl super::CTRLB {
     }
 }
 #[doc = "Values that can be written to the field `CMD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDW {
     #[doc = "Erase Page - Only supported in the USER and AUX pages."]
     EP,
@@ -239,6 +240,7 @@ impl<'a> _CMDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDEX`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDEXW {
     #[doc = "Execution Key"]
     KEY,

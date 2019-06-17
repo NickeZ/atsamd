@@ -14,8 +14,8 @@ impl super::NISIER {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -466,6 +466,7 @@ impl CINTR {
     }
 }
 #[doc = "Values that can be written to the field `CMDC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDCW {
     #[doc = "Masked"]
     MASKED,
@@ -524,6 +525,7 @@ impl<'a> _CMDCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `TRFC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRFCW {
     #[doc = "Masked"]
     MASKED,
@@ -582,6 +584,7 @@ impl<'a> _TRFCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BLKGE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BLKGEW {
     #[doc = "Masked"]
     MASKED,
@@ -640,6 +643,7 @@ impl<'a> _BLKGEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DMAINT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DMAINTW {
     #[doc = "Masked"]
     MASKED,
@@ -698,6 +702,7 @@ impl<'a> _DMAINTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BWRRDY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BWRRDYW {
     #[doc = "Masked"]
     MASKED,
@@ -756,6 +761,7 @@ impl<'a> _BWRRDYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BRDRDY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BRDRDYW {
     #[doc = "Masked"]
     MASKED,
@@ -814,6 +820,7 @@ impl<'a> _BRDRDYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CINS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CINSW {
     #[doc = "Masked"]
     MASKED,
@@ -872,6 +879,7 @@ impl<'a> _CINSW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CREM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CREMW {
     #[doc = "Masked"]
     MASKED,
@@ -930,6 +938,7 @@ impl<'a> _CREMW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CINT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CINTW {
     #[doc = "Masked"]
     MASKED,

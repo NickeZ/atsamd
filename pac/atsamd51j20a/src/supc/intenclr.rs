@@ -14,8 +14,8 @@ impl super::INTENCLR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -89,69 +89,6 @@ pub struct B33SRDYR {
     bits: bool,
 }
 impl B33SRDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BOD12RDYR {
-    bits: bool,
-}
-impl BOD12RDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BOD12DETR {
-    bits: bool,
-}
-impl BOD12DETR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct B12SRDYR {
-    bits: bool,
-}
-impl B12SRDYR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bit(&self) -> bool {
@@ -280,75 +217,6 @@ impl<'a> _B33SRDYW<'a> {
     }
 }
 #[doc = r" Proxy"]
-pub struct _BOD12RDYW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _BOD12RDYW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _BOD12DETW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _BOD12DETW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _B12SRDYW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _B12SRDYW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 5;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
 pub struct _VREGRDYW<'a> {
     w: &'a mut W,
 }
@@ -430,36 +298,6 @@ impl R {
         };
         B33SRDYR { bits }
     }
-    #[doc = "Bit 3 - BOD12 Ready"]
-    #[inline]
-    pub fn bod12rdy(&self) -> BOD12RDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        BOD12RDYR { bits }
-    }
-    #[doc = "Bit 4 - BOD12 Detection"]
-    #[inline]
-    pub fn bod12det(&self) -> BOD12DETR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        BOD12DETR { bits }
-    }
-    #[doc = "Bit 5 - BOD12 Synchronization Ready"]
-    #[inline]
-    pub fn b12srdy(&self) -> B12SRDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        B12SRDYR { bits }
-    }
     #[doc = "Bit 8 - Voltage Regulator Ready"]
     #[inline]
     pub fn vregrdy(&self) -> VREGRDYR {
@@ -507,21 +345,6 @@ impl W {
     #[inline]
     pub fn b33srdy(&mut self) -> _B33SRDYW {
         _B33SRDYW { w: self }
-    }
-    #[doc = "Bit 3 - BOD12 Ready"]
-    #[inline]
-    pub fn bod12rdy(&mut self) -> _BOD12RDYW {
-        _BOD12RDYW { w: self }
-    }
-    #[doc = "Bit 4 - BOD12 Detection"]
-    #[inline]
-    pub fn bod12det(&mut self) -> _BOD12DETW {
-        _BOD12DETW { w: self }
-    }
-    #[doc = "Bit 5 - BOD12 Synchronization Ready"]
-    #[inline]
-    pub fn b12srdy(&mut self) -> _B12SRDYW {
-        _B12SRDYW { w: self }
     }
     #[doc = "Bit 8 - Voltage Regulator Ready"]
     #[inline]

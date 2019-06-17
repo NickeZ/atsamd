@@ -7,7 +7,7 @@ pub struct RegisterBlock {
     pub ctrlb: CTRLB,
     #[doc = "0x02 - Event Control"]
     pub evctrl: EVCTRL,
-    _reserved3: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x04 - Interrupt Enable Clear"]
     pub intenclr: INTENCLR,
     #[doc = "0x05 - Interrupt Enable Set"]
@@ -26,7 +26,7 @@ pub struct RegisterBlock {
     pub databuf: [DATABUF; 2],
     #[doc = "0x18 - Debug Control"]
     pub dbgctrl: DBGCTRL,
-    _reserved12: [u8; 3usize],
+    _reserved1: [u8; 3usize],
     #[doc = "0x1c - Filter Result"]
     pub result: [RESULT; 2],
 }

@@ -19,14 +19,14 @@ pub struct RegisterBlock {
     pub intflag: INTFLAG,
     #[doc = "0x20 - Status Register"]
     pub status: STATUS,
-    _reserved9: [u8; 12usize],
+    _reserved0: [u8; 12usize],
     #[doc = "0x30 - Instruction Address"]
     pub instraddr: INSTRADDR,
     #[doc = "0x34 - Instruction Code"]
     pub instrctrl: INSTRCTRL,
     #[doc = "0x38 - Instruction Frame"]
     pub instrframe: INSTRFRAME,
-    _reserved12: [u8; 4usize],
+    _reserved1: [u8; 4usize],
     #[doc = "0x40 - Scrambling Mode"]
     pub scrambctrl: SCRAMBCTRL,
     #[doc = "0x44 - Scrambling Key"]

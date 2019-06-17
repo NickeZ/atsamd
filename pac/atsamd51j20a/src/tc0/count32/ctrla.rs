@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -40,6 +40,27 @@ impl super::CTRLA {
     #[inline]
     pub fn reset(&self) {
         self.write(|w| w)
+    }
+}
+#[doc = r" Value of the field"]
+pub struct SWRSTR {
+    bits: bool,
+}
+impl SWRSTR {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
     }
 }
 #[doc = r" Value of the field"]
@@ -549,6 +570,7 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODEW {
     #[doc = "Counter in 16-bit mode"]
     COUNT16,
@@ -605,6 +627,7 @@ impl<'a> _MODEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PRESCSYNC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PRESCSYNCW {
     #[doc = "Reload or reset the counter on next generic clock"]
     GCLK,
@@ -707,6 +730,7 @@ impl<'a> _ONDEMANDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PRESCALER`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PRESCALERW {
     #[doc = "Prescaler: GCLK_TC"]
     DIV1,
@@ -920,6 +944,7 @@ impl<'a> _COPEN1W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CAPTMODE0`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CAPTMODE0W {
     #[doc = "Default capture"]
     DEFAULT,
@@ -976,6 +1001,7 @@ impl<'a> _CAPTMODE0W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CAPTMODE1`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CAPTMODE1W {
     #[doc = "Default capture"]
     DEFAULT,
@@ -1036,6 +1062,16 @@ impl R {
     #[inline]
     pub fn bits(&self) -> u32 {
         self.bits
+    }
+    #[doc = "Bit 0 - Software Reset"]
+    #[inline]
+    pub fn swrst(&self) -> SWRSTR {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 0;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        SWRSTR { bits }
     }
     #[doc = "Bit 1 - Enable"]
     #[inline]

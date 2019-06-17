@@ -14,8 +14,8 @@ impl super::PCR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -140,6 +140,7 @@ impl SDBVSELR {
     }
 }
 #[doc = "Values that can be written to the field `SDBPWR`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SDBPWRW {
     #[doc = "Power off"]
     OFF,
@@ -198,6 +199,7 @@ impl<'a> _SDBPWRW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SDBVSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SDBVSELW {
     #[doc = "1.8V (Typ.)"]
     _1V8,

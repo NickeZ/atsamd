@@ -1,39 +1,8 @@
 #[doc = r" Register block"]
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved_0_mode0: [u8; 160usize],
-}
-impl RegisterBlock {
-    #[doc = "0x00 - Clock/Calendar with Alarm"]
-    #[inline(always)]
-    pub fn mode2(&self) -> &MODE2 {
-        unsafe { &*(((self as *const Self) as *const u8).add(0usize) as *const MODE2) }
-    }
-    #[doc = "0x00 - Clock/Calendar with Alarm"]
-    #[inline(always)]
-    pub fn mode2_mut(&self) -> &mut MODE2 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(0usize) as *mut MODE2) }
-    }
-    #[doc = "0x00 - 16-bit Counter with Two 16-bit Compares"]
-    #[inline(always)]
-    pub fn mode1(&self) -> &MODE1 {
-        unsafe { &*(((self as *const Self) as *const u8).add(0usize) as *const MODE1) }
-    }
-    #[doc = "0x00 - 16-bit Counter with Two 16-bit Compares"]
-    #[inline(always)]
-    pub fn mode1_mut(&self) -> &mut MODE1 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(0usize) as *mut MODE1) }
-    }
     #[doc = "0x00 - 32-bit Counter with Single 32-bit Compare"]
-    #[inline(always)]
-    pub fn mode0(&self) -> &MODE0 {
-        unsafe { &*(((self as *const Self) as *const u8).add(0usize) as *const MODE0) }
-    }
-    #[doc = "0x00 - 32-bit Counter with Single 32-bit Compare"]
-    #[inline(always)]
-    pub fn mode0_mut(&self) -> &mut MODE0 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(0usize) as *mut MODE0) }
-    }
+    pub mode0: MODE0,
 }
 #[doc = r" Register block"]
 #[repr(C)]
@@ -52,28 +21,28 @@ pub struct MODE0 {
     pub intflag: self::mode0::INTFLAG,
     #[doc = "0x0e - Debug Control"]
     pub dbgctrl: self::mode0::DBGCTRL,
-    _reserved7: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x10 - MODE0 Synchronization Busy Status"]
     pub syncbusy: self::mode0::SYNCBUSY,
     #[doc = "0x14 - Frequency Correction"]
     pub freqcorr: self::mode0::FREQCORR,
-    _reserved9: [u8; 3usize],
+    _reserved1: [u8; 3usize],
     #[doc = "0x18 - MODE0 Counter Value"]
     pub count: self::mode0::COUNT,
-    _reserved10: [u8; 4usize],
+    _reserved2: [u8; 4usize],
     #[doc = "0x20 - MODE0 Compare n Value"]
     pub comp: [self::mode0::COMP; 2],
-    _reserved11: [u8; 24usize],
+    _reserved3: [u8; 24usize],
     #[doc = "0x40 - General Purpose"]
     pub gp: [self::mode0::GP; 4],
-    _reserved12: [u8; 16usize],
+    _reserved4: [u8; 16usize],
     #[doc = "0x60 - Tamper Control"]
     pub tampctrl: self::mode0::TAMPCTRL,
     #[doc = "0x64 - MODE0 Timestamp"]
     pub timestamp: self::mode0::TIMESTAMP,
     #[doc = "0x68 - Tamper ID"]
     pub tampid: self::mode0::TAMPID,
-    _reserved15: [u8; 20usize],
+    _reserved5: [u8; 20usize],
     #[doc = "0x80 - Backup"]
     pub bkup: [self::mode0::BKUP; 8],
 }
@@ -97,31 +66,31 @@ pub struct MODE1 {
     pub intflag: self::mode1::INTFLAG,
     #[doc = "0x0e - Debug Control"]
     pub dbgctrl: self::mode1::DBGCTRL,
-    _reserved7: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x10 - MODE1 Synchronization Busy Status"]
     pub syncbusy: self::mode1::SYNCBUSY,
     #[doc = "0x14 - Frequency Correction"]
     pub freqcorr: self::mode1::FREQCORR,
-    _reserved9: [u8; 3usize],
+    _reserved1: [u8; 3usize],
     #[doc = "0x18 - MODE1 Counter Value"]
     pub count: self::mode1::COUNT,
-    _reserved10: [u8; 2usize],
+    _reserved2: [u8; 2usize],
     #[doc = "0x1c - MODE1 Counter Period"]
     pub per: self::mode1::PER,
-    _reserved11: [u8; 2usize],
+    _reserved3: [u8; 2usize],
     #[doc = "0x20 - MODE1 Compare n Value"]
     pub comp: [self::mode1::COMP; 4],
-    _reserved12: [u8; 24usize],
+    _reserved4: [u8; 24usize],
     #[doc = "0x40 - General Purpose"]
     pub gp: [self::mode1::GP; 4],
-    _reserved13: [u8; 16usize],
+    _reserved5: [u8; 16usize],
     #[doc = "0x60 - Tamper Control"]
     pub tampctrl: self::mode1::TAMPCTRL,
     #[doc = "0x64 - MODE1 Timestamp"]
     pub timestamp: self::mode1::TIMESTAMP,
     #[doc = "0x68 - Tamper ID"]
     pub tampid: self::mode1::TAMPID,
-    _reserved16: [u8; 20usize],
+    _reserved6: [u8; 20usize],
     #[doc = "0x80 - Backup"]
     pub bkup: [self::mode1::BKUP; 8],
 }
@@ -145,35 +114,35 @@ pub struct MODE2 {
     pub intflag: self::mode2::INTFLAG,
     #[doc = "0x0e - Debug Control"]
     pub dbgctrl: self::mode2::DBGCTRL,
-    _reserved7: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x10 - MODE2 Synchronization Busy Status"]
     pub syncbusy: self::mode2::SYNCBUSY,
     #[doc = "0x14 - Frequency Correction"]
     pub freqcorr: self::mode2::FREQCORR,
-    _reserved9: [u8; 3usize],
+    _reserved1: [u8; 3usize],
     #[doc = "0x18 - MODE2 Clock Value"]
     pub clock: self::mode2::CLOCK,
-    _reserved10: [u8; 4usize],
-    #[doc = "0x20 - MODE2 Alarm n Value"]
-    pub alarm0: self::mode2::ALARM,
-    #[doc = "0x24 - MODE2 Alarm n Mask"]
-    pub mask0: self::mode2::MASK,
-    _reserved12: [u8; 3usize],
-    #[doc = "0x28 - MODE2 Alarm n Value"]
-    pub alarm1: self::mode2::ALARM,
-    #[doc = "0x2c - MODE2 Alarm n Mask"]
-    pub mask1: self::mode2::MASK,
-    _reserved14: [u8; 19usize],
+    _reserved2: [u8; 4usize],
+    #[doc = "0x20 - MODE2_ALARM Alarm n Value"]
+    pub alarm0: self::mode2::ALARM0,
+    #[doc = "0x24 - MODE2_ALARM Alarm n Mask"]
+    pub mask0: self::mode2::MASK0,
+    _reserved3: [u8; 3usize],
+    #[doc = "0x28 - MODE2_ALARM Alarm n Value"]
+    pub alarm1: self::mode2::ALARM1,
+    #[doc = "0x2c - MODE2_ALARM Alarm n Mask"]
+    pub mask1: self::mode2::MASK1,
+    _reserved4: [u8; 19usize],
     #[doc = "0x40 - General Purpose"]
     pub gp: [self::mode2::GP; 4],
-    _reserved15: [u8; 16usize],
+    _reserved5: [u8; 16usize],
     #[doc = "0x60 - Tamper Control"]
     pub tampctrl: self::mode2::TAMPCTRL,
     #[doc = "0x64 - MODE2 Timestamp"]
     pub timestamp: self::mode2::TIMESTAMP,
     #[doc = "0x68 - Tamper ID"]
     pub tampid: self::mode2::TAMPID,
-    _reserved18: [u8; 20usize],
+    _reserved6: [u8; 20usize],
     #[doc = "0x80 - Backup"]
     pub bkup: [self::mode2::BKUP; 8],
 }

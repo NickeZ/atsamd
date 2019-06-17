@@ -14,8 +14,8 @@ impl super::BKOUT {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -43,36 +43,190 @@ impl super::BKOUT {
     }
 }
 #[doc = r" Value of the field"]
-pub struct ENR {
-    bits: u8,
+pub struct ENOUT0R {
+    bits: bool,
 }
-impl ENR {
+impl ENOUT0R {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
-    pub fn bits(&self) -> u8 {
+    pub fn bit(&self) -> bool {
         self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
     }
 }
 #[doc = r" Value of the field"]
-pub struct RTCTGLR {
-    bits: u8,
+pub struct ENOUT1R {
+    bits: bool,
 }
-impl RTCTGLR {
+impl ENOUT1R {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
-    pub fn bits(&self) -> u8 {
+    pub fn bit(&self) -> bool {
         self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct CLROUT0R {
+    bits: bool,
+}
+impl CLROUT0R {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct CLROUT1R {
+    bits: bool,
+}
+impl CLROUT1R {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct SETOUT0R {
+    bits: bool,
+}
+impl SETOUT0R {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct SETOUT1R {
+    bits: bool,
+}
+impl SETOUT1R {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct RTCTGLOUT0R {
+    bits: bool,
+}
+impl RTCTGLOUT0R {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct RTCTGLOUT1R {
+    bits: bool,
+}
+impl RTCTGLOUT1R {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        self.bits
+    }
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
     }
 }
 #[doc = r" Proxy"]
-pub struct _ENW<'a> {
+pub struct _ENOUT0W<'a> {
     w: &'a mut W,
 }
-impl<'a> _ENW<'a> {
+impl<'a> _ENOUT0W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
         const OFFSET: u8 = 0;
         self.w.bits &= !((MASK as u32) << OFFSET);
         self.w.bits |= ((value & MASK) as u32) << OFFSET;
@@ -80,14 +234,45 @@ impl<'a> _ENW<'a> {
     }
 }
 #[doc = r" Proxy"]
-pub struct _CLRW<'a> {
+pub struct _ENOUT1W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CLRW<'a> {
+impl<'a> _ENOUT1W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 1;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CLROUT0W<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CLROUT0W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
         const OFFSET: u8 = 8;
         self.w.bits &= !((MASK as u32) << OFFSET);
         self.w.bits |= ((value & MASK) as u32) << OFFSET;
@@ -95,14 +280,45 @@ impl<'a> _CLRW<'a> {
     }
 }
 #[doc = r" Proxy"]
-pub struct _SETW<'a> {
+pub struct _CLROUT1W<'a> {
     w: &'a mut W,
 }
-impl<'a> _SETW<'a> {
+impl<'a> _CLROUT1W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 9;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _SETOUT0W<'a> {
+    w: &'a mut W,
+}
+impl<'a> _SETOUT0W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
         const OFFSET: u8 = 16;
         self.w.bits &= !((MASK as u32) << OFFSET);
         self.w.bits |= ((value & MASK) as u32) << OFFSET;
@@ -110,15 +326,69 @@ impl<'a> _SETW<'a> {
     }
 }
 #[doc = r" Proxy"]
-pub struct _RTCTGLW<'a> {
+pub struct _SETOUT1W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RTCTGLW<'a> {
+impl<'a> _SETOUT1W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 17;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _RTCTGLOUT0W<'a> {
+    w: &'a mut W,
+}
+impl<'a> _RTCTGLOUT0W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
         const OFFSET: u8 = 24;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _RTCTGLOUT1W<'a> {
+    w: &'a mut W,
+}
+impl<'a> _RTCTGLOUT1W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 25;
         self.w.bits &= !((MASK as u32) << OFFSET);
         self.w.bits |= ((value & MASK) as u32) << OFFSET;
         self.w
@@ -130,25 +400,85 @@ impl R {
     pub fn bits(&self) -> u32 {
         self.bits
     }
-    #[doc = "Bits 0:1 - Enable Output"]
+    #[doc = "Bit 0 - Enable OUT0"]
     #[inline]
-    pub fn en(&self) -> ENR {
+    pub fn enout0(&self) -> ENOUT0R {
         let bits = {
-            const MASK: u8 = 3;
+            const MASK: bool = true;
             const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
+            ((self.bits >> OFFSET) & MASK as u32) != 0
         };
-        ENR { bits }
+        ENOUT0R { bits }
     }
-    #[doc = "Bits 24:25 - RTC Toggle Output"]
+    #[doc = "Bit 1 - Enable OUT1"]
     #[inline]
-    pub fn rtctgl(&self) -> RTCTGLR {
+    pub fn enout1(&self) -> ENOUT1R {
         let bits = {
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 24;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
+            const MASK: bool = true;
+            const OFFSET: u8 = 1;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
         };
-        RTCTGLR { bits }
+        ENOUT1R { bits }
+    }
+    #[doc = "Bit 8 - Clear OUT0"]
+    #[inline]
+    pub fn clrout0(&self) -> CLROUT0R {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 8;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        CLROUT0R { bits }
+    }
+    #[doc = "Bit 9 - Clear OUT1"]
+    #[inline]
+    pub fn clrout1(&self) -> CLROUT1R {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 9;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        CLROUT1R { bits }
+    }
+    #[doc = "Bit 16 - Set OUT0"]
+    #[inline]
+    pub fn setout0(&self) -> SETOUT0R {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 16;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        SETOUT0R { bits }
+    }
+    #[doc = "Bit 17 - Set OUT1"]
+    #[inline]
+    pub fn setout1(&self) -> SETOUT1R {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 17;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        SETOUT1R { bits }
+    }
+    #[doc = "Bit 24 - RTC Toggle OUT0"]
+    #[inline]
+    pub fn rtctglout0(&self) -> RTCTGLOUT0R {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 24;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        RTCTGLOUT0R { bits }
+    }
+    #[doc = "Bit 25 - RTC Toggle OUT1"]
+    #[inline]
+    pub fn rtctglout1(&self) -> RTCTGLOUT1R {
+        let bits = {
+            const MASK: bool = true;
+            const OFFSET: u8 = 25;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        };
+        RTCTGLOUT1R { bits }
     }
 }
 impl W {
@@ -163,24 +493,44 @@ impl W {
         self.bits = bits;
         self
     }
-    #[doc = "Bits 0:1 - Enable Output"]
+    #[doc = "Bit 0 - Enable OUT0"]
     #[inline]
-    pub fn en(&mut self) -> _ENW {
-        _ENW { w: self }
+    pub fn enout0(&mut self) -> _ENOUT0W {
+        _ENOUT0W { w: self }
     }
-    #[doc = "Bits 8:9 - Clear Output"]
+    #[doc = "Bit 1 - Enable OUT1"]
     #[inline]
-    pub fn clr(&mut self) -> _CLRW {
-        _CLRW { w: self }
+    pub fn enout1(&mut self) -> _ENOUT1W {
+        _ENOUT1W { w: self }
     }
-    #[doc = "Bits 16:17 - Set Output"]
+    #[doc = "Bit 8 - Clear OUT0"]
     #[inline]
-    pub fn set(&mut self) -> _SETW {
-        _SETW { w: self }
+    pub fn clrout0(&mut self) -> _CLROUT0W {
+        _CLROUT0W { w: self }
     }
-    #[doc = "Bits 24:25 - RTC Toggle Output"]
+    #[doc = "Bit 9 - Clear OUT1"]
     #[inline]
-    pub fn rtctgl(&mut self) -> _RTCTGLW {
-        _RTCTGLW { w: self }
+    pub fn clrout1(&mut self) -> _CLROUT1W {
+        _CLROUT1W { w: self }
+    }
+    #[doc = "Bit 16 - Set OUT0"]
+    #[inline]
+    pub fn setout0(&mut self) -> _SETOUT0W {
+        _SETOUT0W { w: self }
+    }
+    #[doc = "Bit 17 - Set OUT1"]
+    #[inline]
+    pub fn setout1(&mut self) -> _SETOUT1W {
+        _SETOUT1W { w: self }
+    }
+    #[doc = "Bit 24 - RTC Toggle OUT0"]
+    #[inline]
+    pub fn rtctglout0(&mut self) -> _RTCTGLOUT0W {
+        _RTCTGLOUT0W { w: self }
+    }
+    #[doc = "Bit 25 - RTC Toggle OUT1"]
+    #[inline]
+    pub fn rtctglout1(&mut self) -> _RTCTGLOUT1W {
+        _RTCTGLOUT1W { w: self }
     }
 }

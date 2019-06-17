@@ -14,8 +14,8 @@ impl super::STDBYCFG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -45,11 +45,11 @@ impl super::STDBYCFG {
 #[doc = "Possible values of the field `RAMCFG`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RAMCFGR {
-    #[doc = "All the RAMs are retained"]
+    #[doc = "All the system RAM is retained"]
     RET,
-    #[doc = "Only the first 32K bytes are retained"]
+    #[doc = "Only the first 32Kbytes of the system RAM is retained"]
     PARTIAL,
-    #[doc = "All the RAMs are OFF"]
+    #[doc = "All the system RAM is turned OFF"]
     OFF,
     #[doc = r" Reserved"]
     _Reserved(u8),
@@ -92,24 +92,70 @@ impl RAMCFGR {
         *self == RAMCFGR::OFF
     }
 }
-#[doc = r" Value of the field"]
-pub struct FASTWKUPR {
-    bits: u8,
+#[doc = "Possible values of the field `FASTWKUP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum FASTWKUPR {
+    #[doc = "Fast Wakeup is disabled"]
+    NO,
+    #[doc = "Fast Wakeup is enabled on NVM"]
+    NVM,
+    #[doc = "Fast Wakeup is enabled on the main voltage regulator (MAINVREG)"]
+    MAINVREG,
+    #[doc = "Fast Wakeup is enabled on both NVM and MAINVREG"]
+    BOTH,
 }
 impl FASTWKUPR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            FASTWKUPR::NO => 0,
+            FASTWKUPR::NVM => 1,
+            FASTWKUPR::MAINVREG => 2,
+            FASTWKUPR::BOTH => 3,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> FASTWKUPR {
+        match value {
+            0 => FASTWKUPR::NO,
+            1 => FASTWKUPR::NVM,
+            2 => FASTWKUPR::MAINVREG,
+            3 => FASTWKUPR::BOTH,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Checks if the value of the field is `NO`"]
+    #[inline]
+    pub fn is_no(&self) -> bool {
+        *self == FASTWKUPR::NO
+    }
+    #[doc = "Checks if the value of the field is `NVM`"]
+    #[inline]
+    pub fn is_nvm(&self) -> bool {
+        *self == FASTWKUPR::NVM
+    }
+    #[doc = "Checks if the value of the field is `MAINVREG`"]
+    #[inline]
+    pub fn is_mainvreg(&self) -> bool {
+        *self == FASTWKUPR::MAINVREG
+    }
+    #[doc = "Checks if the value of the field is `BOTH`"]
+    #[inline]
+    pub fn is_both(&self) -> bool {
+        *self == FASTWKUPR::BOTH
     }
 }
 #[doc = "Values that can be written to the field `RAMCFG`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RAMCFGW {
-    #[doc = "All the RAMs are retained"]
+    #[doc = "All the system RAM is retained"]
     RET,
-    #[doc = "Only the first 32K bytes are retained"]
+    #[doc = "Only the first 32Kbytes of the system RAM is retained"]
     PARTIAL,
-    #[doc = "All the RAMs are OFF"]
+    #[doc = "All the system RAM is turned OFF"]
     OFF,
 }
 impl RAMCFGW {
@@ -134,17 +180,17 @@ impl<'a> _RAMCFGW<'a> {
     pub fn variant(self, variant: RAMCFGW) -> &'a mut W {
         unsafe { self.bits(variant._bits()) }
     }
-    #[doc = "All the RAMs are retained"]
+    #[doc = "All the system RAM is retained"]
     #[inline]
     pub fn ret(self) -> &'a mut W {
         self.variant(RAMCFGW::RET)
     }
-    #[doc = "Only the first 32K bytes are retained"]
+    #[doc = "Only the first 32Kbytes of the system RAM is retained"]
     #[inline]
     pub fn partial(self) -> &'a mut W {
         self.variant(RAMCFGW::PARTIAL)
     }
-    #[doc = "All the RAMs are OFF"]
+    #[doc = "All the system RAM is turned OFF"]
     #[inline]
     pub fn off(self) -> &'a mut W {
         self.variant(RAMCFGW::OFF)
@@ -159,14 +205,66 @@ impl<'a> _RAMCFGW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `FASTWKUP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum FASTWKUPW {
+    #[doc = "Fast Wakeup is disabled"]
+    NO,
+    #[doc = "Fast Wakeup is enabled on NVM"]
+    NVM,
+    #[doc = "Fast Wakeup is enabled on the main voltage regulator (MAINVREG)"]
+    MAINVREG,
+    #[doc = "Fast Wakeup is enabled on both NVM and MAINVREG"]
+    BOTH,
+}
+impl FASTWKUPW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            FASTWKUPW::NO => 0,
+            FASTWKUPW::NVM => 1,
+            FASTWKUPW::MAINVREG => 2,
+            FASTWKUPW::BOTH => 3,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _FASTWKUPW<'a> {
     w: &'a mut W,
 }
 impl<'a> _FASTWKUPW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: FASTWKUPW) -> &'a mut W {
+        {
+            self.bits(variant._bits())
+        }
+    }
+    #[doc = "Fast Wakeup is disabled"]
+    #[inline]
+    pub fn no(self) -> &'a mut W {
+        self.variant(FASTWKUPW::NO)
+    }
+    #[doc = "Fast Wakeup is enabled on NVM"]
+    #[inline]
+    pub fn nvm(self) -> &'a mut W {
+        self.variant(FASTWKUPW::NVM)
+    }
+    #[doc = "Fast Wakeup is enabled on the main voltage regulator (MAINVREG)"]
+    #[inline]
+    pub fn mainvreg(self) -> &'a mut W {
+        self.variant(FASTWKUPW::MAINVREG)
+    }
+    #[doc = "Fast Wakeup is enabled on both NVM and MAINVREG"]
+    #[inline]
+    pub fn both(self) -> &'a mut W {
+        self.variant(FASTWKUPW::BOTH)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+    pub fn bits(self, value: u8) -> &'a mut W {
         const MASK: u8 = 3;
         const OFFSET: u8 = 4;
         self.w.bits &= !((MASK as u8) << OFFSET);
@@ -192,12 +290,11 @@ impl R {
     #[doc = "Bits 4:5 - Fast Wakeup"]
     #[inline]
     pub fn fastwkup(&self) -> FASTWKUPR {
-        let bits = {
+        FASTWKUPR::_from({
             const MASK: u8 = 3;
             const OFFSET: u8 = 4;
             ((self.bits >> OFFSET) & MASK as u8) as u8
-        };
-        FASTWKUPR { bits }
+        })
     }
 }
 impl W {

@@ -2,13 +2,44 @@
 pub struct R {
     bits: u8,
 }
+#[doc = r" Value to write to the register"]
+pub struct W {
+    bits: u8,
+}
 impl super::DFLLSYNC {
+    #[doc = r" Modifies the contents of the register"]
+    #[inline]
+    pub fn modify<F>(&self, f: F)
+    where
+        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
+    {
+        let bits = self.register.get();
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
+        f(&r, &mut w);
+        self.register.set(w.bits);
+    }
     #[doc = r" Reads the contents of the register"]
     #[inline]
     pub fn read(&self) -> R {
         R {
             bits: self.register.get(),
         }
+    }
+    #[doc = r" Writes to the register"]
+    #[inline]
+    pub fn write<F>(&self, f: F)
+    where
+        F: FnOnce(&mut W) -> &mut W,
+    {
+        let mut w = W::reset_value();
+        f(&mut w);
+        self.register.set(w.bits);
+    }
+    #[doc = r" Writes the reset value to the register"]
+    #[inline]
+    pub fn reset(&self) {
+        self.write(|w| w)
     }
 }
 #[doc = r" Value of the field"]
@@ -95,6 +126,98 @@ impl DFLLMULR {
         self.bit()
     }
 }
+#[doc = r" Proxy"]
+pub struct _ENABLEW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _ENABLEW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 1;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _DFLLCTRLBW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _DFLLCTRLBW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 2;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _DFLLVALW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _DFLLVALW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 3;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _DFLLMULW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _DFLLMULW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 4;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
@@ -140,5 +263,38 @@ impl R {
             ((self.bits >> OFFSET) & MASK as u8) != 0
         };
         DFLLMULR { bits }
+    }
+}
+impl W {
+    #[doc = r" Reset value of the register"]
+    #[inline]
+    pub fn reset_value() -> W {
+        W { bits: 0 }
+    }
+    #[doc = r" Writes raw bits to the register"]
+    #[inline]
+    pub unsafe fn bits(&mut self, bits: u8) -> &mut Self {
+        self.bits = bits;
+        self
+    }
+    #[doc = "Bit 1 - ENABLE Synchronization Busy"]
+    #[inline]
+    pub fn enable(&mut self) -> _ENABLEW {
+        _ENABLEW { w: self }
+    }
+    #[doc = "Bit 2 - DFLLCTRLB Synchronization Busy"]
+    #[inline]
+    pub fn dfllctrlb(&mut self) -> _DFLLCTRLBW {
+        _DFLLCTRLBW { w: self }
+    }
+    #[doc = "Bit 3 - DFLLVAL Synchronization Busy"]
+    #[inline]
+    pub fn dfllval(&mut self) -> _DFLLVALW {
+        _DFLLVALW { w: self }
+    }
+    #[doc = "Bit 4 - DFLLMUL Synchronization Busy"]
+    #[inline]
+    pub fn dfllmul(&mut self) -> _DFLLMULW {
+        _DFLLMULW { w: self }
     }
 }

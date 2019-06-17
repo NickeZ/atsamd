@@ -14,8 +14,8 @@ impl super::GENCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -230,16 +230,15 @@ impl OER {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct DIVSELR {
-    bits: bool,
+#[doc = "Possible values of the field `DIVSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DIVSELR {
+    #[doc = "Divide input directly by divider factor"]
+    DIV1,
+    #[doc = "Divide input by 2^(divider factor+ 1)"]
+    DIV2,
 }
 impl DIVSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
     #[doc = r" Returns `true` if the bit is clear (0)"]
     #[inline]
     pub fn bit_is_clear(&self) -> bool {
@@ -249,6 +248,33 @@ impl DIVSELR {
     #[inline]
     pub fn bit_is_set(&self) -> bool {
         self.bit()
+    }
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        match *self {
+            DIVSELR::DIV1 => false,
+            DIVSELR::DIV2 => true,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: bool) -> DIVSELR {
+        match value {
+            false => DIVSELR::DIV1,
+            true => DIVSELR::DIV2,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DIV1`"]
+    #[inline]
+    pub fn is_div1(&self) -> bool {
+        *self == DIVSELR::DIV1
+    }
+    #[doc = "Checks if the value of the field is `DIV2`"]
+    #[inline]
+    pub fn is_div2(&self) -> bool {
+        *self == DIVSELR::DIV2
     }
 }
 #[doc = r" Value of the field"]
@@ -284,6 +310,7 @@ impl DIVR {
     }
 }
 #[doc = "Values that can be written to the field `SRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SRCW {
     #[doc = "XOSC0 oscillator output"]
     XOSC0,
@@ -479,11 +506,47 @@ impl<'a> _OEW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `DIVSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DIVSELW {
+    #[doc = "Divide input directly by divider factor"]
+    DIV1,
+    #[doc = "Divide input by 2^(divider factor+ 1)"]
+    DIV2,
+}
+impl DIVSELW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            DIVSELW::DIV1 => false,
+            DIVSELW::DIV2 => true,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _DIVSELW<'a> {
     w: &'a mut W,
 }
 impl<'a> _DIVSELW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: DIVSELW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "Divide input directly by divider factor"]
+    #[inline]
+    pub fn div1(self) -> &'a mut W {
+        self.variant(DIVSELW::DIV1)
+    }
+    #[doc = "Divide input by 2^(divider factor+ 1)"]
+    #[inline]
+    pub fn div2(self) -> &'a mut W {
+        self.variant(DIVSELW::DIV2)
+    }
     #[doc = r" Sets the field bit"]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
@@ -598,12 +661,11 @@ impl R {
     #[doc = "Bit 12 - Divide Selection"]
     #[inline]
     pub fn divsel(&self) -> DIVSELR {
-        let bits = {
+        DIVSELR::_from({
             const MASK: bool = true;
             const OFFSET: u8 = 12;
             ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        DIVSELR { bits }
+        })
     }
     #[doc = "Bit 13 - Run in Standby"]
     #[inline]

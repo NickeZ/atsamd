@@ -14,8 +14,8 @@ impl super::VREF {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -358,6 +358,7 @@ impl<'a> _ONDEMANDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SELW {
     #[doc = "1.0V voltage reference typical value"]
     _1V0,

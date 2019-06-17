@@ -3,13 +3,13 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Control"]
     pub ctrla: CTRLA,
-    _reserved1: [u8; 3usize],
+    _reserved0: [u8; 3usize],
     #[doc = "0x04 - Synchronization Busy"]
     pub syncbusy: SYNCBUSY,
-    _reserved2: [u8; 24usize],
+    _reserved1: [u8; 24usize],
     #[doc = "0x20 - Generic Clock Generator Control"]
     pub genctrl: [GENCTRL; 12],
-    _reserved3: [u8; 48usize],
+    _reserved2: [u8; 48usize],
     #[doc = "0x80 - Peripheral Clock Control"]
     pub pchctrl: [PCHCTRL; 48],
 }

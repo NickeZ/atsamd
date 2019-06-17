@@ -14,8 +14,8 @@ impl super::PVR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -172,6 +172,7 @@ impl<'a> _SDCLKFSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CLKGSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CLKGSELW {
     #[doc = "Host Controller Ver2.00 Compatible Clock Generator (Divider)"]
     DIV,
@@ -230,6 +231,7 @@ impl<'a> _CLKGSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DRVSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DRVSELW {
     #[doc = "Driver Type B is Selected"]
     B,

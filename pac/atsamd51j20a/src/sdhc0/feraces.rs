@@ -15,6 +15,7 @@ impl super::FERACES {
     }
 }
 #[doc = "Values that can be written to the field `ACMD12NE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMD12NEW {
     #[doc = "No Interrupt"]
     NO,
@@ -73,6 +74,7 @@ impl<'a> _ACMD12NEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMDTEO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDTEOW {
     #[doc = "No Interrupt"]
     NO,
@@ -131,6 +133,7 @@ impl<'a> _ACMDTEOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMDCRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDCRCW {
     #[doc = "No Interrupt"]
     NO,
@@ -189,6 +192,7 @@ impl<'a> _ACMDCRCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMDEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDENDW {
     #[doc = "No Interrupt"]
     NO,
@@ -247,6 +251,7 @@ impl<'a> _ACMDENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMDIDX`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDIDXW {
     #[doc = "No Interrupt"]
     NO,
@@ -305,6 +310,7 @@ impl<'a> _ACMDIDXW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDNI`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDNIW {
     #[doc = "No Interrupt"]
     NO,

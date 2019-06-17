@@ -14,8 +14,8 @@ impl super::CCR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -253,6 +253,7 @@ impl SDCLKFSELR {
     }
 }
 #[doc = "Values that can be written to the field `INTCLKEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum INTCLKENW {
     #[doc = "Stop"]
     OFF,
@@ -310,7 +311,67 @@ impl<'a> _INTCLKENW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `INTCLKS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum INTCLKSW {
+    #[doc = "Not Ready"]
+    NOT_READY,
+    #[doc = "Ready"]
+    READY,
+}
+impl INTCLKSW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            INTCLKSW::NOT_READY => false,
+            INTCLKSW::READY => true,
+        }
+    }
+}
+#[doc = r" Proxy"]
+pub struct _INTCLKSW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _INTCLKSW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: INTCLKSW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "Not Ready"]
+    #[inline]
+    pub fn not_ready(self) -> &'a mut W {
+        self.variant(INTCLKSW::NOT_READY)
+    }
+    #[doc = "Ready"]
+    #[inline]
+    pub fn ready(self) -> &'a mut W {
+        self.variant(INTCLKSW::READY)
+    }
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 1;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
 #[doc = "Values that can be written to the field `SDCLKEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SDCLKENW {
     #[doc = "Disable"]
     DISABLE,
@@ -369,6 +430,7 @@ impl<'a> _SDCLKENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CLKGSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CLKGSELW {
     #[doc = "Divided Clock Mode"]
     DIV,
@@ -535,6 +597,11 @@ impl W {
     #[inline]
     pub fn intclken(&mut self) -> _INTCLKENW {
         _INTCLKENW { w: self }
+    }
+    #[doc = "Bit 1 - Internal Clock Stable"]
+    #[inline]
+    pub fn intclks(&mut self) -> _INTCLKSW {
+        _INTCLKSW { w: self }
     }
     #[doc = "Bit 2 - SD Clock Enable"]
     #[inline]

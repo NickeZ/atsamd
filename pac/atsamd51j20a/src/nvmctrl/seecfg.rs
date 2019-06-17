@@ -14,8 +14,8 @@ impl super::SEECFG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -111,6 +111,7 @@ impl APRDISR {
     }
 }
 #[doc = "Values that can be written to the field `WMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WMODEW {
     #[doc = "A NVM write command is issued after each write in the pagebuffer"]
     UNBUFFERED,

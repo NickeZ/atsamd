@@ -14,8 +14,8 @@ impl super::CTRLB {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -491,6 +491,7 @@ impl<'a> _DMAENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DEBF`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DEBFW {
     #[doc = "CLK_RTC_DEB = CLK_RTC/2"]
     DIV2,
@@ -589,6 +590,7 @@ impl<'a> _DEBFW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACTF`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACTFW {
     #[doc = "CLK_RTC_OUT = CLK_RTC/2"]
     DIV2,

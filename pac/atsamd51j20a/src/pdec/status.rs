@@ -14,8 +14,8 @@ impl super::STATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -388,6 +388,144 @@ impl<'a> _HERRW<'a> {
         self.w
     }
 }
+#[doc = r" Proxy"]
+pub struct _STOPW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _STOPW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 6;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _DIRW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _DIRW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 7;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _PRESCBUFVW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _PRESCBUFVW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 8;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _FILTERBUFVW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _FILTERBUFVW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 9;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CCBUFV0W<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CCBUFV0W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 12;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CCBUFV1W<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CCBUFV1W<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 13;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
@@ -541,5 +679,35 @@ impl W {
     #[inline]
     pub fn herr(&mut self) -> _HERRW {
         _HERRW { w: self }
+    }
+    #[doc = "Bit 6 - Stop"]
+    #[inline]
+    pub fn stop(&mut self) -> _STOPW {
+        _STOPW { w: self }
+    }
+    #[doc = "Bit 7 - Direction Status Flag"]
+    #[inline]
+    pub fn dir(&mut self) -> _DIRW {
+        _DIRW { w: self }
+    }
+    #[doc = "Bit 8 - Prescaler Buffer Valid"]
+    #[inline]
+    pub fn prescbufv(&mut self) -> _PRESCBUFVW {
+        _PRESCBUFVW { w: self }
+    }
+    #[doc = "Bit 9 - Filter Buffer Valid"]
+    #[inline]
+    pub fn filterbufv(&mut self) -> _FILTERBUFVW {
+        _FILTERBUFVW { w: self }
+    }
+    #[doc = "Bit 12 - Compare Channel 0 Buffer Valid"]
+    #[inline]
+    pub fn ccbufv0(&mut self) -> _CCBUFV0W {
+        _CCBUFV0W { w: self }
+    }
+    #[doc = "Bit 13 - Compare Channel 1 Buffer Valid"]
+    #[inline]
+    pub fn ccbufv1(&mut self) -> _CCBUFV1W {
+        _CCBUFV1W { w: self }
     }
 }

@@ -14,8 +14,8 @@ impl super::BOD33 {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -352,6 +352,7 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACTION`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACTIONW {
     #[doc = "No action"]
     NONE,
@@ -525,6 +526,7 @@ impl<'a> _HYSTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PSELW {
     #[doc = "Not divided"]
     NODIV,

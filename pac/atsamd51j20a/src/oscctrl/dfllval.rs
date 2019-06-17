@@ -14,8 +14,8 @@ impl super::DFLLVAL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -105,6 +105,21 @@ impl<'a> _COARSEW<'a> {
         self.w
     }
 }
+#[doc = r" Proxy"]
+pub struct _DIFFW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _DIFFW<'a> {
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        const MASK: u16 = 65535;
+        const OFFSET: u8 = 16;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
@@ -163,5 +178,10 @@ impl W {
     #[inline]
     pub fn coarse(&mut self) -> _COARSEW {
         _COARSEW { w: self }
+    }
+    #[doc = "Bits 16:31 - Multiplication Ratio Difference"]
+    #[inline]
+    pub fn diff(&mut self) -> _DIFFW {
+        _DIFFW { w: self }
     }
 }

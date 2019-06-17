@@ -14,8 +14,8 @@ impl super::CTRLB {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -369,6 +369,7 @@ impl<'a> _UPRSMW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SPDCONF`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SPDCONFW {
     #[doc = "FS : Full Speed"]
     FS,
@@ -573,6 +574,7 @@ impl<'a> _GNAKW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `LPMHDSK`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LPMHDSKW {
     #[doc = "No handshake. LPM is not supported"]
     NO,

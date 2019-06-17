@@ -3,10 +3,10 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Control"]
     pub ctrl: CTRL,
-    _reserved1: [u8; 3usize],
+    _reserved0: [u8; 3usize],
     #[doc = "0x04 - SEQ Control x"]
     pub seqctrl: [SEQCTRL; 2],
-    _reserved2: [u8; 2usize],
+    _reserved1: [u8; 2usize],
     #[doc = "0x08 - LUT Control x"]
     pub lutctrl: [LUTCTRL; 4],
 }

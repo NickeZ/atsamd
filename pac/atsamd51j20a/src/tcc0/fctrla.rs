@@ -14,8 +14,8 @@ impl super::FCTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -465,6 +465,7 @@ impl FILTERVALR {
     }
 }
 #[doc = "Values that can be written to the field `SRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SRCW {
     #[doc = "Fault input disabled"]
     DISABLE,
@@ -577,6 +578,7 @@ impl<'a> _QUALW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BLANK`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BLANKW {
     #[doc = "Blanking applied from start of the ramp"]
     START,
@@ -666,6 +668,7 @@ impl<'a> _RESTARTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `HALT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HALTW {
     #[doc = "Halt action disabled"]
     DISABLE,
@@ -732,6 +735,7 @@ impl<'a> _HALTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CHSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHSELW {
     #[doc = "Capture value stored in channel 0"]
     CC0,
@@ -798,6 +802,7 @@ impl<'a> _CHSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CAPTURE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CAPTUREW {
     #[doc = "No capture"]
     DISABLE,

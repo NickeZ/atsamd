@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -539,6 +539,7 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `RESOLUTION`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RESOLUTIONW {
     #[doc = "Dithering is disabled"]
     NONE,
@@ -605,6 +606,7 @@ impl<'a> _RESOLUTIONW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PRESCALER`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PRESCALERW {
     #[doc = "No division"]
     DIV1,
@@ -726,6 +728,7 @@ impl<'a> _RUNSTDBYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PRESCSYNC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PRESCSYNCW {
     #[doc = "Reload or reset counter on next GCLK"]
     GCLK,

@@ -14,8 +14,8 @@ impl super::NISTR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -513,6 +513,7 @@ impl ERRINTR {
     }
 }
 #[doc = "Values that can be written to the field `CMDC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDCW {
     #[doc = "No command complete"]
     NO,
@@ -571,6 +572,7 @@ impl<'a> _CMDCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `TRFC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRFCW {
     #[doc = "Not complete"]
     NO,
@@ -629,6 +631,7 @@ impl<'a> _TRFCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BLKGE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BLKGEW {
     #[doc = "No Block Gap Event"]
     NO,
@@ -687,6 +690,7 @@ impl<'a> _BLKGEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DMAINT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DMAINTW {
     #[doc = "No DMA Interrupt"]
     NO,
@@ -745,6 +749,7 @@ impl<'a> _DMAINTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BWRRDY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BWRRDYW {
     #[doc = "Not ready to write buffer"]
     NO,
@@ -803,6 +808,7 @@ impl<'a> _BWRRDYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BRDRDY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BRDRDYW {
     #[doc = "Not ready to read buffer"]
     NO,
@@ -861,6 +867,7 @@ impl<'a> _BRDRDYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CINS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CINSW {
     #[doc = "Card state stable or Debouncing"]
     NO,
@@ -919,6 +926,7 @@ impl<'a> _CINSW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CREM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CREMW {
     #[doc = "Card state stable or Debouncing"]
     NO,
@@ -971,6 +979,124 @@ impl<'a> _CREMW<'a> {
     pub fn bit(self, value: bool) -> &'a mut W {
         const MASK: bool = true;
         const OFFSET: u8 = 7;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = "Values that can be written to the field `CINT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum CINTW {
+    #[doc = "No Card Interrupt"]
+    NO,
+    #[doc = "Generate Card Interrupt"]
+    YES,
+}
+impl CINTW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            CINTW::NO => false,
+            CINTW::YES => true,
+        }
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CINTW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CINTW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: CINTW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "No Card Interrupt"]
+    #[inline]
+    pub fn no(self) -> &'a mut W {
+        self.variant(CINTW::NO)
+    }
+    #[doc = "Generate Card Interrupt"]
+    #[inline]
+    pub fn yes(self) -> &'a mut W {
+        self.variant(CINTW::YES)
+    }
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 8;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = "Values that can be written to the field `ERRINT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum ERRINTW {
+    #[doc = "No Error"]
+    NO,
+    #[doc = "Error"]
+    YES,
+}
+impl ERRINTW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            ERRINTW::NO => false,
+            ERRINTW::YES => true,
+        }
+    }
+}
+#[doc = r" Proxy"]
+pub struct _ERRINTW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _ERRINTW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: ERRINTW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "No Error"]
+    #[inline]
+    pub fn no(self) -> &'a mut W {
+        self.variant(ERRINTW::NO)
+    }
+    #[doc = "Error"]
+    #[inline]
+    pub fn yes(self) -> &'a mut W {
+        self.variant(ERRINTW::YES)
+    }
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 15;
         self.w.bits &= !((MASK as u16) << OFFSET);
         self.w.bits |= ((value & MASK) as u16) << OFFSET;
         self.w
@@ -1124,5 +1250,15 @@ impl W {
     #[inline]
     pub fn crem(&mut self) -> _CREMW {
         _CREMW { w: self }
+    }
+    #[doc = "Bit 8 - Card Interrupt"]
+    #[inline]
+    pub fn cint(&mut self) -> _CINTW {
+        _CINTW { w: self }
+    }
+    #[doc = "Bit 15 - Error Interrupt"]
+    #[inline]
+    pub fn errint(&mut self) -> _ERRINTW {
+        _ERRINTW { w: self }
     }
 }

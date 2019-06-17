@@ -58,24 +58,36 @@ pub struct CLOCK {
 }
 #[doc = "MODE2 Clock Value"]
 pub mod clock;
-#[doc = "MODE2 Alarm n Value"]
-pub struct ALARM {
-    register: ::vcell::VolatileCell<u32>,
-}
-#[doc = "MODE2 Alarm n Value"]
-pub mod alarm;
-#[doc = "MODE2 Alarm n Mask"]
-pub struct MASK {
-    register: ::vcell::VolatileCell<u8>,
-}
-#[doc = "MODE2 Alarm n Mask"]
-pub mod mask;
 #[doc = "General Purpose"]
 pub struct GP {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "General Purpose"]
 pub mod gp;
+#[doc = "MODE2_ALARM Alarm n Value"]
+pub struct ALARM0 {
+    register: ::vcell::VolatileCell<u32>,
+}
+#[doc = "MODE2_ALARM Alarm n Value"]
+pub mod alarm0;
+#[doc = "MODE2_ALARM Alarm n Mask"]
+pub struct MASK0 {
+    register: ::vcell::VolatileCell<u8>,
+}
+#[doc = "MODE2_ALARM Alarm n Mask"]
+pub mod mask0;
+#[doc = "MODE2_ALARM Alarm n Value"]
+pub struct ALARM1 {
+    register: ::vcell::VolatileCell<u32>,
+}
+#[doc = "MODE2_ALARM Alarm n Value"]
+pub mod alarm1;
+#[doc = "MODE2_ALARM Alarm n Mask"]
+pub struct MASK1 {
+    register: ::vcell::VolatileCell<u8>,
+}
+#[doc = "MODE2_ALARM Alarm n Mask"]
+pub mod mask1;
 #[doc = "Tamper Control"]
 pub struct TAMPCTRL {
     register: ::vcell::VolatileCell<u32>,

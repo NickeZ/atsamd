@@ -14,8 +14,8 @@ impl super::CRCCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -225,6 +225,7 @@ impl CRCMODER {
     }
 }
 #[doc = "Values that can be written to the field `CRCBEATSIZE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CRCBEATSIZEW {
     #[doc = "8-bit bus transfer"]
     BYTE,
@@ -281,6 +282,7 @@ impl<'a> _CRCBEATSIZEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CRCPOLY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CRCPOLYW {
     #[doc = "CRC-16 (CRC-CCITT)"]
     CRC16,
@@ -329,6 +331,7 @@ impl<'a> _CRCPOLYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CRCSRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CRCSRCW {
     #[doc = "CRC Disabled"]
     DISABLE,
@@ -377,6 +380,7 @@ impl<'a> _CRCSRCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CRCMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CRCMODEW {
     #[doc = "Default operating mode"]
     DEFAULT,

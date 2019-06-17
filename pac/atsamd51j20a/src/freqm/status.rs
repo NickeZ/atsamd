@@ -14,8 +14,8 @@ impl super::STATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -85,6 +85,29 @@ impl OVFR {
     }
 }
 #[doc = r" Proxy"]
+pub struct _BUSYW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _BUSYW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 0;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
 pub struct _OVFW<'a> {
     w: &'a mut W,
 }
@@ -145,6 +168,11 @@ impl W {
     pub unsafe fn bits(&mut self, bits: u8) -> &mut Self {
         self.bits = bits;
         self
+    }
+    #[doc = "Bit 0 - FREQM Status"]
+    #[inline]
+    pub fn busy(&mut self) -> _BUSYW {
+        _BUSYW { w: self }
     }
     #[doc = "Bit 1 - Sticky Count Value Overflow"]
     #[inline]

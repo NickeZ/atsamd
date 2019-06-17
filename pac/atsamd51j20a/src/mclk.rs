@@ -12,7 +12,7 @@ pub struct RegisterBlock {
     pub hsdiv: HSDIV,
     #[doc = "0x05 - CPU Clock Division"]
     pub cpudiv: CPUDIV,
-    _reserved5: [u8; 10usize],
+    _reserved1: [u8; 10usize],
     #[doc = "0x10 - AHB Mask"]
     pub ahbmask: AHBMASK,
     #[doc = "0x14 - APBA Mask"]

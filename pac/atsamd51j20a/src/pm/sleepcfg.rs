@@ -14,8 +14,8 @@ impl super::SLEEPCFG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -45,12 +45,8 @@ impl super::SLEEPCFG {
 #[doc = "Possible values of the field `SLEEPMODE`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLEEPMODER {
-    #[doc = "CPU clock is OFF"]
-    IDLE0,
-    #[doc = "AHB clock is OFF"]
-    IDLE1,
-    #[doc = "APB clock are OFF"]
-    IDLE2,
+    #[doc = "CPU, AHBx, and APBx clocks are OFF"]
+    IDLE,
     #[doc = "All Clocks are OFF"]
     STANDBY,
     #[doc = "Backup domain is ON as well as some PDRAMs"]
@@ -67,9 +63,7 @@ impl SLEEPMODER {
     #[inline]
     pub fn bits(&self) -> u8 {
         match *self {
-            SLEEPMODER::IDLE0 => 0,
-            SLEEPMODER::IDLE1 => 1,
-            SLEEPMODER::IDLE2 => 2,
+            SLEEPMODER::IDLE => 2,
             SLEEPMODER::STANDBY => 4,
             SLEEPMODER::HIBERNATE => 5,
             SLEEPMODER::BACKUP => 6,
@@ -82,9 +76,7 @@ impl SLEEPMODER {
     #[inline]
     pub fn _from(value: u8) -> SLEEPMODER {
         match value {
-            0 => SLEEPMODER::IDLE0,
-            1 => SLEEPMODER::IDLE1,
-            2 => SLEEPMODER::IDLE2,
+            2 => SLEEPMODER::IDLE,
             4 => SLEEPMODER::STANDBY,
             5 => SLEEPMODER::HIBERNATE,
             6 => SLEEPMODER::BACKUP,
@@ -92,20 +84,10 @@ impl SLEEPMODER {
             i => SLEEPMODER::_Reserved(i),
         }
     }
-    #[doc = "Checks if the value of the field is `IDLE0`"]
+    #[doc = "Checks if the value of the field is `IDLE`"]
     #[inline]
-    pub fn is_idle0(&self) -> bool {
-        *self == SLEEPMODER::IDLE0
-    }
-    #[doc = "Checks if the value of the field is `IDLE1`"]
-    #[inline]
-    pub fn is_idle1(&self) -> bool {
-        *self == SLEEPMODER::IDLE1
-    }
-    #[doc = "Checks if the value of the field is `IDLE2`"]
-    #[inline]
-    pub fn is_idle2(&self) -> bool {
-        *self == SLEEPMODER::IDLE2
+    pub fn is_idle(&self) -> bool {
+        *self == SLEEPMODER::IDLE
     }
     #[doc = "Checks if the value of the field is `STANDBY`"]
     #[inline]
@@ -129,13 +111,10 @@ impl SLEEPMODER {
     }
 }
 #[doc = "Values that can be written to the field `SLEEPMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLEEPMODEW {
-    #[doc = "CPU clock is OFF"]
-    IDLE0,
-    #[doc = "AHB clock is OFF"]
-    IDLE1,
-    #[doc = "APB clock are OFF"]
-    IDLE2,
+    #[doc = "CPU, AHBx, and APBx clocks are OFF"]
+    IDLE,
     #[doc = "All Clocks are OFF"]
     STANDBY,
     #[doc = "Backup domain is ON as well as some PDRAMs"]
@@ -151,9 +130,7 @@ impl SLEEPMODEW {
     #[inline]
     pub fn _bits(&self) -> u8 {
         match *self {
-            SLEEPMODEW::IDLE0 => 0,
-            SLEEPMODEW::IDLE1 => 1,
-            SLEEPMODEW::IDLE2 => 2,
+            SLEEPMODEW::IDLE => 2,
             SLEEPMODEW::STANDBY => 4,
             SLEEPMODEW::HIBERNATE => 5,
             SLEEPMODEW::BACKUP => 6,
@@ -171,20 +148,10 @@ impl<'a> _SLEEPMODEW<'a> {
     pub fn variant(self, variant: SLEEPMODEW) -> &'a mut W {
         unsafe { self.bits(variant._bits()) }
     }
-    #[doc = "CPU clock is OFF"]
+    #[doc = "CPU, AHBx, and APBx clocks are OFF"]
     #[inline]
-    pub fn idle0(self) -> &'a mut W {
-        self.variant(SLEEPMODEW::IDLE0)
-    }
-    #[doc = "AHB clock is OFF"]
-    #[inline]
-    pub fn idle1(self) -> &'a mut W {
-        self.variant(SLEEPMODEW::IDLE1)
-    }
-    #[doc = "APB clock are OFF"]
-    #[inline]
-    pub fn idle2(self) -> &'a mut W {
-        self.variant(SLEEPMODEW::IDLE2)
+    pub fn idle(self) -> &'a mut W {
+        self.variant(SLEEPMODEW::IDLE)
     }
     #[doc = "All Clocks are OFF"]
     #[inline]

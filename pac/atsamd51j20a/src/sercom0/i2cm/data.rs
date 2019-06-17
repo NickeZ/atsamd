@@ -1,10 +1,10 @@
 #[doc = r" Value read from the register"]
 pub struct R {
-    bits: u32,
+    bits: u8,
 }
 #[doc = r" Value to write to the register"]
 pub struct W {
-    bits: u32,
+    bits: u8,
 }
 impl super::DATA {
     #[doc = r" Modifies the contents of the register"]
@@ -14,8 +14,8 @@ impl super::DATA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -44,12 +44,12 @@ impl super::DATA {
 }
 #[doc = r" Value of the field"]
 pub struct DATAR {
-    bits: u32,
+    bits: u8,
 }
 impl DATAR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
-    pub fn bits(&self) -> u32 {
+    pub fn bits(&self) -> u8 {
         self.bits
     }
 }
@@ -60,27 +60,27 @@ pub struct _DATAW<'a> {
 impl<'a> _DATAW<'a> {
     #[doc = r" Writes raw bits to the field"]
     #[inline]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        const MASK: u32 = 4294967295;
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        const MASK: u8 = 255;
         const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
         self.w
     }
 }
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
-    pub fn bits(&self) -> u32 {
+    pub fn bits(&self) -> u8 {
         self.bits
     }
-    #[doc = "Bits 0:31 - Data Value"]
+    #[doc = "Bits 0:7 - Data Value"]
     #[inline]
     pub fn data(&self) -> DATAR {
         let bits = {
-            const MASK: u32 = 4294967295;
+            const MASK: u8 = 255;
             const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u32
+            ((self.bits >> OFFSET) & MASK as u8) as u8
         };
         DATAR { bits }
     }
@@ -93,11 +93,11 @@ impl W {
     }
     #[doc = r" Writes raw bits to the register"]
     #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+    pub unsafe fn bits(&mut self, bits: u8) -> &mut Self {
         self.bits = bits;
         self
     }
-    #[doc = "Bits 0:31 - Data Value"]
+    #[doc = "Bits 0:7 - Data Value"]
     #[inline]
     pub fn data(&mut self) -> _DATAW {
         _DATAW { w: self }

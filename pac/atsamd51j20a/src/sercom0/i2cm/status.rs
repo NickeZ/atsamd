@@ -14,8 +14,8 @@ impl super::STATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -268,6 +268,29 @@ impl<'a> _ARBLOSTW<'a> {
     }
 }
 #[doc = r" Proxy"]
+pub struct _RXNACKW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _RXNACKW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 2;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
 pub struct _BUSSTATEW<'a> {
     w: &'a mut W,
 }
@@ -300,6 +323,29 @@ impl<'a> _LOWTOUTW<'a> {
     pub fn bit(self, value: bool) -> &'a mut W {
         const MASK: bool = true;
         const OFFSET: u8 = 6;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CLKHOLDW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CLKHOLDW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 7;
         self.w.bits &= !((MASK as u16) << OFFSET);
         self.w.bits |= ((value & MASK) as u16) << OFFSET;
         self.w
@@ -493,6 +539,11 @@ impl W {
     pub fn arblost(&mut self) -> _ARBLOSTW {
         _ARBLOSTW { w: self }
     }
+    #[doc = "Bit 2 - Received Not Acknowledge"]
+    #[inline]
+    pub fn rxnack(&mut self) -> _RXNACKW {
+        _RXNACKW { w: self }
+    }
     #[doc = "Bits 4:5 - Bus State"]
     #[inline]
     pub fn busstate(&mut self) -> _BUSSTATEW {
@@ -502,6 +553,11 @@ impl W {
     #[inline]
     pub fn lowtout(&mut self) -> _LOWTOUTW {
         _LOWTOUTW { w: self }
+    }
+    #[doc = "Bit 7 - Clock Hold"]
+    #[inline]
+    pub fn clkhold(&mut self) -> _CLKHOLDW {
+        _CLKHOLDW { w: self }
     }
     #[doc = "Bit 8 - Master SCL Low Extend Timeout"]
     #[inline]

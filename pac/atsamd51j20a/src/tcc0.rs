@@ -7,7 +7,7 @@ pub struct RegisterBlock {
     pub ctrlbclr: CTRLBCLR,
     #[doc = "0x05 - Control B Set"]
     pub ctrlbset: CTRLBSET,
-    _reserved3: [u8; 2usize],
+    _reserved0: [u8; 2usize],
     #[doc = "0x08 - Synchronization Busy"]
     pub syncbusy: SYNCBUSY,
     #[doc = "0x0c - Recoverable Fault A Configuration"]
@@ -18,10 +18,10 @@ pub struct RegisterBlock {
     pub wexctrl: WEXCTRL,
     #[doc = "0x18 - Driver Control"]
     pub drvctrl: DRVCTRL,
-    _reserved8: [u8; 2usize],
+    _reserved1: [u8; 2usize],
     #[doc = "0x1e - Debug Control"]
     pub dbgctrl: DBGCTRL,
-    _reserved9: [u8; 1usize],
+    _reserved2: [u8; 1usize],
     #[doc = "0x20 - Event Control"]
     pub evctrl: EVCTRL,
     #[doc = "0x24 - Interrupt Enable Clear"]
@@ -32,222 +32,25 @@ pub struct RegisterBlock {
     pub intflag: INTFLAG,
     #[doc = "0x30 - Status"]
     pub status: STATUS,
-    _reserved_14_count: [u8; 4usize],
+    #[doc = "0x34 - Count"]
+    pub count: COUNT,
     #[doc = "0x38 - Pattern"]
     pub patt: PATT,
-    _reserved16: [u8; 2usize],
+    _reserved3: [u8; 2usize],
     #[doc = "0x3c - Waveform Control"]
     pub wave: WAVE,
-    _reserved_17_per: [u8; 4usize],
-    _reserved_18_cc: [u8; 24usize],
-    _reserved19: [u8; 8usize],
+    #[doc = "0x40 - Period"]
+    pub per: PER,
+    #[doc = "0x44 - Compare and Capture"]
+    pub cc: [CC; 6],
+    _reserved4: [u8; 8usize],
     #[doc = "0x64 - Pattern Buffer"]
     pub pattbuf: PATTBUF,
-    _reserved20: [u8; 6usize],
-    _reserved_20_perbuf: [u8; 4usize],
-    _reserved_21_ccbuf: [u8; 24usize],
-}
-impl RegisterBlock {
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_dith6(&self) -> &COUNT_DITH6 {
-        unsafe { &*(((self as *const Self) as *const u8).add(52usize) as *const COUNT_DITH6) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_dith6_mut(&self) -> &mut COUNT_DITH6 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(52usize) as *mut COUNT_DITH6) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_dith5(&self) -> &COUNT_DITH5 {
-        unsafe { &*(((self as *const Self) as *const u8).add(52usize) as *const COUNT_DITH5) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_dith5_mut(&self) -> &mut COUNT_DITH5 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(52usize) as *mut COUNT_DITH5) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_dith4(&self) -> &COUNT_DITH4 {
-        unsafe { &*(((self as *const Self) as *const u8).add(52usize) as *const COUNT_DITH4) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_dith4_mut(&self) -> &mut COUNT_DITH4 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(52usize) as *mut COUNT_DITH4) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count(&self) -> &COUNT {
-        unsafe { &*(((self as *const Self) as *const u8).add(52usize) as *const COUNT) }
-    }
-    #[doc = "0x34 - Count"]
-    #[inline(always)]
-    pub fn count_mut(&self) -> &mut COUNT {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(52usize) as *mut COUNT) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_dith6(&self) -> &PER_DITH6 {
-        unsafe { &*(((self as *const Self) as *const u8).add(64usize) as *const PER_DITH6) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_dith6_mut(&self) -> &mut PER_DITH6 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(64usize) as *mut PER_DITH6) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_dith5(&self) -> &PER_DITH5 {
-        unsafe { &*(((self as *const Self) as *const u8).add(64usize) as *const PER_DITH5) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_dith5_mut(&self) -> &mut PER_DITH5 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(64usize) as *mut PER_DITH5) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_dith4(&self) -> &PER_DITH4 {
-        unsafe { &*(((self as *const Self) as *const u8).add(64usize) as *const PER_DITH4) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_dith4_mut(&self) -> &mut PER_DITH4 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(64usize) as *mut PER_DITH4) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per(&self) -> &PER {
-        unsafe { &*(((self as *const Self) as *const u8).add(64usize) as *const PER) }
-    }
-    #[doc = "0x40 - Period"]
-    #[inline(always)]
-    pub fn per_mut(&self) -> &mut PER {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(64usize) as *mut PER) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_dith6(&self) -> &[CC_DITH6; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(68usize) as *const [CC_DITH6; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_dith6_mut(&self) -> &mut [CC_DITH6; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(68usize) as *mut [CC_DITH6; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_dith5(&self) -> &[CC_DITH5; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(68usize) as *const [CC_DITH5; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_dith5_mut(&self) -> &mut [CC_DITH5; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(68usize) as *mut [CC_DITH5; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_dith4(&self) -> &[CC_DITH4; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(68usize) as *const [CC_DITH4; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_dith4_mut(&self) -> &mut [CC_DITH4; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(68usize) as *mut [CC_DITH4; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc(&self) -> &[CC; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(68usize) as *const [CC; 6]) }
-    }
-    #[doc = "0x44 - Compare and Capture"]
-    #[inline(always)]
-    pub fn cc_mut(&self) -> &mut [CC; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(68usize) as *mut [CC; 6]) }
-    }
+    _reserved5: [u8; 6usize],
     #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_dith6(&self) -> &PERBUF_DITH6 {
-        unsafe { &*(((self as *const Self) as *const u8).add(108usize) as *const PERBUF_DITH6) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_dith6_mut(&self) -> &mut PERBUF_DITH6 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(108usize) as *mut PERBUF_DITH6) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_dith5(&self) -> &PERBUF_DITH5 {
-        unsafe { &*(((self as *const Self) as *const u8).add(108usize) as *const PERBUF_DITH5) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_dith5_mut(&self) -> &mut PERBUF_DITH5 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(108usize) as *mut PERBUF_DITH5) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_dith4(&self) -> &PERBUF_DITH4 {
-        unsafe { &*(((self as *const Self) as *const u8).add(108usize) as *const PERBUF_DITH4) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_dith4_mut(&self) -> &mut PERBUF_DITH4 {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(108usize) as *mut PERBUF_DITH4) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf(&self) -> &PERBUF {
-        unsafe { &*(((self as *const Self) as *const u8).add(108usize) as *const PERBUF) }
-    }
-    #[doc = "0x6c - Period Buffer"]
-    #[inline(always)]
-    pub fn perbuf_mut(&self) -> &mut PERBUF {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(108usize) as *mut PERBUF) }
-    }
+    pub perbuf: PERBUF,
     #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_dith6(&self) -> &[CCBUF_DITH6; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(112usize) as *const [CCBUF_DITH6; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_dith6_mut(&self) -> &mut [CCBUF_DITH6; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(112usize) as *mut [CCBUF_DITH6; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_dith5(&self) -> &[CCBUF_DITH5; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(112usize) as *const [CCBUF_DITH5; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_dith5_mut(&self) -> &mut [CCBUF_DITH5; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(112usize) as *mut [CCBUF_DITH5; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_dith4(&self) -> &[CCBUF_DITH4; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(112usize) as *const [CCBUF_DITH4; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_dith4_mut(&self) -> &mut [CCBUF_DITH4; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(112usize) as *mut [CCBUF_DITH4; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf(&self) -> &[CCBUF; 6] {
-        unsafe { &*(((self as *const Self) as *const u8).add(112usize) as *const [CCBUF; 6]) }
-    }
-    #[doc = "0x70 - Compare and Capture Buffer"]
-    #[inline(always)]
-    pub fn ccbuf_mut(&self) -> &mut [CCBUF; 6] {
-        unsafe { &mut *(((self as *const Self) as *mut u8).add(112usize) as *mut [CCBUF; 6]) }
-    }
+    pub ccbuf: [CCBUF; 6],
 }
 #[doc = "Control A"]
 pub struct CTRLA {
@@ -340,23 +143,23 @@ pub struct COUNT {
 #[doc = "Count"]
 pub mod count;
 #[doc = "Count"]
-pub struct COUNT_DITH4 {
+pub struct COUNT_DITH4_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Count"]
-pub mod count_dith4;
+pub mod count_dith4_mode;
 #[doc = "Count"]
-pub struct COUNT_DITH5 {
+pub struct COUNT_DITH5_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Count"]
-pub mod count_dith5;
+pub mod count_dith5_mode;
 #[doc = "Count"]
-pub struct COUNT_DITH6 {
+pub struct COUNT_DITH6_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Count"]
-pub mod count_dith6;
+pub mod count_dith6_mode;
 #[doc = "Pattern"]
 pub struct PATT {
     register: ::vcell::VolatileCell<u16>,
@@ -376,23 +179,23 @@ pub struct PER {
 #[doc = "Period"]
 pub mod per;
 #[doc = "Period"]
-pub struct PER_DITH4 {
+pub struct PER_DITH4_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Period"]
-pub mod per_dith4;
+pub mod per_dith4_mode;
 #[doc = "Period"]
-pub struct PER_DITH5 {
+pub struct PER_DITH5_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Period"]
-pub mod per_dith5;
+pub mod per_dith5_mode;
 #[doc = "Period"]
-pub struct PER_DITH6 {
+pub struct PER_DITH6_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Period"]
-pub mod per_dith6;
+pub mod per_dith6_mode;
 #[doc = "Compare and Capture"]
 pub struct CC {
     register: ::vcell::VolatileCell<u32>,
@@ -400,23 +203,23 @@ pub struct CC {
 #[doc = "Compare and Capture"]
 pub mod cc;
 #[doc = "Compare and Capture"]
-pub struct CC_DITH4 {
+pub struct CC_DITH4_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Compare and Capture"]
-pub mod cc_dith4;
+pub mod cc_dith4_mode;
 #[doc = "Compare and Capture"]
-pub struct CC_DITH5 {
+pub struct CC_DITH5_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Compare and Capture"]
-pub mod cc_dith5;
+pub mod cc_dith5_mode;
 #[doc = "Compare and Capture"]
-pub struct CC_DITH6 {
+pub struct CC_DITH6_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Compare and Capture"]
-pub mod cc_dith6;
+pub mod cc_dith6_mode;
 #[doc = "Pattern Buffer"]
 pub struct PATTBUF {
     register: ::vcell::VolatileCell<u16>,
@@ -430,23 +233,23 @@ pub struct PERBUF {
 #[doc = "Period Buffer"]
 pub mod perbuf;
 #[doc = "Period Buffer"]
-pub struct PERBUF_DITH4 {
+pub struct PERBUF_DITH4_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Period Buffer"]
-pub mod perbuf_dith4;
+pub mod perbuf_dith4_mode;
 #[doc = "Period Buffer"]
-pub struct PERBUF_DITH5 {
+pub struct PERBUF_DITH5_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Period Buffer"]
-pub mod perbuf_dith5;
+pub mod perbuf_dith5_mode;
 #[doc = "Period Buffer"]
-pub struct PERBUF_DITH6 {
+pub struct PERBUF_DITH6_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Period Buffer"]
-pub mod perbuf_dith6;
+pub mod perbuf_dith6_mode;
 #[doc = "Compare and Capture Buffer"]
 pub struct CCBUF {
     register: ::vcell::VolatileCell<u32>,
@@ -454,20 +257,20 @@ pub struct CCBUF {
 #[doc = "Compare and Capture Buffer"]
 pub mod ccbuf;
 #[doc = "Compare and Capture Buffer"]
-pub struct CCBUF_DITH4 {
+pub struct CCBUF_DITH4_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Compare and Capture Buffer"]
-pub mod ccbuf_dith4;
+pub mod ccbuf_dith4_mode;
 #[doc = "Compare and Capture Buffer"]
-pub struct CCBUF_DITH5 {
+pub struct CCBUF_DITH5_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Compare and Capture Buffer"]
-pub mod ccbuf_dith5;
+pub mod ccbuf_dith5_mode;
 #[doc = "Compare and Capture Buffer"]
-pub struct CCBUF_DITH6 {
+pub struct CCBUF_DITH6_MODE {
     register: ::vcell::VolatileCell<u32>,
 }
 #[doc = "Compare and Capture Buffer"]
-pub mod ccbuf_dith6;
+pub mod ccbuf_dith6_mode;

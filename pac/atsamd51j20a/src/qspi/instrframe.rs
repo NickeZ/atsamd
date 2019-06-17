@@ -14,8 +14,8 @@ impl super::INSTRFRAME {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -425,6 +425,7 @@ impl DUMMYLENR {
     }
 }
 #[doc = "Values that can be written to the field `WIDTH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WIDTHW {
     #[doc = "Instruction: Single-bit SPI / Address-Option: Single-bit SPI / Data: Single-bit SPI"]
     SINGLE_BIT_SPI,
@@ -605,6 +606,7 @@ impl<'a> _DATAENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `OPTCODELEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OPTCODELENW {
     #[doc = "1-bit length option code"]
     _1BIT,
@@ -671,6 +673,7 @@ impl<'a> _OPTCODELENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ADDRLEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ADDRLENW {
     #[doc = "24-bits address length"]
     _24BITS,
@@ -729,6 +732,7 @@ impl<'a> _ADDRLENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `TFRTYPE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TFRTYPEW {
     #[doc = "Read transfer from the serial memory.Scrambling is not performed.Read at random location (fetch) in the serial flash memory is not possible."]
     READ,

@@ -14,8 +14,8 @@ impl super::TMR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -281,6 +281,7 @@ impl MSBSELR {
     }
 }
 #[doc = "Values that can be written to the field `DMAEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DMAENW {
     #[doc = "No data transfer or Non DMA data transfer"]
     DISABLE,
@@ -339,6 +340,7 @@ impl<'a> _DMAENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BCEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BCENW {
     #[doc = "Disable"]
     DISABLE,
@@ -397,6 +399,7 @@ impl<'a> _BCENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMDEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDENW {
     #[doc = "Auto Command Disabled"]
     DISABLED,
@@ -453,6 +456,7 @@ impl<'a> _ACMDENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DTDSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DTDSELW {
     #[doc = "Write (Host to Card)"]
     WRITE,
@@ -511,6 +515,7 @@ impl<'a> _DTDSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MSBSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MSBSELW {
     #[doc = "Single Block"]
     SINGLE,

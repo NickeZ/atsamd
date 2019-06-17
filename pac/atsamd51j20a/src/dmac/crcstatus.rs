@@ -14,8 +14,8 @@ impl super::CRCSTATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -128,6 +128,52 @@ impl<'a> _CRCBUSYW<'a> {
         self.w
     }
 }
+#[doc = r" Proxy"]
+pub struct _CRCZEROW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CRCZEROW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 1;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CRCERRW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CRCERRW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 2;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
@@ -181,5 +227,15 @@ impl W {
     #[inline]
     pub fn crcbusy(&mut self) -> _CRCBUSYW {
         _CRCBUSYW { w: self }
+    }
+    #[doc = "Bit 1 - CRC Zero"]
+    #[inline]
+    pub fn crczero(&mut self) -> _CRCZEROW {
+        _CRCZEROW { w: self }
+    }
+    #[doc = "Bit 2 - CRC Error"]
+    #[inline]
+    pub fn crcerr(&mut self) -> _CRCERRW {
+        _CRCERRW { w: self }
     }
 }

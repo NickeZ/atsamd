@@ -14,8 +14,8 @@ impl super::COMPCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -536,7 +536,7 @@ impl OUTR {
     }
     #[doc = "Checks if the value of the field is `ASYNC`"]
     #[inline]
-    pub fn is_async_(&self) -> bool {
+    pub fn is_async(&self) -> bool {
         *self == OUTR::ASYNC
     }
     #[doc = "Checks if the value of the field is `SYNC`"]
@@ -592,6 +592,7 @@ impl<'a> _SINGLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `INTSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum INTSELW {
     #[doc = "Interrupt on comparator output toggle"]
     TOGGLE,
@@ -681,6 +682,7 @@ impl<'a> _RUNSTDBYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MUXNEG`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MUXNEGW {
     #[doc = "I/O pin 0"]
     PIN0,
@@ -779,6 +781,7 @@ impl<'a> _MUXNEGW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MUXPOS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MUXPOSW {
     #[doc = "I/O pin 0"]
     PIN0,
@@ -874,6 +877,7 @@ impl<'a> _SWAPW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SPEED`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SPEEDW {
     #[doc = "High speed"]
     HIGH,
@@ -937,6 +941,7 @@ impl<'a> _HYSTENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `HYST`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HYSTW {
     #[doc = "50mV"]
     HYST50,
@@ -993,6 +998,7 @@ impl<'a> _HYSTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `FLEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum FLENW {
     #[doc = "No filtering"]
     OFF,
@@ -1049,6 +1055,7 @@ impl<'a> _FLENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `OUT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUTW {
     #[doc = "The output of COMPn is not routed to the COMPn I/O port"]
     OFF,
@@ -1086,7 +1093,7 @@ impl<'a> _OUTW<'a> {
     }
     #[doc = "The asynchronous output of COMPn is routed to the COMPn I/O port"]
     #[inline]
-    pub fn async_(self) -> &'a mut W {
+    pub fn async(self) -> &'a mut W {
         self.variant(OUTW::ASYNC)
     }
     #[doc = "The synchronous output (including filtering) of COMPn is routed to the COMPn I/O port"]

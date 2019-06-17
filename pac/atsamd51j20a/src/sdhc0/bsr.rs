@@ -14,8 +14,8 @@ impl super::BSR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -161,6 +161,7 @@ impl<'a> _BLOCKSIZEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BOUNDARY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BOUNDARYW {
     #[doc = "4k bytes"]
     _4K,

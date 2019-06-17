@@ -14,8 +14,8 @@ impl super::TXCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -40,6 +40,56 @@ impl super::TXCTRL {
     #[inline]
     pub fn reset(&self) {
         self.write(|w| w)
+    }
+}
+#[doc = "Possible values of the field `SERMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SERMODER {
+    #[doc = "Receive"]
+    RX,
+    #[doc = "Transmit"]
+    TX,
+    #[doc = "Receive one PDM data on each serial clock edge"]
+    PDM2,
+    #[doc = r" Reserved"]
+    _Reserved(u8),
+}
+impl SERMODER {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bits(&self) -> u8 {
+        match *self {
+            SERMODER::RX => 0,
+            SERMODER::TX => 1,
+            SERMODER::PDM2 => 2,
+            SERMODER::_Reserved(bits) => bits,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> SERMODER {
+        match value {
+            0 => SERMODER::RX,
+            1 => SERMODER::TX,
+            2 => SERMODER::PDM2,
+            i => SERMODER::_Reserved(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `RX`"]
+    #[inline]
+    pub fn is_rx(&self) -> bool {
+        *self == SERMODER::RX
+    }
+    #[doc = "Checks if the value of the field is `TX`"]
+    #[inline]
+    pub fn is_tx(&self) -> bool {
+        *self == SERMODER::TX
+    }
+    #[doc = "Checks if the value of the field is `PDM2`"]
+    #[inline]
+    pub fn is_pdm2(&self) -> bool {
+        *self == SERMODER::PDM2
     }
 }
 #[doc = "Possible values of the field `TXDEFAULT`"]
@@ -137,6 +187,53 @@ impl TXSAMER {
     #[inline]
     pub fn is_same(&self) -> bool {
         *self == TXSAMER::SAME
+    }
+}
+#[doc = "Possible values of the field `CLKSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum CLKSELR {
+    #[doc = "Use Clock Unit 0"]
+    CLK0,
+    #[doc = "Use Clock Unit 1"]
+    CLK1,
+}
+impl CLKSELR {
+    #[doc = r" Returns `true` if the bit is clear (0)"]
+    #[inline]
+    pub fn bit_is_clear(&self) -> bool {
+        !self.bit()
+    }
+    #[doc = r" Returns `true` if the bit is set (1)"]
+    #[inline]
+    pub fn bit_is_set(&self) -> bool {
+        self.bit()
+    }
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        match *self {
+            CLKSELR::CLK0 => false,
+            CLKSELR::CLK1 => true,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: bool) -> CLKSELR {
+        match value {
+            false => CLKSELR::CLK0,
+            true => CLKSELR::CLK1,
+        }
+    }
+    #[doc = "Checks if the value of the field is `CLK0`"]
+    #[inline]
+    pub fn is_clk0(&self) -> bool {
+        *self == CLKSELR::CLK0
+    }
+    #[doc = "Checks if the value of the field is `CLK1`"]
+    #[inline]
+    pub fn is_clk1(&self) -> bool {
+        *self == CLKSELR::CLK1
     }
 }
 #[doc = "Possible values of the field `SLOTADJ`"]
@@ -690,7 +787,65 @@ impl DMAR {
         *self == DMAR::MULTIPLE
     }
 }
+#[doc = "Values that can be written to the field `SERMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SERMODEW {
+    #[doc = "Receive"]
+    RX,
+    #[doc = "Transmit"]
+    TX,
+    #[doc = "Receive one PDM data on each serial clock edge"]
+    PDM2,
+}
+impl SERMODEW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            SERMODEW::RX => 0,
+            SERMODEW::TX => 1,
+            SERMODEW::PDM2 => 2,
+        }
+    }
+}
+#[doc = r" Proxy"]
+pub struct _SERMODEW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _SERMODEW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: SERMODEW) -> &'a mut W {
+        unsafe { self.bits(variant._bits()) }
+    }
+    #[doc = "Receive"]
+    #[inline]
+    pub fn rx(self) -> &'a mut W {
+        self.variant(SERMODEW::RX)
+    }
+    #[doc = "Transmit"]
+    #[inline]
+    pub fn tx(self) -> &'a mut W {
+        self.variant(SERMODEW::TX)
+    }
+    #[doc = "Receive one PDM data on each serial clock edge"]
+    #[inline]
+    pub fn pdm2(self) -> &'a mut W {
+        self.variant(SERMODEW::PDM2)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        const MASK: u8 = 3;
+        const OFFSET: u8 = 0;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
 #[doc = "Values that can be written to the field `TXDEFAULT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TXDEFAULTW {
     #[doc = "Output Default Value is 0"]
     ZERO,
@@ -747,6 +902,7 @@ impl<'a> _TXDEFAULTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `TXSAME`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TXSAMEW {
     #[doc = "Zero data transmitted in case of underrun"]
     ZERO,
@@ -804,7 +960,67 @@ impl<'a> _TXSAMEW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `CLKSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum CLKSELW {
+    #[doc = "Use Clock Unit 0"]
+    CLK0,
+    #[doc = "Use Clock Unit 1"]
+    CLK1,
+}
+impl CLKSELW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            CLKSELW::CLK0 => false,
+            CLKSELW::CLK1 => true,
+        }
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CLKSELW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CLKSELW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: CLKSELW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "Use Clock Unit 0"]
+    #[inline]
+    pub fn clk0(self) -> &'a mut W {
+        self.variant(CLKSELW::CLK0)
+    }
+    #[doc = "Use Clock Unit 1"]
+    #[inline]
+    pub fn clk1(self) -> &'a mut W {
+        self.variant(CLKSELW::CLK1)
+    }
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 5;
+        self.w.bits &= !((MASK as u32) << OFFSET);
+        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w
+    }
+}
 #[doc = "Values that can be written to the field `SLOTADJ`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLOTADJW {
     #[doc = "Data is right adjusted in slot"]
     RIGHT,
@@ -863,6 +1079,7 @@ impl<'a> _SLOTADJW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATASIZE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATASIZEW {
     #[doc = "32 bits"]
     _32,
@@ -961,6 +1178,7 @@ impl<'a> _DATASIZEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WORDADJ`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WORDADJW {
     #[doc = "Data is right adjusted in word"]
     RIGHT,
@@ -1019,6 +1237,7 @@ impl<'a> _WORDADJW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `EXTEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EXTENDW {
     #[doc = "Extend with zeroes"]
     ZERO,
@@ -1085,6 +1304,7 @@ impl<'a> _EXTENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BITREV`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BITREVW {
     #[doc = "Transfer Data Most Significant Bit (MSB) first (default for I2S protocol)"]
     MSBIT,
@@ -1327,6 +1547,7 @@ impl<'a> _SLOTDIS7W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MONO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MONOW {
     #[doc = "Normal mode"]
     STEREO,
@@ -1385,6 +1606,7 @@ impl<'a> _MONOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DMA`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DMAW {
     #[doc = "Single DMA channel"]
     SINGLE,
@@ -1448,6 +1670,15 @@ impl R {
     pub fn bits(&self) -> u32 {
         self.bits
     }
+    #[doc = "Bits 0:1 - Serializer Mode"]
+    #[inline]
+    pub fn sermode(&self) -> SERMODER {
+        SERMODER::_from({
+            const MASK: u8 = 3;
+            const OFFSET: u8 = 0;
+            ((self.bits >> OFFSET) & MASK as u32) as u8
+        })
+    }
     #[doc = "Bits 2:3 - Line Default Line when Slot Disabled"]
     #[inline]
     pub fn txdefault(&self) -> TXDEFAULTR {
@@ -1463,6 +1694,15 @@ impl R {
         TXSAMER::_from({
             const MASK: bool = true;
             const OFFSET: u8 = 4;
+            ((self.bits >> OFFSET) & MASK as u32) != 0
+        })
+    }
+    #[doc = "Bit 5 - Clock Unit Selection"]
+    #[inline]
+    pub fn clksel(&self) -> CLKSELR {
+        CLKSELR::_from({
+            const MASK: bool = true;
+            const OFFSET: u8 = 5;
             ((self.bits >> OFFSET) & MASK as u32) != 0
         })
     }
@@ -1622,6 +1862,11 @@ impl W {
         self.bits = bits;
         self
     }
+    #[doc = "Bits 0:1 - Serializer Mode"]
+    #[inline]
+    pub fn sermode(&mut self) -> _SERMODEW {
+        _SERMODEW { w: self }
+    }
     #[doc = "Bits 2:3 - Line Default Line when Slot Disabled"]
     #[inline]
     pub fn txdefault(&mut self) -> _TXDEFAULTW {
@@ -1631,6 +1876,11 @@ impl W {
     #[inline]
     pub fn txsame(&mut self) -> _TXSAMEW {
         _TXSAMEW { w: self }
+    }
+    #[doc = "Bit 5 - Clock Unit Selection"]
+    #[inline]
+    pub fn clksel(&mut self) -> _CLKSELW {
+        _CLKSELW { w: self }
     }
     #[doc = "Bit 7 - Data Slot Formatting Adjust"]
     #[inline]

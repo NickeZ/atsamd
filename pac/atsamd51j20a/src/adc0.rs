@@ -13,7 +13,7 @@ pub struct RegisterBlock {
     pub ctrlb: CTRLB,
     #[doc = "0x08 - Reference Control"]
     pub refctrl: REFCTRL,
-    _reserved6: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x0a - Average Control"]
     pub avgctrl: AVGCTRL,
     #[doc = "0x0b - Sample Time Control"]
@@ -28,7 +28,7 @@ pub struct RegisterBlock {
     pub offsetcorr: OFFSETCORR,
     #[doc = "0x14 - Software Trigger"]
     pub swtrig: SWTRIG,
-    _reserved13: [u8; 23usize],
+    _reserved1: [u8; 23usize],
     #[doc = "0x2c - Interrupt Enable Clear"]
     pub intenclr: INTENCLR,
     #[doc = "0x2d - Interrupt Enable Set"]
@@ -47,10 +47,10 @@ pub struct RegisterBlock {
     pub dseqstat: DSEQSTAT,
     #[doc = "0x40 - Result Conversion Value"]
     pub result: RESULT,
-    _reserved22: [u8; 2usize],
+    _reserved2: [u8; 2usize],
     #[doc = "0x44 - Last Sample Result"]
     pub ress: RESS,
-    _reserved23: [u8; 2usize],
+    _reserved3: [u8; 2usize],
     #[doc = "0x48 - Calibration"]
     pub calib: CALIB,
 }

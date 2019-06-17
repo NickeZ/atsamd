@@ -5,12 +5,12 @@ pub struct RegisterBlock {
     pub wrctrl: WRCTRL,
     #[doc = "0x04 - Event control"]
     pub evctrl: EVCTRL,
-    _reserved2: [u8; 3usize],
+    _reserved0: [u8; 3usize],
     #[doc = "0x08 - Interrupt enable clear"]
     pub intenclr: INTENCLR,
     #[doc = "0x09 - Interrupt enable set"]
     pub intenset: INTENSET,
-    _reserved4: [u8; 6usize],
+    _reserved1: [u8; 6usize],
     #[doc = "0x10 - Bridge interrupt flag status"]
     pub intflagahb: INTFLAGAHB,
     #[doc = "0x14 - Peripheral interrupt flag status - Bridge A"]
@@ -21,7 +21,7 @@ pub struct RegisterBlock {
     pub intflagc: INTFLAGC,
     #[doc = "0x20 - Peripheral interrupt flag status - Bridge D"]
     pub intflagd: INTFLAGD,
-    _reserved9: [u8; 16usize],
+    _reserved2: [u8; 16usize],
     #[doc = "0x34 - Peripheral write protection status - Bridge A"]
     pub statusa: STATUSA,
     #[doc = "0x38 - Peripheral write protection status - Bridge B"]

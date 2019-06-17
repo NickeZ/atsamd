@@ -14,8 +14,8 @@ impl super::SEQCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -111,6 +111,7 @@ impl SEQSELR {
     }
 }
 #[doc = "Values that can be written to the field `SEQSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SEQSELW {
     #[doc = "Sequential logic is disabled"]
     DISABLE,

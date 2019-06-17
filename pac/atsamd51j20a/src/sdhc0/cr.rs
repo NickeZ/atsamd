@@ -14,8 +14,8 @@ impl super::CR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -307,6 +307,7 @@ impl CMDIDXR {
     }
 }
 #[doc = "Values that can be written to the field `RESPTYP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RESPTYPW {
     #[doc = "No response"]
     NONE,
@@ -373,6 +374,7 @@ impl<'a> _RESPTYPW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDCCEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDCCENW {
     #[doc = "Disable"]
     DISABLE,
@@ -431,6 +433,7 @@ impl<'a> _CMDCCENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDICEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDICENW {
     #[doc = "Disable"]
     DISABLE,
@@ -489,6 +492,7 @@ impl<'a> _CMDICENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DPSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DPSELW {
     #[doc = "No Data Present"]
     NO_DATA,
@@ -547,6 +551,7 @@ impl<'a> _DPSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDTYP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDTYPW {
     #[doc = "Other commands"]
     NORMAL,

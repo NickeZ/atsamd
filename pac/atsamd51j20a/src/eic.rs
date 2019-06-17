@@ -21,7 +21,7 @@ pub struct RegisterBlock {
     pub asynch: ASYNCH,
     #[doc = "0x1c - External Interrupt Sense Configuration"]
     pub config: [CONFIG; 2],
-    _reserved10: [u8; 12usize],
+    _reserved0: [u8; 12usize],
     #[doc = "0x30 - Debouncer Enable"]
     pub debouncen: DEBOUNCEN,
     #[doc = "0x34 - Debouncer Prescaler"]

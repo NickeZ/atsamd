@@ -14,8 +14,8 @@ impl super::CTRLB {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -329,6 +329,7 @@ impl DLYCSR {
     }
 }
 #[doc = "Values that can be written to the field `MODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODEW {
     #[doc = "SPI operating mode"]
     SPI,
@@ -456,6 +457,7 @@ impl<'a> _SMEMREGW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CSMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CSMODEW {
     #[doc = "The chip select is deasserted if TD has not been reloaded before the end of the current transfer."]
     NORELOAD,
@@ -512,6 +514,7 @@ impl<'a> _CSMODEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATALEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATALENW {
     #[doc = "8-bits transfer"]
     _8BITS,

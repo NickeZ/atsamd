@@ -15,10 +15,10 @@ pub struct RegisterBlock {
     pub intenset: INTENSET,
     #[doc = "0x0a - Interrupt Flag Status and Clear"]
     pub intflag: INTFLAG,
-    _reserved7: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x0c - Status"]
     pub status: STATUS,
-    _reserved8: [u8; 1usize],
+    _reserved1: [u8; 1usize],
     #[doc = "0x0f - Debug Control"]
     pub dbgctrl: DBGCTRL,
     #[doc = "0x10 - Synchronization Status"]
@@ -27,17 +27,17 @@ pub struct RegisterBlock {
     pub presc: PRESC,
     #[doc = "0x15 - Filter Value"]
     pub filter: FILTER,
-    _reserved12: [u8; 2usize],
+    _reserved2: [u8; 2usize],
     #[doc = "0x18 - Prescaler Buffer Value"]
     pub prescbuf: PRESCBUF,
     #[doc = "0x19 - Filter Buffer Value"]
     pub filterbuf: FILTERBUF,
-    _reserved14: [u8; 2usize],
+    _reserved3: [u8; 2usize],
     #[doc = "0x1c - Counter Value"]
     pub count: COUNT,
     #[doc = "0x20 - Channel n Compare Value"]
     pub cc: [CC; 2],
-    _reserved16: [u8; 8usize],
+    _reserved4: [u8; 8usize],
     #[doc = "0x30 - Channel Compare Buffer Value"]
     pub ccbuf: [CCBUF; 2],
 }

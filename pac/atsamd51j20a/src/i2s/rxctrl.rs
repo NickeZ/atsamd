@@ -14,8 +14,8 @@ impl super::RXCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -703,6 +703,7 @@ impl RXLOOPR {
     }
 }
 #[doc = "Values that can be written to the field `SERMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SERMODEW {
     #[doc = "Receive"]
     RX,
@@ -751,6 +752,7 @@ impl<'a> _SERMODEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CLKSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CLKSELW {
     #[doc = "Use Clock Unit 0"]
     CLK0,
@@ -809,6 +811,7 @@ impl<'a> _CLKSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SLOTADJ`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLOTADJW {
     #[doc = "Data is right adjusted in slot"]
     RIGHT,
@@ -867,6 +870,7 @@ impl<'a> _SLOTADJW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATASIZE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATASIZEW {
     #[doc = "32 bits"]
     _32,
@@ -965,6 +969,7 @@ impl<'a> _DATASIZEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WORDADJ`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WORDADJW {
     #[doc = "Data is right adjusted in word"]
     RIGHT,
@@ -1023,6 +1028,7 @@ impl<'a> _WORDADJW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `EXTEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EXTENDW {
     #[doc = "Extend with zeroes"]
     ZERO,
@@ -1089,6 +1095,7 @@ impl<'a> _EXTENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BITREV`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BITREVW {
     #[doc = "Transfer Data Most Significant Bit (MSB) first (default for I2S protocol)"]
     MSBIT,
@@ -1331,6 +1338,7 @@ impl<'a> _SLOTDIS7W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MONO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MONOW {
     #[doc = "Normal mode"]
     STEREO,
@@ -1389,6 +1397,7 @@ impl<'a> _MONOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DMA`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DMAW {
     #[doc = "Single DMA channel"]
     SINGLE,

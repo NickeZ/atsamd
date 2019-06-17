@@ -3,17 +3,17 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Control A"]
     pub ctrla: CTRLA,
-    _reserved1: [u8; 3usize],
+    _reserved0: [u8; 3usize],
     #[doc = "0x04 - Event Control"]
     pub evctrl: EVCTRL,
-    _reserved2: [u8; 3usize],
+    _reserved1: [u8; 3usize],
     #[doc = "0x08 - Interrupt Enable Clear"]
     pub intenclr: INTENCLR,
     #[doc = "0x09 - Interrupt Enable Set"]
     pub intenset: INTENSET,
     #[doc = "0x0a - Interrupt Flag Status and Clear"]
     pub intflag: INTFLAG,
-    _reserved5: [u8; 21usize],
+    _reserved2: [u8; 21usize],
     #[doc = "0x20 - Output Data"]
     pub data: DATA,
 }

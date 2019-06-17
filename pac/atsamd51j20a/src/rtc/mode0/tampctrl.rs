@@ -14,8 +14,8 @@ impl super::TAMPCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -533,6 +533,7 @@ impl DEBNC4R {
     }
 }
 #[doc = "Values that can be written to the field `IN0ACT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IN0ACTW {
     #[doc = "Off (Disabled)"]
     OFF,
@@ -599,6 +600,7 @@ impl<'a> _IN0ACTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `IN1ACT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IN1ACTW {
     #[doc = "Off (Disabled)"]
     OFF,
@@ -665,6 +667,7 @@ impl<'a> _IN1ACTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `IN2ACT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IN2ACTW {
     #[doc = "Off (Disabled)"]
     OFF,
@@ -731,6 +734,7 @@ impl<'a> _IN2ACTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `IN3ACT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IN3ACTW {
     #[doc = "Off (Disabled)"]
     OFF,
@@ -797,6 +801,7 @@ impl<'a> _IN3ACTW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `IN4ACT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IN4ACTW {
     #[doc = "Off (Disabled)"]
     OFF,

@@ -15,6 +15,7 @@ impl super::FEREIS {
     }
 }
 #[doc = "Values that can be written to the field `CMDTEO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDTEOW {
     #[doc = "No Interrupt"]
     NO,
@@ -73,6 +74,7 @@ impl<'a> _CMDTEOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDCRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDCRCW {
     #[doc = "No Interrupt"]
     NO,
@@ -131,6 +133,7 @@ impl<'a> _CMDCRCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDENDW {
     #[doc = "No Interrupt"]
     NO,
@@ -189,6 +192,7 @@ impl<'a> _CMDENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDIDX`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDIDXW {
     #[doc = "No Interrupt"]
     NO,
@@ -247,6 +251,7 @@ impl<'a> _CMDIDXW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATTEO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATTEOW {
     #[doc = "No Interrupt"]
     NO,
@@ -305,6 +310,7 @@ impl<'a> _DATTEOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATCRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATCRCW {
     #[doc = "No Interrupt"]
     NO,
@@ -363,6 +369,7 @@ impl<'a> _DATCRCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATENDW {
     #[doc = "No Interrupt"]
     NO,
@@ -421,6 +428,7 @@ impl<'a> _DATENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CURLIM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CURLIMW {
     #[doc = "No Interrupt"]
     NO,
@@ -479,6 +487,7 @@ impl<'a> _CURLIMW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDW {
     #[doc = "No Interrupt"]
     NO,
@@ -537,6 +546,7 @@ impl<'a> _ACMDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ADMA`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ADMAW {
     #[doc = "No Interrupt"]
     NO,
@@ -595,6 +605,7 @@ impl<'a> _ADMAW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BOOTAE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BOOTAEW {
     #[doc = "No Interrupt"]
     NO,

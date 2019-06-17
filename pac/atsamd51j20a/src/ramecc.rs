@@ -11,7 +11,7 @@ pub struct RegisterBlock {
     pub status: STATUS,
     #[doc = "0x04 - Error Address"]
     pub erraddr: ERRADDR,
-    _reserved5: [u8; 7usize],
+    _reserved0: [u8; 7usize],
     #[doc = "0x0f - Debug Control"]
     pub dbgctrl: DBGCTRL,
 }

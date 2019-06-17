@@ -14,8 +14,8 @@ impl super::STATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -145,6 +145,52 @@ impl CCBUFV1R {
     #[inline]
     pub fn bit_is_set(&self) -> bool {
         self.bit()
+    }
+}
+#[doc = r" Proxy"]
+pub struct _STOPW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _STOPW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 0;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _SLAVEW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _SLAVEW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 1;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
     }
 }
 #[doc = r" Proxy"]
@@ -284,6 +330,16 @@ impl W {
     pub unsafe fn bits(&mut self, bits: u8) -> &mut Self {
         self.bits = bits;
         self
+    }
+    #[doc = "Bit 0 - Stop Status Flag"]
+    #[inline]
+    pub fn stop(&mut self) -> _STOPW {
+        _STOPW { w: self }
+    }
+    #[doc = "Bit 1 - Slave Status Flag"]
+    #[inline]
+    pub fn slave(&mut self) -> _SLAVEW {
+        _SLAVEW { w: self }
     }
     #[doc = "Bit 3 - Synchronization Busy Status"]
     #[inline]

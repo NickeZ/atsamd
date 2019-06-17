@@ -14,8 +14,8 @@ impl super::BGCR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -231,6 +231,7 @@ impl INTBGR {
     }
 }
 #[doc = "Values that can be written to the field `STPBGR`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum STPBGRW {
     #[doc = "Transfer"]
     TRANSFER,
@@ -289,6 +290,7 @@ impl<'a> _STPBGRW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CONTR`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CONTRW {
     #[doc = "Not affected"]
     GO_ON,
@@ -347,6 +349,7 @@ impl<'a> _CONTRW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `RWCTRL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RWCTRLW {
     #[doc = "Disable Read Wait Control"]
     DISABLE,
@@ -405,6 +408,7 @@ impl<'a> _RWCTRLW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `INTBG`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum INTBGW {
     #[doc = "Disabled"]
     DISABLED,

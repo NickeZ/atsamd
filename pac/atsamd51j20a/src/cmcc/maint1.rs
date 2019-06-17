@@ -30,6 +30,7 @@ impl<'a> _INDEXW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WAY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WAYW {
     #[doc = "Way 0 is selection for index invalidation"]
     WAY0,

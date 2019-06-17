@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -190,54 +190,15 @@ impl PRMR {
         *self == PRMR::MANUAL
     }
 }
-#[doc = "Possible values of the field `RWS`"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RWSR {
-    #[doc = "Single Auto Wait State"]
-    SINGLE,
-    #[doc = "Half Auto Wait State"]
-    HALF,
-    #[doc = "Dual Auto Wait State"]
-    DUAL,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
+#[doc = r" Value of the field"]
+pub struct RWSR {
+    bits: u8,
 }
 impl RWSR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        match *self {
-            RWSR::SINGLE => 0,
-            RWSR::HALF => 1,
-            RWSR::DUAL => 2,
-            RWSR::_Reserved(bits) => bits,
-        }
-    }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> RWSR {
-        match value {
-            0 => RWSR::SINGLE,
-            1 => RWSR::HALF,
-            2 => RWSR::DUAL,
-            i => RWSR::_Reserved(i),
-        }
-    }
-    #[doc = "Checks if the value of the field is `SINGLE`"]
-    #[inline]
-    pub fn is_single(&self) -> bool {
-        *self == RWSR::SINGLE
-    }
-    #[doc = "Checks if the value of the field is `HALF`"]
-    #[inline]
-    pub fn is_half(&self) -> bool {
-        *self == RWSR::HALF
-    }
-    #[doc = "Checks if the value of the field is `DUAL`"]
-    #[inline]
-    pub fn is_dual(&self) -> bool {
-        *self == RWSR::DUAL
+        self.bits
     }
 }
 #[doc = r" Value of the field"]
@@ -371,6 +332,7 @@ impl<'a> _SUSPENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WMODEW {
     #[doc = "Manual Write"]
     MAN,
@@ -437,6 +399,7 @@ impl<'a> _WMODEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PRM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PRMW {
     #[doc = "NVM block enters low-power mode when entering standby mode. NVM block enters low-power mode when SPRM command is issued. NVM block exits low-power mode upon first access."]
     SEMIAUTO,
@@ -492,52 +455,11 @@ impl<'a> _PRMW<'a> {
         self.w
     }
 }
-#[doc = "Values that can be written to the field `RWS`"]
-pub enum RWSW {
-    #[doc = "Single Auto Wait State"]
-    SINGLE,
-    #[doc = "Half Auto Wait State"]
-    HALF,
-    #[doc = "Dual Auto Wait State"]
-    DUAL,
-}
-impl RWSW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            RWSW::SINGLE => 0,
-            RWSW::HALF => 1,
-            RWSW::DUAL => 2,
-        }
-    }
-}
 #[doc = r" Proxy"]
 pub struct _RWSW<'a> {
     w: &'a mut W,
 }
 impl<'a> _RWSW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: RWSW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
-    }
-    #[doc = "Single Auto Wait State"]
-    #[inline]
-    pub fn single(self) -> &'a mut W {
-        self.variant(RWSW::SINGLE)
-    }
-    #[doc = "Half Auto Wait State"]
-    #[inline]
-    pub fn half(self) -> &'a mut W {
-        self.variant(RWSW::HALF)
-    }
-    #[doc = "Dual Auto Wait State"]
-    #[inline]
-    pub fn dual(self) -> &'a mut W {
-        self.variant(RWSW::DUAL)
-    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
@@ -687,11 +609,12 @@ impl R {
     #[doc = "Bits 8:11 - NVM Read Wait States"]
     #[inline]
     pub fn rws(&self) -> RWSR {
-        RWSR::_from({
+        let bits = {
             const MASK: u8 = 15;
             const OFFSET: u8 = 8;
             ((self.bits >> OFFSET) & MASK as u16) as u8
-        })
+        };
+        RWSR { bits }
     }
     #[doc = "Bit 12 - Force AHB0 access to NONSEQ, burst transfers are continuously rearbitrated"]
     #[inline]

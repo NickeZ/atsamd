@@ -14,8 +14,8 @@ impl super::WAVE {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -500,6 +500,7 @@ impl SWAP3R {
     }
 }
 #[doc = "Values that can be written to the field `WAVEGEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WAVEGENW {
     #[doc = "Normal frequency"]
     NFRQ,
@@ -588,6 +589,7 @@ impl<'a> _WAVEGENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `RAMP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RAMPW {
     #[doc = "RAMP1 operation"]
     RAMP1,

@@ -14,8 +14,8 @@ impl super::STATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -299,6 +299,75 @@ impl<'a> _COLLW<'a> {
     }
 }
 #[doc = r" Proxy"]
+pub struct _RXNACKW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _RXNACKW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 2;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _DIRW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _DIRW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 3;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _SRW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _SRW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 4;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
 pub struct _LOWTOUTW<'a> {
     w: &'a mut W,
 }
@@ -316,6 +385,29 @@ impl<'a> _LOWTOUTW<'a> {
     pub fn bit(self, value: bool) -> &'a mut W {
         const MASK: bool = true;
         const OFFSET: u8 = 6;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _CLKHOLDW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _CLKHOLDW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 7;
         self.w.bits &= !((MASK as u16) << OFFSET);
         self.w.bits |= ((value & MASK) as u16) << OFFSET;
         self.w
@@ -519,10 +611,30 @@ impl W {
     pub fn coll(&mut self) -> _COLLW {
         _COLLW { w: self }
     }
+    #[doc = "Bit 2 - Received Not Acknowledge"]
+    #[inline]
+    pub fn rxnack(&mut self) -> _RXNACKW {
+        _RXNACKW { w: self }
+    }
+    #[doc = "Bit 3 - Read/Write Direction"]
+    #[inline]
+    pub fn dir(&mut self) -> _DIRW {
+        _DIRW { w: self }
+    }
+    #[doc = "Bit 4 - Repeated Start"]
+    #[inline]
+    pub fn sr(&mut self) -> _SRW {
+        _SRW { w: self }
+    }
     #[doc = "Bit 6 - SCL Low Timeout"]
     #[inline]
     pub fn lowtout(&mut self) -> _LOWTOUTW {
         _LOWTOUTW { w: self }
+    }
+    #[doc = "Bit 7 - Clock Hold"]
+    #[inline]
+    pub fn clkhold(&mut self) -> _CLKHOLDW {
+        _CLKHOLDW { w: self }
     }
     #[doc = "Bit 9 - Slave SCL Low Extend Timeout"]
     #[inline]

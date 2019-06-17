@@ -21,13 +21,13 @@ pub struct RegisterBlock {
     pub dbgctrl: DBGCTRL,
     #[doc = "0x0a - Window Control"]
     pub winctrl: WINCTRL,
-    _reserved10: [u8; 1usize],
+    _reserved0: [u8; 1usize],
     #[doc = "0x0c - Scaler n"]
     pub scaler: [SCALER; 2],
-    _reserved11: [u8; 2usize],
+    _reserved1: [u8; 2usize],
     #[doc = "0x10 - Comparator Control n"]
     pub compctrl: [COMPCTRL; 2],
-    _reserved12: [u8; 8usize],
+    _reserved2: [u8; 8usize],
     #[doc = "0x20 - Synchronization Busy"]
     pub syncbusy: SYNCBUSY,
     #[doc = "0x24 - Calibration"]

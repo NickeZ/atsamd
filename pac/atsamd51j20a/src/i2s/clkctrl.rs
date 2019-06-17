@@ -14,8 +14,8 @@ impl super::CLKCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -481,6 +481,7 @@ impl MCKOUTDIVR {
     }
 }
 #[doc = "Values that can be written to the field `SLOTSIZE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLOTSIZEW {
     #[doc = "8-bit Slot for Clock Unit n"]
     _8,
@@ -562,6 +563,7 @@ impl<'a> _NBSLOTSW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `FSWIDTH`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum FSWIDTHW {
     #[doc = "Frame Sync Pulse is 1 Slot wide (default for I2S protocol)"]
     SLOT,
@@ -628,6 +630,7 @@ impl<'a> _FSWIDTHW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `BITDELAY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum BITDELAYW {
     #[doc = "Left Justified (0 Bit Delay)"]
     LJ,
@@ -686,6 +689,7 @@ impl<'a> _BITDELAYW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `FSSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum FSSELW {
     #[doc = "Divided Serial Clock n is used as Frame Sync n source"]
     SCKDIV,
@@ -790,6 +794,7 @@ impl<'a> _FSOUTINVW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SCKSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SCKSELW {
     #[doc = "Divided Master Clock n is used as Serial Clock n source"]
     MCKDIV,
@@ -871,6 +876,7 @@ impl<'a> _SCKOUTINVW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `MCKSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MCKSELW {
     #[doc = "GCLK_I2S_n is used as Master Clock n source"]
     GCLK,

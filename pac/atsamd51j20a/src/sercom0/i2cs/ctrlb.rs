@@ -14,8 +14,8 @@ impl super::CTRLB {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -110,6 +110,17 @@ pub struct AMODER {
     bits: u8,
 }
 impl AMODER {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bits(&self) -> u8 {
+        self.bits
+    }
+}
+#[doc = r" Value of the field"]
+pub struct CMDR {
+    bits: u8,
+}
+impl CMDR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
@@ -304,6 +315,16 @@ impl R {
             ((self.bits >> OFFSET) & MASK as u32) as u8
         };
         AMODER { bits }
+    }
+    #[doc = "Bits 16:17 - Command"]
+    #[inline]
+    pub fn cmd(&self) -> CMDR {
+        let bits = {
+            const MASK: u8 = 3;
+            const OFFSET: u8 = 16;
+            ((self.bits >> OFFSET) & MASK as u32) as u8
+        };
+        CMDR { bits }
     }
     #[doc = "Bit 18 - Acknowledge Action"]
     #[inline]

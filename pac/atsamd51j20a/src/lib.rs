@@ -1,5 +1,6 @@
-#![doc = "Peripheral access API for ATSAMD51J20A microcontrollers (generated using svd2rust v0.13.1)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.13.1/svd2rust/#peripheral-api"]
+#![doc = "Peripheral access API for ATSAMD51J20A microcontrollers (generated using svd2rust v0.14.0)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.14.0/svd2rust/#peripheral-api"]
 #![deny(missing_docs)]
+#![deny(warnings)]
 #![allow(non_camel_case_types)]
 #![no_std]
 extern crate bare_metal;
@@ -423,6 +424,7 @@ pub static __INTERRUPTS: [Vector; 136] = [
     Vector { _handler: SDHC0 },
 ];
 #[doc = r" Enumeration of all the interrupts"]
+#[derive(Copy, Clone, Debug)]
 pub enum Interrupt {
     #[doc = "0 - PM"]
     PM,
@@ -789,6 +791,7 @@ unsafe impl ::bare_metal::Nr for Interrupt {
         }
     }
 }
+#[cfg(feature = "rt")]
 pub use self::Interrupt as interrupt;
 pub use cortex_m::peripheral::Peripherals as CorePeripherals;
 pub use cortex_m::peripheral::{CBP, CPUID, DCB, DWT, FPB, FPU, ITM, MPU, NVIC, SCB, SYST, TPIU};
@@ -813,7 +816,7 @@ impl Deref for AC {
 }
 #[doc = "Analog Comparators"]
 pub mod ac;
-#[doc = "Analog Digital Converter 0"]
+#[doc = "Analog Digital Converter"]
 pub struct ADC0 {
     _marker: PhantomData<*const ()>,
 }
@@ -830,9 +833,9 @@ impl Deref for ADC0 {
         unsafe { &*ADC0::ptr() }
     }
 }
-#[doc = "Analog Digital Converter 0"]
+#[doc = "Analog Digital Converter"]
 pub mod adc0;
-#[doc = "Analog Digital Converter 1"]
+#[doc = "Analog Digital Converter"]
 pub struct ADC1 {
     _marker: PhantomData<*const ()>,
 }
@@ -1362,7 +1365,7 @@ impl Deref for SDHC0 {
 }
 #[doc = "SD/MMC Host Controller"]
 pub mod sdhc0;
-#[doc = "Serial Communication Interface 0"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM0 {
     _marker: PhantomData<*const ()>,
 }
@@ -1379,9 +1382,9 @@ impl Deref for SERCOM0 {
         unsafe { &*SERCOM0::ptr() }
     }
 }
-#[doc = "Serial Communication Interface 0"]
+#[doc = "Serial Communication Interface"]
 pub mod sercom0;
-#[doc = "Serial Communication Interface 1"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM1 {
     _marker: PhantomData<*const ()>,
 }
@@ -1398,7 +1401,7 @@ impl Deref for SERCOM1 {
         unsafe { &*SERCOM1::ptr() }
     }
 }
-#[doc = "Serial Communication Interface 2"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM2 {
     _marker: PhantomData<*const ()>,
 }
@@ -1415,7 +1418,7 @@ impl Deref for SERCOM2 {
         unsafe { &*SERCOM2::ptr() }
     }
 }
-#[doc = "Serial Communication Interface 3"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM3 {
     _marker: PhantomData<*const ()>,
 }
@@ -1432,7 +1435,7 @@ impl Deref for SERCOM3 {
         unsafe { &*SERCOM3::ptr() }
     }
 }
-#[doc = "Serial Communication Interface 4"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM4 {
     _marker: PhantomData<*const ()>,
 }
@@ -1449,7 +1452,7 @@ impl Deref for SERCOM4 {
         unsafe { &*SERCOM4::ptr() }
     }
 }
-#[doc = "Serial Communication Interface 5"]
+#[doc = "Serial Communication Interface"]
 pub struct SERCOM5 {
     _marker: PhantomData<*const ()>,
 }
@@ -1485,7 +1488,7 @@ impl Deref for SUPC {
 }
 #[doc = "Supply Controller"]
 pub mod supc;
-#[doc = "Basic Timer Counter 0"]
+#[doc = "Basic Timer Counter"]
 pub struct TC0 {
     _marker: PhantomData<*const ()>,
 }
@@ -1502,9 +1505,9 @@ impl Deref for TC0 {
         unsafe { &*TC0::ptr() }
     }
 }
-#[doc = "Basic Timer Counter 0"]
+#[doc = "Basic Timer Counter"]
 pub mod tc0;
-#[doc = "Basic Timer Counter 1"]
+#[doc = "Basic Timer Counter"]
 pub struct TC1 {
     _marker: PhantomData<*const ()>,
 }
@@ -1521,7 +1524,7 @@ impl Deref for TC1 {
         unsafe { &*TC1::ptr() }
     }
 }
-#[doc = "Basic Timer Counter 2"]
+#[doc = "Basic Timer Counter"]
 pub struct TC2 {
     _marker: PhantomData<*const ()>,
 }
@@ -1538,7 +1541,7 @@ impl Deref for TC2 {
         unsafe { &*TC2::ptr() }
     }
 }
-#[doc = "Basic Timer Counter 3"]
+#[doc = "Basic Timer Counter"]
 pub struct TC3 {
     _marker: PhantomData<*const ()>,
 }
@@ -1555,7 +1558,7 @@ impl Deref for TC3 {
         unsafe { &*TC3::ptr() }
     }
 }
-#[doc = "Basic Timer Counter 4"]
+#[doc = "Basic Timer Counter"]
 pub struct TC4 {
     _marker: PhantomData<*const ()>,
 }
@@ -1572,7 +1575,7 @@ impl Deref for TC4 {
         unsafe { &*TC4::ptr() }
     }
 }
-#[doc = "Basic Timer Counter 5"]
+#[doc = "Basic Timer Counter"]
 pub struct TC5 {
     _marker: PhantomData<*const ()>,
 }
@@ -1589,7 +1592,7 @@ impl Deref for TC5 {
         unsafe { &*TC5::ptr() }
     }
 }
-#[doc = "Timer Counter Control 0"]
+#[doc = "Timer Counter Control"]
 pub struct TCC0 {
     _marker: PhantomData<*const ()>,
 }
@@ -1606,9 +1609,9 @@ impl Deref for TCC0 {
         unsafe { &*TCC0::ptr() }
     }
 }
-#[doc = "Timer Counter Control 0"]
+#[doc = "Timer Counter Control"]
 pub mod tcc0;
-#[doc = "Timer Counter Control 1"]
+#[doc = "Timer Counter Control"]
 pub struct TCC1 {
     _marker: PhantomData<*const ()>,
 }
@@ -1625,7 +1628,7 @@ impl Deref for TCC1 {
         unsafe { &*TCC1::ptr() }
     }
 }
-#[doc = "Timer Counter Control 2"]
+#[doc = "Timer Counter Control"]
 pub struct TCC2 {
     _marker: PhantomData<*const ()>,
 }
@@ -1642,7 +1645,7 @@ impl Deref for TCC2 {
         unsafe { &*TCC2::ptr() }
     }
 }
-#[doc = "Timer Counter Control 3"]
+#[doc = "Timer Counter Control"]
 pub struct TCC3 {
     _marker: PhantomData<*const ()>,
 }
@@ -1659,7 +1662,7 @@ impl Deref for TCC3 {
         unsafe { &*TCC3::ptr() }
     }
 }
-#[doc = "Timer Counter Control 4"]
+#[doc = "Timer Counter Control"]
 pub struct TCC4 {
     _marker: PhantomData<*const ()>,
 }
@@ -1733,8 +1736,101 @@ impl Deref for WDT {
 }
 #[doc = "Watchdog Timer"]
 pub mod wdt;
-#[allow(renamed_and_removed_lints)]
-#[allow(private_no_mangle_statics)]
+#[doc = "Core Debug Register"]
+pub struct COREDEBUG {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for COREDEBUG {}
+impl COREDEBUG {
+    #[doc = r" Returns a pointer to the register block"]
+    pub fn ptr() -> *const core_debug::RegisterBlock {
+        3758157296 as *const _
+    }
+}
+impl Deref for COREDEBUG {
+    type Target = core_debug::RegisterBlock;
+    fn deref(&self) -> &core_debug::RegisterBlock {
+        unsafe { &*COREDEBUG::ptr() }
+    }
+}
+#[doc = "Core Debug Register"]
+pub mod core_debug;
+#[doc = "Embedded Trace Macrocell"]
+pub struct ETM {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for ETM {}
+impl ETM {
+    #[doc = r" Returns a pointer to the register block"]
+    pub fn ptr() -> *const etm::RegisterBlock {
+        3758362624 as *const _
+    }
+}
+impl Deref for ETM {
+    type Target = etm::RegisterBlock;
+    fn deref(&self) -> &etm::RegisterBlock {
+        unsafe { &*ETM::ptr() }
+    }
+}
+#[doc = "Embedded Trace Macrocell"]
+pub mod etm;
+#[doc = "System timer"]
+pub struct SYSTICK {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SYSTICK {}
+impl SYSTICK {
+    #[doc = r" Returns a pointer to the register block"]
+    pub fn ptr() -> *const sys_tick::RegisterBlock {
+        3758153744 as *const _
+    }
+}
+impl Deref for SYSTICK {
+    type Target = sys_tick::RegisterBlock;
+    fn deref(&self) -> &sys_tick::RegisterBlock {
+        unsafe { &*SYSTICK::ptr() }
+    }
+}
+#[doc = "System timer"]
+pub mod sys_tick;
+#[doc = "System Control Registers"]
+pub struct SYSTEMCONTROL {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SYSTEMCONTROL {}
+impl SYSTEMCONTROL {
+    #[doc = r" Returns a pointer to the register block"]
+    pub fn ptr() -> *const system_control::RegisterBlock {
+        3758153728 as *const _
+    }
+}
+impl Deref for SYSTEMCONTROL {
+    type Target = system_control::RegisterBlock;
+    fn deref(&self) -> &system_control::RegisterBlock {
+        unsafe { &*SYSTEMCONTROL::ptr() }
+    }
+}
+#[doc = "System Control Registers"]
+pub mod system_control;
+#[doc = "Trace Port Interface Register"]
+pub struct TPI {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for TPI {}
+impl TPI {
+    #[doc = r" Returns a pointer to the register block"]
+    pub fn ptr() -> *const tpi::RegisterBlock {
+        3758358528 as *const _
+    }
+}
+impl Deref for TPI {
+    type Target = tpi::RegisterBlock;
+    fn deref(&self) -> &tpi::RegisterBlock {
+        unsafe { &*TPI::ptr() }
+    }
+}
+#[doc = "Trace Port Interface Register"]
+pub mod tpi;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals"]
@@ -1842,6 +1938,16 @@ pub struct Peripherals {
     pub USB: USB,
     #[doc = "WDT"]
     pub WDT: WDT,
+    #[doc = "COREDEBUG"]
+    pub COREDEBUG: COREDEBUG,
+    #[doc = "ETM"]
+    pub ETM: ETM,
+    #[doc = "SYSTICK"]
+    pub SYSTICK: SYSTICK,
+    #[doc = "SYSTEMCONTROL"]
+    pub SYSTEMCONTROL: SYSTEMCONTROL,
+    #[doc = "TPI"]
+    pub TPI: TPI,
 }
 impl Peripherals {
     #[doc = r" Returns all the peripherals *once*"]
@@ -1857,7 +1963,6 @@ impl Peripherals {
     }
     #[doc = r" Unchecked version of `Peripherals::take`"]
     pub unsafe fn steal() -> Self {
-        debug_assert!(!DEVICE_PERIPHERALS);
         DEVICE_PERIPHERALS = true;
         Peripherals {
             AC: AC {
@@ -2011,6 +2116,21 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             WDT: WDT {
+                _marker: PhantomData,
+            },
+            COREDEBUG: COREDEBUG {
+                _marker: PhantomData,
+            },
+            ETM: ETM {
+                _marker: PhantomData,
+            },
+            SYSTICK: SYSTICK {
+                _marker: PhantomData,
+            },
+            SYSTEMCONTROL: SYSTEMCONTROL {
+                _marker: PhantomData,
+            },
+            TPI: TPI {
                 _marker: PhantomData,
             },
         }

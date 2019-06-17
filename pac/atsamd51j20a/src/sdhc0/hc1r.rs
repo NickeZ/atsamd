@@ -14,8 +14,8 @@ impl super::HC1R {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -319,6 +319,7 @@ impl CARDDSELR {
     }
 }
 #[doc = "Values that can be written to the field `LEDCTRL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LEDCTRLW {
     #[doc = "LED off"]
     OFF,
@@ -377,6 +378,7 @@ impl<'a> _LEDCTRLW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DW`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DWW {
     #[doc = "1-bit mode"]
     _1BIT,
@@ -435,6 +437,7 @@ impl<'a> _DWW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `HSEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HSENW {
     #[doc = "Normal Speed mode"]
     NORMAL,
@@ -493,6 +496,7 @@ impl<'a> _HSENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DMASEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DMASELW {
     #[doc = "SDMA is selected"]
     SDMA,
@@ -541,6 +545,7 @@ impl<'a> _DMASELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CARDDTL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CARDDTLW {
     #[doc = "No Card"]
     NO,
@@ -599,6 +604,7 @@ impl<'a> _CARDDTLW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CARDDSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CARDDSELW {
     #[doc = "SDCD# is selected (for normal use)"]
     NORMAL,

@@ -60,7 +60,7 @@ pub struct ADDR {
 pub mod addr;
 #[doc = "I2CM Data"]
 pub struct DATA {
-    register: ::vcell::VolatileCell<u32>,
+    register: ::vcell::VolatileCell<u8>,
 }
 #[doc = "I2CM Data"]
 pub mod data;

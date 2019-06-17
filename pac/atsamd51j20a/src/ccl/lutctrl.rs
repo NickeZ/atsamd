@@ -14,8 +14,8 @@ impl super::LUTCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -571,6 +571,7 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `FILTSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum FILTSELW {
     #[doc = "Filter disabled"]
     DISABLE,
@@ -650,6 +651,7 @@ impl<'a> _EDGESELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `INSEL0`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum INSEL0W {
     #[doc = "Masked input"]
     MASK,
@@ -762,6 +764,7 @@ impl<'a> _INSEL0W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `INSEL1`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum INSEL1W {
     #[doc = "Masked input"]
     MASK,
@@ -874,6 +877,7 @@ impl<'a> _INSEL1W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `INSEL2`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum INSEL2W {
     #[doc = "Masked input"]
     MASK,

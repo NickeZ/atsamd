@@ -7,7 +7,7 @@ pub struct RegisterBlock {
     pub ctrl: CTRL,
     #[doc = "0x08 - Status"]
     pub sr: SR,
-    _reserved3: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x10 - Interrupt Enable"]
     pub ier: IER,
     #[doc = "0x14 - Interrupt Disable"]
@@ -18,7 +18,7 @@ pub struct RegisterBlock {
     pub isr: ISR,
     #[doc = "0x20 - Undefined Access Status"]
     pub uasr: UASR,
-    _reserved8: [u8; 12usize],
+    _reserved1: [u8; 12usize],
     #[doc = "0x30 - Region Descriptor Area Start Address"]
     pub dscr: DSCR,
     #[doc = "0x34 - Region Hash Area Start Address"]

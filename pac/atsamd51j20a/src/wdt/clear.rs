@@ -15,6 +15,7 @@ impl super::CLEAR {
     }
 }
 #[doc = "Values that can be written to the field `CLEAR`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CLEARW {
     #[doc = "Clear Key"]
     KEY,

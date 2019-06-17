@@ -14,8 +14,8 @@ impl super::REFCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -141,6 +141,7 @@ impl REFCOMPR {
     }
 }
 #[doc = "Values that can be written to the field `REFSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum REFSELW {
     #[doc = "Internal Bandgap Reference"]
     INTREF,

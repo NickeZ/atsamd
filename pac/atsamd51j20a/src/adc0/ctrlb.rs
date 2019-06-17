@@ -14,8 +14,8 @@ impl super::CTRLB {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -320,6 +320,7 @@ impl<'a> _CORRENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `RESSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RESSELW {
     #[doc = "12-bit result"]
     _12BIT,
@@ -386,6 +387,7 @@ impl<'a> _RESSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WINMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WINMODEW {
     #[doc = "No window mode (default)"]
     DISABLE,

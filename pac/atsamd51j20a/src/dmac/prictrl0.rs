@@ -14,8 +14,8 @@ impl super::PRICTRL0 {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -410,6 +410,7 @@ impl<'a> _LVLPRI0W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `QOS0`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum QOS0W {
     #[doc = "Regular delivery"]
     REGULAR,
@@ -514,6 +515,7 @@ impl<'a> _LVLPRI1W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `QOS1`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum QOS1W {
     #[doc = "Regular delivery"]
     REGULAR,
@@ -618,6 +620,7 @@ impl<'a> _LVLPRI2W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `QOS2`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum QOS2W {
     #[doc = "Regular delivery"]
     REGULAR,
@@ -722,6 +725,7 @@ impl<'a> _LVLPRI3W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `QOS3`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum QOS3W {
     #[doc = "Regular delivery"]
     REGULAR,

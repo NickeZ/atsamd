@@ -11,8 +11,7 @@ pub struct RegisterBlock {
     pub status: STATUS,
     #[doc = "0x10 - BOD33 Control"]
     pub bod33: BOD33,
-    #[doc = "0x14 - BOD12 Control"]
-    pub bod12: BOD12,
+    _reserved0: [u8; 4usize],
     #[doc = "0x18 - VREG Control"]
     pub vreg: VREG,
     #[doc = "0x1c - VREF Control"]
@@ -54,12 +53,6 @@ pub struct BOD33 {
 }
 #[doc = "BOD33 Control"]
 pub mod bod33;
-#[doc = "BOD12 Control"]
-pub struct BOD12 {
-    register: ::vcell::VolatileCell<u32>,
-}
-#[doc = "BOD12 Control"]
-pub mod bod12;
 #[doc = "VREG Control"]
 pub struct VREG {
     register: ::vcell::VolatileCell<u32>,

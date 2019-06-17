@@ -14,8 +14,8 @@ impl super::CFG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -87,19 +87,19 @@ impl DCDISR {
 #[doc = "Possible values of the field `CSIZESW`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CSIZESWR {
-    #[doc = "the Cache Size is configured to 1KB"]
+    #[doc = "The Cache Size is configured to 1KB"]
     CONF_CSIZE_1KB,
-    #[doc = "the Cache Size is configured to 2KB"]
+    #[doc = "The Cache Size is configured to 2KB"]
     CONF_CSIZE_2KB,
-    #[doc = "the Cache Size is configured to 4KB"]
+    #[doc = "The Cache Size is configured to 4KB"]
     CONF_CSIZE_4KB,
-    #[doc = "the Cache Size is configured to 8KB"]
+    #[doc = "The Cache Size is configured to 8KB"]
     CONF_CSIZE_8KB,
-    #[doc = "the Cache Size is configured to 16KB"]
+    #[doc = "The Cache Size is configured to 16KB"]
     CONF_CSIZE_16KB,
-    #[doc = "the Cache Size is configured to 32KB"]
+    #[doc = "The Cache Size is configured to 32KB"]
     CONF_CSIZE_32KB,
-    #[doc = "the Cache Size is configured to 64KB"]
+    #[doc = "The Cache Size is configured to 64KB"]
     CONF_CSIZE_64KB,
     #[doc = r" Reserved"]
     _Reserved(u8),
@@ -217,20 +217,21 @@ impl<'a> _DCDISW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CSIZESW`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CSIZESWW {
-    #[doc = "the Cache Size is configured to 1KB"]
+    #[doc = "The Cache Size is configured to 1KB"]
     CONF_CSIZE_1KB,
-    #[doc = "the Cache Size is configured to 2KB"]
+    #[doc = "The Cache Size is configured to 2KB"]
     CONF_CSIZE_2KB,
-    #[doc = "the Cache Size is configured to 4KB"]
+    #[doc = "The Cache Size is configured to 4KB"]
     CONF_CSIZE_4KB,
-    #[doc = "the Cache Size is configured to 8KB"]
+    #[doc = "The Cache Size is configured to 8KB"]
     CONF_CSIZE_8KB,
-    #[doc = "the Cache Size is configured to 16KB"]
+    #[doc = "The Cache Size is configured to 16KB"]
     CONF_CSIZE_16KB,
-    #[doc = "the Cache Size is configured to 32KB"]
+    #[doc = "The Cache Size is configured to 32KB"]
     CONF_CSIZE_32KB,
-    #[doc = "the Cache Size is configured to 64KB"]
+    #[doc = "The Cache Size is configured to 64KB"]
     CONF_CSIZE_64KB,
 }
 impl CSIZESWW {
@@ -259,37 +260,37 @@ impl<'a> _CSIZESWW<'a> {
     pub fn variant(self, variant: CSIZESWW) -> &'a mut W {
         unsafe { self.bits(variant._bits()) }
     }
-    #[doc = "the Cache Size is configured to 1KB"]
+    #[doc = "The Cache Size is configured to 1KB"]
     #[inline]
     pub fn conf_csize_1kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_1KB)
     }
-    #[doc = "the Cache Size is configured to 2KB"]
+    #[doc = "The Cache Size is configured to 2KB"]
     #[inline]
     pub fn conf_csize_2kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_2KB)
     }
-    #[doc = "the Cache Size is configured to 4KB"]
+    #[doc = "The Cache Size is configured to 4KB"]
     #[inline]
     pub fn conf_csize_4kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_4KB)
     }
-    #[doc = "the Cache Size is configured to 8KB"]
+    #[doc = "The Cache Size is configured to 8KB"]
     #[inline]
     pub fn conf_csize_8kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_8KB)
     }
-    #[doc = "the Cache Size is configured to 16KB"]
+    #[doc = "The Cache Size is configured to 16KB"]
     #[inline]
     pub fn conf_csize_16kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_16KB)
     }
-    #[doc = "the Cache Size is configured to 32KB"]
+    #[doc = "The Cache Size is configured to 32KB"]
     #[inline]
     pub fn conf_csize_32kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_32KB)
     }
-    #[doc = "the Cache Size is configured to 64KB"]
+    #[doc = "The Cache Size is configured to 64KB"]
     #[inline]
     pub fn conf_csize_64kb(self) -> &'a mut W {
         self.variant(CSIZESWW::CONF_CSIZE_64KB)

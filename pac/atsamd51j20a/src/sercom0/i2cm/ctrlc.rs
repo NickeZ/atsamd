@@ -14,8 +14,8 @@ impl super::CTRLC {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -42,16 +42,15 @@ impl super::CTRLC {
         self.write(|w| w)
     }
 }
-#[doc = r" Value of the field"]
-pub struct DATA32BR {
-    bits: bool,
+#[doc = "Possible values of the field `DATA32B`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DATA32BR {
+    #[doc = "Data transaction from/to DATA register are 8-bit"]
+    DATA_TRANS_8BIT,
+    #[doc = "Data transaction from/to DATA register are 32-bit"]
+    DATA_TRANS_32BIT,
 }
 impl DATA32BR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
     #[doc = r" Returns `true` if the bit is clear (0)"]
     #[inline]
     pub fn bit_is_clear(&self) -> bool {
@@ -62,12 +61,75 @@ impl DATA32BR {
     pub fn bit_is_set(&self) -> bool {
         self.bit()
     }
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bit(&self) -> bool {
+        match *self {
+            DATA32BR::DATA_TRANS_8BIT => false,
+            DATA32BR::DATA_TRANS_32BIT => true,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: bool) -> DATA32BR {
+        match value {
+            false => DATA32BR::DATA_TRANS_8BIT,
+            true => DATA32BR::DATA_TRANS_32BIT,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DATA_TRANS_8BIT`"]
+    #[inline]
+    pub fn is_data_trans_8bit(&self) -> bool {
+        *self == DATA32BR::DATA_TRANS_8BIT
+    }
+    #[doc = "Checks if the value of the field is `DATA_TRANS_32BIT`"]
+    #[inline]
+    pub fn is_data_trans_32bit(&self) -> bool {
+        *self == DATA32BR::DATA_TRANS_32BIT
+    }
+}
+#[doc = "Values that can be written to the field `DATA32B`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum DATA32BW {
+    #[doc = "Data transaction from/to DATA register are 8-bit"]
+    DATA_TRANS_8BIT,
+    #[doc = "Data transaction from/to DATA register are 32-bit"]
+    DATA_TRANS_32BIT,
+}
+impl DATA32BW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> bool {
+        match *self {
+            DATA32BW::DATA_TRANS_8BIT => false,
+            DATA32BW::DATA_TRANS_32BIT => true,
+        }
+    }
 }
 #[doc = r" Proxy"]
 pub struct _DATA32BW<'a> {
     w: &'a mut W,
 }
 impl<'a> _DATA32BW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: DATA32BW) -> &'a mut W {
+        {
+            self.bit(variant._bits())
+        }
+    }
+    #[doc = "Data transaction from/to DATA register are 8-bit"]
+    #[inline]
+    pub fn data_trans_8bit(self) -> &'a mut W {
+        self.variant(DATA32BW::DATA_TRANS_8BIT)
+    }
+    #[doc = "Data transaction from/to DATA register are 32-bit"]
+    #[inline]
+    pub fn data_trans_32bit(self) -> &'a mut W {
+        self.variant(DATA32BW::DATA_TRANS_32BIT)
+    }
     #[doc = r" Sets the field bit"]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
@@ -95,12 +157,11 @@ impl R {
     #[doc = "Bit 24 - Data 32 Bit"]
     #[inline]
     pub fn data32b(&self) -> DATA32BR {
-        let bits = {
+        DATA32BR::_from({
             const MASK: bool = true;
             const OFFSET: u8 = 24;
             ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        DATA32BR { bits }
+        })
     }
 }
 impl W {

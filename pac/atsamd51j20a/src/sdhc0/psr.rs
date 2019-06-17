@@ -721,7 +721,7 @@ impl R {
             ((self.bits >> OFFSET) & MASK as u32) != 0
         })
     }
-    #[doc = "Bits 20:23 - DAT[3:0] Line Level"]
+    #[doc = "Bits 20:23 - DAT\\[3:0\\] Line Level"]
     #[inline]
     pub fn datll(&self) -> DATLLR {
         let bits = {

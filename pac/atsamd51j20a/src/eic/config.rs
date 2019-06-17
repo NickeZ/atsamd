@@ -14,8 +14,8 @@ impl super::CONFIG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -827,6 +827,7 @@ impl FILTEN7R {
     }
 }
 #[doc = "Values that can be written to the field `SENSE0`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE0W {
     #[doc = "No detection"]
     NONE,
@@ -930,6 +931,7 @@ impl<'a> _FILTEN0W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE1`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE1W {
     #[doc = "No detection"]
     NONE,
@@ -1033,6 +1035,7 @@ impl<'a> _FILTEN1W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE2`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE2W {
     #[doc = "No detection"]
     NONE,
@@ -1136,6 +1139,7 @@ impl<'a> _FILTEN2W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE3`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE3W {
     #[doc = "No detection"]
     NONE,
@@ -1239,6 +1243,7 @@ impl<'a> _FILTEN3W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE4`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE4W {
     #[doc = "No detection"]
     NONE,
@@ -1342,6 +1347,7 @@ impl<'a> _FILTEN4W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE5`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE5W {
     #[doc = "No detection"]
     NONE,
@@ -1445,6 +1451,7 @@ impl<'a> _FILTEN5W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE6`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE6W {
     #[doc = "No detection"]
     NONE,
@@ -1548,6 +1555,7 @@ impl<'a> _FILTEN6W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SENSE7`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SENSE7W {
     #[doc = "No detection"]
     NONE,

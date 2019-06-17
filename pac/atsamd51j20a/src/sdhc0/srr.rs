@@ -14,8 +14,8 @@ impl super::SRR {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -184,6 +184,7 @@ impl SWRSTDATR {
     }
 }
 #[doc = "Values that can be written to the field `SWRSTALL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SWRSTALLW {
     #[doc = "Work"]
     WORK,
@@ -242,6 +243,7 @@ impl<'a> _SWRSTALLW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SWRSTCMD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SWRSTCMDW {
     #[doc = "Work"]
     WORK,
@@ -300,6 +302,7 @@ impl<'a> _SWRSTCMDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SWRSTDAT`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SWRSTDATW {
     #[doc = "Work"]
     WORK,

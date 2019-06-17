@@ -14,8 +14,8 @@ impl super::CONFIG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -305,6 +305,7 @@ impl WINDOWR {
     }
 }
 #[doc = "Values that can be written to the field `PER`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PERW {
     #[doc = "8 clock cycles"]
     CYC8,
@@ -433,6 +434,7 @@ impl<'a> _PERW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `WINDOW`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WINDOWW {
     #[doc = "8 clock cycles"]
     CYC8,

@@ -3,10 +3,10 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Control A"]
     pub ctrla: CTRLA,
-    _reserved1: [u8; 2usize],
+    _reserved0: [u8; 2usize],
     #[doc = "0x04 - Control B"]
     pub ctrlb: CTRLB,
-    _reserved2: [u8; 2usize],
+    _reserved1: [u8; 2usize],
     #[doc = "0x08 - NVM Parameter"]
     pub param: PARAM,
     #[doc = "0x0c - Interrupt Enable Clear"]
@@ -27,10 +27,10 @@ pub struct RegisterBlock {
     pub eccerr: ECCERR,
     #[doc = "0x28 - Debug Control"]
     pub dbgctrl: DBGCTRL,
-    _reserved12: [u8; 1usize],
+    _reserved2: [u8; 1usize],
     #[doc = "0x2a - SmartEEPROM Configuration Register"]
     pub seecfg: SEECFG,
-    _reserved13: [u8; 1usize],
+    _reserved3: [u8; 1usize],
     #[doc = "0x2c - SmartEEPROM Status Register"]
     pub seestat: SEESTAT,
 }

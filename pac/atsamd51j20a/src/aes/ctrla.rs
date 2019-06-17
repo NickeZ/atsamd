@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -581,6 +581,7 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `AESMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum AESMODEW {
     #[doc = "Electronic code book mode"]
     ECB,
@@ -669,6 +670,7 @@ impl<'a> _AESMODEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CFBS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CFBSW {
     #[doc = "128-bit Input data block for Encryption/Decryption in Cipher Feedback mode"]
     _128BIT,
@@ -741,6 +743,7 @@ impl<'a> _CFBSW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `KEYSIZE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum KEYSIZEW {
     #[doc = "128-bit Key for Encryption / Decryption"]
     _128BIT,
@@ -797,6 +800,7 @@ impl<'a> _KEYSIZEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CIPHER`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CIPHERW {
     #[doc = "Decryption"]
     DEC,
@@ -855,6 +859,7 @@ impl<'a> _CIPHERW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `STARTMODE`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum STARTMODEW {
     #[doc = "Start Encryption / Decryption in Manual mode"]
     MANUAL,
@@ -913,6 +918,7 @@ impl<'a> _STARTMODEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `LOD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LODW {
     #[doc = "No effect"]
     NONE,
@@ -971,6 +977,7 @@ impl<'a> _LODW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `KEYGEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum KEYGENW {
     #[doc = "No effect"]
     NONE,
@@ -1029,6 +1036,7 @@ impl<'a> _KEYGENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `XORKEY`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum XORKEYW {
     #[doc = "No effect"]
     NONE,

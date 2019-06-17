@@ -11,14 +11,14 @@ pub struct RegisterBlock {
     pub status: STATUS,
     #[doc = "0x10 - RTC Clock Selection"]
     pub rtcctrl: RTCCTRL,
-    _reserved5: [u8; 3usize],
+    _reserved0: [u8; 3usize],
     #[doc = "0x14 - 32kHz External Crystal Oscillator (XOSC32K) Control"]
     pub xosc32k: XOSC32K,
     #[doc = "0x16 - Clock Failure Detector Control"]
     pub cfdctrl: CFDCTRL,
     #[doc = "0x17 - Event Control"]
     pub evctrl: EVCTRL,
-    _reserved8: [u8; 4usize],
+    _reserved1: [u8; 4usize],
     #[doc = "0x1c - 32kHz Ultra Low Power Internal Oscillator (OSCULP32K) Control"]
     pub osculp32k: OSCULP32K,
 }

@@ -3,26 +3,26 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Control A"]
     pub ctrla: CTRLA,
-    _reserved1: [u8; 3usize],
+    _reserved0: [u8; 3usize],
     #[doc = "0x04 - Clock Unit n Control"]
     pub clkctrl: [CLKCTRL; 2],
     #[doc = "0x0c - Interrupt Enable Clear"]
     pub intenclr: INTENCLR,
-    _reserved3: [u8; 2usize],
+    _reserved1: [u8; 2usize],
     #[doc = "0x10 - Interrupt Enable Set"]
     pub intenset: INTENSET,
-    _reserved4: [u8; 2usize],
+    _reserved2: [u8; 2usize],
     #[doc = "0x14 - Interrupt Flag Status and Clear"]
     pub intflag: INTFLAG,
-    _reserved5: [u8; 2usize],
+    _reserved3: [u8; 2usize],
     #[doc = "0x18 - Synchronization Status"]
     pub syncbusy: SYNCBUSY,
-    _reserved6: [u8; 6usize],
+    _reserved4: [u8; 6usize],
     #[doc = "0x20 - Tx Serializer Control"]
     pub txctrl: TXCTRL,
     #[doc = "0x24 - Rx Serializer Control"]
     pub rxctrl: RXCTRL,
-    _reserved8: [u8; 8usize],
+    _reserved5: [u8; 8usize],
     #[doc = "0x30 - Tx Data"]
     pub txdata: TXDATA,
     #[doc = "0x34 - Rx Data"]

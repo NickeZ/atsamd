@@ -14,8 +14,8 @@ impl super::EISIER {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -513,6 +513,7 @@ impl ADMAR {
     }
 }
 #[doc = "Values that can be written to the field `CMDTEO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDTEOW {
     #[doc = "Masked"]
     MASKED,
@@ -571,6 +572,7 @@ impl<'a> _CMDTEOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDCRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDCRCW {
     #[doc = "Masked"]
     MASKED,
@@ -629,6 +631,7 @@ impl<'a> _CMDCRCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDENDW {
     #[doc = "Masked"]
     MASKED,
@@ -687,6 +690,7 @@ impl<'a> _CMDENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CMDIDX`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CMDIDXW {
     #[doc = "Masked"]
     MASKED,
@@ -745,6 +749,7 @@ impl<'a> _CMDIDXW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATTEO`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATTEOW {
     #[doc = "Masked"]
     MASKED,
@@ -803,6 +808,7 @@ impl<'a> _DATTEOW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATCRC`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATCRCW {
     #[doc = "Masked"]
     MASKED,
@@ -861,6 +867,7 @@ impl<'a> _DATCRCW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DATEND`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DATENDW {
     #[doc = "Masked"]
     MASKED,
@@ -919,6 +926,7 @@ impl<'a> _DATENDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CURLIM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CURLIMW {
     #[doc = "Masked"]
     MASKED,
@@ -977,6 +985,7 @@ impl<'a> _CURLIMW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ACMD`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ACMDW {
     #[doc = "Masked"]
     MASKED,
@@ -1035,6 +1044,7 @@ impl<'a> _ACMDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ADMA`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ADMAW {
     #[doc = "Masked"]
     MASKED,

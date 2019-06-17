@@ -14,8 +14,8 @@ impl super::INTFLAG {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -366,6 +366,52 @@ impl<'a> _LOCKEW<'a> {
     }
 }
 #[doc = r" Proxy"]
+pub struct _ECCSEW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _ECCSEW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 4;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _ECCDEW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _ECCDEW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 5;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
 pub struct _NVMEW<'a> {
     w: &'a mut W,
 }
@@ -628,6 +674,16 @@ impl W {
     #[inline]
     pub fn locke(&mut self) -> _LOCKEW {
         _LOCKEW { w: self }
+    }
+    #[doc = "Bit 4 - ECC Single Error"]
+    #[inline]
+    pub fn eccse(&mut self) -> _ECCSEW {
+        _ECCSEW { w: self }
+    }
+    #[doc = "Bit 5 - ECC Dual Error"]
+    #[inline]
+    pub fn eccde(&mut self) -> _ECCDEW {
+        _ECCDEW { w: self }
     }
     #[doc = "Bit 6 - NVM Error"]
     #[inline]

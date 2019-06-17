@@ -14,8 +14,8 @@ impl super::CTRLA {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -348,6 +348,7 @@ impl<'a> _ENABLEW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DUALSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DUALSELW {
     #[doc = "Start event or software trigger will start a conversion on both ADCs"]
     BOTH,
@@ -465,6 +466,7 @@ impl<'a> _ONDEMANDW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PRESCALER`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PRESCALERW {
     #[doc = "Peripheral clock divided by 2"]
     DIV2,

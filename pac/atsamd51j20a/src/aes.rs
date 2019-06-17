@@ -15,20 +15,20 @@ pub struct RegisterBlock {
     pub databufptr: DATABUFPTR,
     #[doc = "0x09 - Debug control"]
     pub dbgctrl: DBGCTRL,
-    _reserved7: [u8; 2usize],
+    _reserved0: [u8; 2usize],
     #[doc = "0x0c - Keyword n"]
     pub keyword: [KEYWORD; 8],
-    _reserved8: [u8; 12usize],
+    _reserved1: [u8; 12usize],
     #[doc = "0x38 - Indata"]
     pub indata: INDATA,
     #[doc = "0x3c - Initialisation Vector n"]
     pub intvectv: [INTVECTV; 4],
-    _reserved10: [u8; 16usize],
+    _reserved2: [u8; 16usize],
     #[doc = "0x5c - Hash key n"]
     pub hashkey: [HASHKEY; 4],
     #[doc = "0x6c - Galois Hash n"]
     pub ghash: [GHASH; 4],
-    _reserved12: [u8; 4usize],
+    _reserved3: [u8; 4usize],
     #[doc = "0x80 - Cipher Length"]
     pub ciplen: CIPLEN,
     #[doc = "0x84 - Random Seed"]

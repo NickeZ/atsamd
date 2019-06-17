@@ -14,8 +14,8 @@ impl super::INTPEND {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -198,6 +198,52 @@ impl<'a> _EVDW<'a> {
         self.w
     }
 }
+#[doc = r" Proxy"]
+pub struct _READYW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _READYW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 14;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
+#[doc = r" Proxy"]
+pub struct _BUSYW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _BUSYW<'a> {
+    #[doc = r" Sets the field bit"]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r" Clears the field bit"]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        const MASK: bool = true;
+        const OFFSET: u8 = 15;
+        self.w.bits &= !((MASK as u16) << OFFSET);
+        self.w.bits |= ((value & MASK) as u16) << OFFSET;
+        self.w
+    }
+}
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
@@ -281,5 +327,15 @@ impl W {
     #[inline]
     pub fn evd(&mut self) -> _EVDW {
         _EVDW { w: self }
+    }
+    #[doc = "Bit 14 - Ready"]
+    #[inline]
+    pub fn ready(&mut self) -> _READYW {
+        _READYW { w: self }
+    }
+    #[doc = "Bit 15 - Busy"]
+    #[inline]
+    pub fn busy(&mut self) -> _BUSYW {
+        _BUSYW { w: self }
     }
 }

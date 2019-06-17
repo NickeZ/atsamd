@@ -14,8 +14,8 @@ impl super::EVCTRL {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -682,6 +682,7 @@ impl MCEO5R {
     }
 }
 #[doc = "Values that can be written to the field `EVACT0`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EVACT0W {
     #[doc = "Event action disabled"]
     OFF,
@@ -780,6 +781,7 @@ impl<'a> _EVACT0W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `EVACT1`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EVACT1W {
     #[doc = "Event action disabled"]
     OFF,
@@ -878,6 +880,7 @@ impl<'a> _EVACT1W<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CNTSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CNTSELW {
     #[doc = "An interrupt/event is generated when a new counter cycle starts"]
     START,

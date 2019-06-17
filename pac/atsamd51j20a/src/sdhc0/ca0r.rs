@@ -46,7 +46,7 @@ impl TEOCLKFR {
 #[doc = "Possible values of the field `TEOCLKU`"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TEOCLKUR {
-    #[doc = "kHz"]
+    #[doc = "KHz"]
     KHZ,
     #[doc = "MHz"]
     MHZ,

@@ -14,8 +14,8 @@ impl super::STATUS {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -79,6 +79,21 @@ impl<'a> _SPEEDW<'a> {
         self.w
     }
 }
+#[doc = r" Proxy"]
+pub struct _LINESTATEW<'a> {
+    w: &'a mut W,
+}
+impl<'a> _LINESTATEW<'a> {
+    #[doc = r" Writes raw bits to the field"]
+    #[inline]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        const MASK: u8 = 3;
+        const OFFSET: u8 = 6;
+        self.w.bits &= !((MASK as u8) << OFFSET);
+        self.w.bits |= ((value & MASK) as u8) << OFFSET;
+        self.w
+    }
+}
 impl R {
     #[doc = r" Value of the register as raw bits"]
     #[inline]
@@ -122,5 +137,10 @@ impl W {
     #[inline]
     pub fn speed(&mut self) -> _SPEEDW {
         _SPEEDW { w: self }
+    }
+    #[doc = "Bits 6:7 - USB Line State Status"]
+    #[inline]
+    pub fn linestate(&mut self) -> _LINESTATEW {
+        _LINESTATEW { w: self }
     }
 }

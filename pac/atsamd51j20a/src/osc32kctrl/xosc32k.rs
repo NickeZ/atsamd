@@ -14,8 +14,8 @@ impl super::XOSC32K {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -168,15 +168,90 @@ impl ONDEMANDR {
         self.bit()
     }
 }
-#[doc = r" Value of the field"]
-pub struct STARTUPR {
-    bits: u8,
+#[doc = "Possible values of the field `STARTUP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum STARTUPR {
+    #[doc = "62.6 ms"]
+    CYCLE2048,
+    #[doc = "125 ms"]
+    CYCLE4096,
+    #[doc = "500 ms"]
+    CYCLE16384,
+    #[doc = "1000 ms"]
+    CYCLE32768,
+    #[doc = "2000 ms"]
+    CYCLE65536,
+    #[doc = "4000 ms"]
+    CYCLE131072,
+    #[doc = "8000 ms"]
+    CYCLE262144,
+    #[doc = r" Reserved"]
+    _Reserved(u8),
 }
 impl STARTUPR {
     #[doc = r" Value of the field as raw bits"]
     #[inline]
     pub fn bits(&self) -> u8 {
-        self.bits
+        match *self {
+            STARTUPR::CYCLE2048 => 0,
+            STARTUPR::CYCLE4096 => 1,
+            STARTUPR::CYCLE16384 => 2,
+            STARTUPR::CYCLE32768 => 3,
+            STARTUPR::CYCLE65536 => 4,
+            STARTUPR::CYCLE131072 => 5,
+            STARTUPR::CYCLE262144 => 6,
+            STARTUPR::_Reserved(bits) => bits,
+        }
+    }
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _from(value: u8) -> STARTUPR {
+        match value {
+            0 => STARTUPR::CYCLE2048,
+            1 => STARTUPR::CYCLE4096,
+            2 => STARTUPR::CYCLE16384,
+            3 => STARTUPR::CYCLE32768,
+            4 => STARTUPR::CYCLE65536,
+            5 => STARTUPR::CYCLE131072,
+            6 => STARTUPR::CYCLE262144,
+            i => STARTUPR::_Reserved(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `CYCLE2048`"]
+    #[inline]
+    pub fn is_cycle2048(&self) -> bool {
+        *self == STARTUPR::CYCLE2048
+    }
+    #[doc = "Checks if the value of the field is `CYCLE4096`"]
+    #[inline]
+    pub fn is_cycle4096(&self) -> bool {
+        *self == STARTUPR::CYCLE4096
+    }
+    #[doc = "Checks if the value of the field is `CYCLE16384`"]
+    #[inline]
+    pub fn is_cycle16384(&self) -> bool {
+        *self == STARTUPR::CYCLE16384
+    }
+    #[doc = "Checks if the value of the field is `CYCLE32768`"]
+    #[inline]
+    pub fn is_cycle32768(&self) -> bool {
+        *self == STARTUPR::CYCLE32768
+    }
+    #[doc = "Checks if the value of the field is `CYCLE65536`"]
+    #[inline]
+    pub fn is_cycle65536(&self) -> bool {
+        *self == STARTUPR::CYCLE65536
+    }
+    #[doc = "Checks if the value of the field is `CYCLE131072`"]
+    #[inline]
+    pub fn is_cycle131072(&self) -> bool {
+        *self == STARTUPR::CYCLE131072
+    }
+    #[doc = "Checks if the value of the field is `CYCLE262144`"]
+    #[inline]
+    pub fn is_cycle262144(&self) -> bool {
+        *self == STARTUPR::CYCLE262144
     }
 }
 #[doc = r" Value of the field"]
@@ -379,11 +454,85 @@ impl<'a> _ONDEMANDW<'a> {
         self.w
     }
 }
+#[doc = "Values that can be written to the field `STARTUP`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum STARTUPW {
+    #[doc = "62.6 ms"]
+    CYCLE2048,
+    #[doc = "125 ms"]
+    CYCLE4096,
+    #[doc = "500 ms"]
+    CYCLE16384,
+    #[doc = "1000 ms"]
+    CYCLE32768,
+    #[doc = "2000 ms"]
+    CYCLE65536,
+    #[doc = "4000 ms"]
+    CYCLE131072,
+    #[doc = "8000 ms"]
+    CYCLE262144,
+}
+impl STARTUPW {
+    #[allow(missing_docs)]
+    #[doc(hidden)]
+    #[inline]
+    pub fn _bits(&self) -> u8 {
+        match *self {
+            STARTUPW::CYCLE2048 => 0,
+            STARTUPW::CYCLE4096 => 1,
+            STARTUPW::CYCLE16384 => 2,
+            STARTUPW::CYCLE32768 => 3,
+            STARTUPW::CYCLE65536 => 4,
+            STARTUPW::CYCLE131072 => 5,
+            STARTUPW::CYCLE262144 => 6,
+        }
+    }
+}
 #[doc = r" Proxy"]
 pub struct _STARTUPW<'a> {
     w: &'a mut W,
 }
 impl<'a> _STARTUPW<'a> {
+    #[doc = r" Writes `variant` to the field"]
+    #[inline]
+    pub fn variant(self, variant: STARTUPW) -> &'a mut W {
+        unsafe { self.bits(variant._bits()) }
+    }
+    #[doc = "62.6 ms"]
+    #[inline]
+    pub fn cycle2048(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE2048)
+    }
+    #[doc = "125 ms"]
+    #[inline]
+    pub fn cycle4096(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE4096)
+    }
+    #[doc = "500 ms"]
+    #[inline]
+    pub fn cycle16384(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE16384)
+    }
+    #[doc = "1000 ms"]
+    #[inline]
+    pub fn cycle32768(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE32768)
+    }
+    #[doc = "2000 ms"]
+    #[inline]
+    pub fn cycle65536(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE65536)
+    }
+    #[doc = "4000 ms"]
+    #[inline]
+    pub fn cycle131072(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE131072)
+    }
+    #[doc = "8000 ms"]
+    #[inline]
+    pub fn cycle262144(self) -> &'a mut W {
+        self.variant(STARTUPW::CYCLE262144)
+    }
     #[doc = r" Writes raw bits to the field"]
     #[inline]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
@@ -418,6 +567,7 @@ impl<'a> _WRTLOCKW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `CGM`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CGMW {
     #[doc = "Standard mode"]
     XT,
@@ -534,12 +684,11 @@ impl R {
     #[doc = "Bits 8:10 - Oscillator Start-Up Time"]
     #[inline]
     pub fn startup(&self) -> STARTUPR {
-        let bits = {
+        STARTUPR::_from({
             const MASK: u8 = 7;
             const OFFSET: u8 = 8;
             ((self.bits >> OFFSET) & MASK as u16) as u8
-        };
-        STARTUPR { bits }
+        })
     }
     #[doc = "Bit 12 - Write Lock"]
     #[inline]

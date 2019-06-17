@@ -14,8 +14,8 @@ impl super::HC2R {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -402,6 +402,7 @@ impl PVALENR {
     }
 }
 #[doc = "Values that can be written to the field `UHSMS`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UHSMSW {
     #[doc = "SDR12"]
     SDR12,
@@ -474,6 +475,7 @@ impl<'a> _UHSMSW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `VS18EN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum VS18ENW {
     #[doc = "3.3V Signaling"]
     S33V,
@@ -532,6 +534,7 @@ impl<'a> _VS18ENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `DRVSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DRVSELW {
     #[doc = "Driver Type B is Selected (Default)"]
     B,
@@ -598,6 +601,7 @@ impl<'a> _DRVSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `EXTUN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EXTUNW {
     #[doc = "Not Tuned or Tuning Completed"]
     NO,
@@ -656,6 +660,7 @@ impl<'a> _EXTUNW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `SLCKSEL`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLCKSELW {
     #[doc = "Fixed clock is used to sample data"]
     FIXED,
@@ -714,6 +719,7 @@ impl<'a> _SLCKSELW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `ASINTEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ASINTENW {
     #[doc = "Disabled"]
     DISABLED,
@@ -772,6 +778,7 @@ impl<'a> _ASINTENW<'a> {
     }
 }
 #[doc = "Values that can be written to the field `PVALEN`"]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PVALENW {
     #[doc = "SDCLK and Driver Strength are controlled by Host Controller"]
     HOST,

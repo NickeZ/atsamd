@@ -14,8 +14,8 @@ impl super::CTRLB {
         for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
     {
         let bits = self.register.get();
-        let r = R { bits };
-        let mut w = W { bits };
+        let r = R { bits: bits };
+        let mut w = W { bits: bits };
         f(&r, &mut w);
         self.register.set(w.bits);
     }
@@ -82,6 +82,17 @@ impl QCENR {
     #[inline]
     pub fn bit_is_set(&self) -> bool {
         self.bit()
+    }
+}
+#[doc = r" Value of the field"]
+pub struct CMDR {
+    bits: u8,
+}
+impl CMDR {
+    #[doc = r" Value of the field as raw bits"]
+    #[inline]
+    pub fn bits(&self) -> u8 {
+        self.bits
     }
 }
 #[doc = r" Value of the field"]
@@ -214,6 +225,16 @@ impl R {
             ((self.bits >> OFFSET) & MASK as u32) != 0
         };
         QCENR { bits }
+    }
+    #[doc = "Bits 16:17 - Command"]
+    #[inline]
+    pub fn cmd(&self) -> CMDR {
+        let bits = {
+            const MASK: u8 = 3;
+            const OFFSET: u8 = 16;
+            ((self.bits >> OFFSET) & MASK as u32) as u8
+        };
+        CMDR { bits }
     }
     #[doc = "Bit 18 - Acknowledge Action"]
     #[inline]
